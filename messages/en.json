@@ -1,0 +1,42 @@
+{
+  "Sidebar": {
+    "home": "Home",
+    "settings": "Settings",
+    "slider": "Slider",
+    "about": "About",
+    "pages": "Pages",
+    "services": "Services",
+    "projects": "Projects",
+    "products": "Products",
+    "portfolios": "Portfolios",
+    "why": "Why are you?",
+    "news": "News",
+    "branches": "Branches",
+    "showreel": "Showreel",
+    "gallery": "Gallery",
+    "clients": "Clients",
+    "download": "Download App",
+    "team": "Team",
+    "career": "Career",
+    "partners": "Partners",
+    "plans": "Plans",
+    "contact": "Contact us",
+    "restaurant": "Restaurant",
+    "delivery": "Restaurant delivery",
+    "forms": "Forms",
+    "terms": "Terms and Conditions"
+  },
+  "ChartPage": {
+    "doughnut": "Visitors info",
+    "line": "Monthly report"
+  },
+  "SettingsNav": {
+    "basicInfo": "Basic information",
+    "websiteContent": "Website Content",
+    "websiteDesign": "Logos & colors",
+    "admin": "Admins",
+    "pixel": "Pixel",
+    "domain": "Domain",
+    "subscriptions": "Subscriptions"
+  }
+}

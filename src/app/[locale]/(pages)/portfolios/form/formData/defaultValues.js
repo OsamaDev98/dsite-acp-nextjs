@@ -1,0 +1,26 @@
+export const editDefaultValues = {
+  Portfolio_Edit_Title_en: "",
+  Portfolio_Edit_Title_ar: "",
+  Portfolio_Edit_Subtitle_en: "",
+  Portfolio_Edit_Subtitle_ar: "",
+  Portfolio_Edit_Description_en: "",
+  Portfolio_Edit_Description_ar: "",
+  Portfolio_Edit_Editor_en: "",
+  Portfolio_Edit_Editor_ar: "",
+  Portfolio_Edit_Status: false,
+  Portfolio_Edit_Image: {},
+  Portfolio_Edit_Link: "",
+};
+export const addDefaultValues = {
+  Portfolio_Add_Title_en: "",
+  Portfolio_Add_Title_ar: "",
+  Portfolio_Add_Subtitle_en: "",
+  Portfolio_Add_Subtitle_ar: "",
+  Portfolio_Add_Description_en: "",
+  Portfolio_Add_Description_ar: "",
+  Portfolio_Add_Editor_en: "",
+  Portfolio_Add_Editor_ar: "",
+  Portfolio_Add_Status: false,
+  Portfolio_Add_Image: {},
+  Portfolio_Add_Link: "",
+};

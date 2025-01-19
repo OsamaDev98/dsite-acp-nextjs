@@ -1,0 +1,26 @@
+export const editDefaultValues = {
+  Services_Edit_Title_en: "",
+  Services_Edit_Title_ar: "",
+  Services_Edit_Subtitle_en: "",
+  Services_Edit_Subtitle_ar: "",
+  Services_Edit_Description_en: "",
+  Services_Edit_Description_ar: "",
+  Services_Edit_Editor_en: "",
+  Services_Edit_Editor_ar: "",
+  Services_Edit_Link: "",
+  Services_Edit_Image: {},
+  Services_Edit_Status: false,
+};
+export const addDefaultValues = {
+  Services_Add_Title_en: "",
+  Services_Add_Title_ar: "",
+  Services_Add_Subtitle_en: "",
+  Services_Add_Subtitle_ar: "",
+  Services_Add_Description_en: "",
+  Services_Add_Description_ar: "",
+  Services_Add_Editor_en: "",
+  Services_Add_Editor_ar: "",
+  Services_Add_Link: "",
+  Services_Add_Image: {},
+  Services_Add_Status: false,
+};

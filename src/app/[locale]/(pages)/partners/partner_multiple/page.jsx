@@ -1,0 +1,16 @@
+import DropzoneForm from "@/components/custom/dropzone/DropzoneForm";
+
+// // When export project
+// export function generateStaticParams() {
+//   const locales = ["en", "ar"]; // Add all supported locales
+//   return locales.map((locale) => ({ locale }));
+// }
+
+const page = () => {
+  return (
+    <div className="section-container">
+      <DropzoneForm sectionName="clients" />
+    </div>
+  );
+};
+export default page;

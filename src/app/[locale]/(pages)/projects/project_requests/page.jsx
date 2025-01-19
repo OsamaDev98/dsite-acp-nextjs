@@ -1,0 +1,34 @@
+import RequestsTable from "@/components/custom/tables/RequestsTable";
+import { tableData } from "../data/requestsData";
+import ExportButton from "@/components/custom/buttons/ExportButton";
+
+// // When export project
+// export function generateStaticParams() {
+//   const locales = ["en", "ar"]; // Add all supported locales
+//   return locales.map((locale) => ({ locale }));
+// }
+
+const page = () => {
+  const tableName = "BMW Car";
+  const domainName = "dsite.sa";
+
+  return (
+    <section className="section-container">
+      <div className="card-style mt-2 rounded-tr-lg items-start">
+        <h1 className="text-xl text-mainColor-500 font-bold mb-4 text-start">
+          Table name
+        </h1>
+        <div className="flex justify-end w-full mb-8">
+          <ExportButton
+            tableData={tableData}
+            tableTitle={`Project Orders for project "${tableName}" From ${domainName}`}
+          />
+        </div>
+        <div className="grid w-full">
+          <RequestsTable tableData={tableData} />
+        </div>
+      </div>
+    </section>
+  );
+};
+export default page;

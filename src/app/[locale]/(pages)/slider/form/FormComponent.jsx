@@ -1,0 +1,219 @@
+"use client";
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import SubmitButton from "@/components/custom/buttons/SubmitButton";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Form } from "@/components/ui/form";
+import TitleInput from "@/components/custom/formInputs/TitleInput";
+import SubtitleInput from "@/components/custom/formInputs/SubtitleInput";
+import ContentInput from "@/components/custom/formInputs/ContentInput";
+import EditImage from "@/components/custom/EditImage";
+import StatusInput from "@/components/custom/formInputs/StatusInput";
+import SelectInputWithAction from "@/components/custom/formInputs/SelectInputWithAction";
+import { useState } from "react";
+import { addSchema, editSchema } from "./formData/schema";
+import { addDefaultValues, editDefaultValues } from "./formData/defaultValues";
+import { useLocale } from "next-intl";
+
+const FormComponent = ({ isEdit }) => {
+  const [isVideo, setIsVideo] = useState("");
+  const locale = useLocale();
+
+  const form = useForm({
+    resolver: zodResolver(isEdit ? editSchema : addSchema),
+    defaultValues: isEdit ? editDefaultValues : addDefaultValues,
+  });
+
+  function onSubmit(values) {
+    try {
+      console.log(values);
+    } catch (error) {
+      console.error("Form submission error", error);
+    }
+  }
+
+  const sectionName = isEdit ? "Slider_Edit" : "Slider_Add";
+
+  const fileType = [
+    { id: 1, value: "image", title: "image" },
+    { id: 2, value: "addlink", title: "video" },
+  ];
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
+        <div className="card-style">
+          <Tabs
+            defaultValue={locale == "en" ? "english" : "arabic"}
+            className="tabs-style w-full"
+          >
+            <TabsList className="absolute -top-12 -right-1 h-auto bg-transparent gap-2">
+              <TabsTrigger
+                value="english"
+                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
+              >
+                English
+              </TabsTrigger>
+              <TabsTrigger
+                value="arabic"
+                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
+              >
+                Arabic
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="english" className="space-y-4 w-full">
+              {/* Title */}
+              <TitleInput
+                form={form}
+                section={sectionName}
+                placeholder="Title"
+                name={`${sectionName}_Title_en`}
+                lang="en"
+                title="Slide Main Title"
+              />
+              {/* SubTitle */}
+              <SubtitleInput
+                form={form}
+                section={sectionName}
+                placeholder="Subtitle"
+                name={`${sectionName}_Subtitle_en`}
+                lang="en"
+                title="Slide Subtitle"
+              />
+              {/* Content */}
+              <ContentInput
+                form={form}
+                section={sectionName}
+                placeholder="Content"
+                name={`${sectionName}_Content_en`}
+                lang="en"
+                title="Slide Content"
+              />
+              {/* Button Action */}
+              <TitleInput
+                form={form}
+                section={sectionName}
+                placeholder="Action"
+                name={`${sectionName}_Action_en`}
+                lang="en"
+                title="Action button"
+              />
+              {/* URL */}
+              <TitleInput
+                form={form}
+                section={sectionName}
+                placeholder="URL"
+                name={`${sectionName}_Url_en`}
+                lang="en"
+                title="URL"
+              />
+            </TabsContent>
+            <TabsContent value="arabic" className="rtl-grid space-y-4 w-full">
+              {/* Title */}
+              <TitleInput
+                form={form}
+                section={sectionName}
+                placeholder="Title"
+                name={`${sectionName}_Title_ar`}
+                lang="ar"
+                title="Slide Main Title"
+              />
+              {/* SubTitle */}
+              <SubtitleInput
+                form={form}
+                section={sectionName}
+                placeholder="Subtitle"
+                name={`${sectionName}_Subtitle_ar`}
+                lang="ar"
+                title="Slide Subtitle"
+              />
+              {/* Content */}
+              <ContentInput
+                form={form}
+                section={sectionName}
+                placeholder="Content"
+                name={`${sectionName}_Content_ar`}
+                lang="ar"
+                title="Slide Content"
+              />
+              {/* Button Action */}
+              <TitleInput
+                form={form}
+                section={sectionName}
+                placeholder="Action"
+                name={`${sectionName}_Action_ar`}
+                lang="ar"
+                title="Action button"
+              />
+              {/* URL */}
+              <TitleInput
+                form={form}
+                section={sectionName}
+                placeholder="URL"
+                name={`${sectionName}_Url_ar`}
+                lang="ar"
+                title="URL"
+              />
+            </TabsContent>
+          </Tabs>
+        </div>
+        <div className="card-style items-start">
+          <h1 className="text-[22px] text-[#707070] font-bold mb-8">
+            Preferences:
+          </h1>
+          <SelectInputWithAction
+            form={form}
+            title="File type"
+            section={sectionName}
+            name={`${sectionName}_Link`}
+            placeholder="File type"
+            defaultValue="image"
+            selectData={fileType}
+            setIsVideo={setIsVideo}
+          />
+          <div className="space-y-4 w-full">
+            {/* Edit image */}
+            <div
+              className={`grid-cols-6 gap-4 my-8 ${
+                isVideo != "addlink" ? "grid" : "hidden"
+              }`}
+            >
+              <label className="font-medium text-[#b5b5b5] text-md lg:pt-2 text-start">
+                Image
+              </label>
+              <EditImage
+                w="1920"
+                h="1200"
+                name={`${sectionName}_Image`}
+                form={form}
+              />
+            </div>
+            <div className="space-y-4">
+              {/* Status */}
+              <div className="pt-4">
+                <StatusInput
+                  form={form}
+                  section={sectionName}
+                  title="Status"
+                  name={`${sectionName}_Status`}
+                />
+              </div>
+              {/* Flip image */}
+              <StatusInput
+                form={form}
+                section="Slider_Flip"
+                title="Flip image horizontally"
+                name={`${sectionName}_Flip_Status`}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center justify-end my-8">
+          <SubmitButton title="Update" />
+        </div>
+      </form>
+    </Form>
+  );
+};
+export default FormComponent;

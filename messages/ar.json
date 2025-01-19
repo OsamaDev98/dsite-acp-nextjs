@@ -1,0 +1,42 @@
+{
+  "Sidebar": {
+    "home": "الصفحة الرئيسية",
+    "settings": "الاعدادات",
+    "slider": "الشرائح",
+    "about": "التعريف",
+    "pages": "الصفحات",
+    "services": "الخدمات",
+    "projects": "المشاريع",
+    "products": "المنتجات",
+    "portfolios": "الاعمال",
+    "why": "لماذا نحن؟",
+    "news": "الاخبار",
+    "branches": "الفروع",
+    "showreel": "الفيديو التعريفي",
+    "gallery": "المعرض",
+    "clients": "العملاء",
+    "download": "تحميل التطبيق",
+    "team": "الفريق",
+    "career": "الوظائف",
+    "partners": "الشركاء",
+    "plans": "الباقات",
+    "contact": "تواصل معانا",
+    "restaurant": "المطاعم",
+    "delivery": "توصيل المطاعم",
+    "forms": "النماذج",
+    "terms": "الشروط والاحكام"
+  },
+  "ChartPage": {
+    "doughnut": "إحصائيات أنواع الأجهزة",
+    "line": "التقارير الشهرية"
+  },
+  "SettingsNav": {
+    "basicInfo": "معلومات الموقع",
+    "websiteContent": "محتويات الموقع",
+    "websiteDesign": "الشعارات والالوان",
+    "admin": "الادرايين",
+    "pixel": "Pixel",
+    "domain": "النطاق",
+    "subscriptions": "الاشتركات"
+  }
+}

@@ -1,0 +1,46 @@
+export const editDefaultValues = {
+  Restaurant_Edit_Title_en: "",
+  Restaurant_Edit_Title_ar: "",
+  Restaurant_Edit_Subtitle_en: "",
+  Restaurant_Edit_Subtitle_ar: "",
+  Restaurant_Edit_Description_en: "",
+  Restaurant_Edit_Description_ar: "",
+  Restaurant_Edit_Editor_en: "",
+  Restaurant_Edit_Editor_ar: "",
+  Restaurant_Edit_Category: "",
+  Restaurant_Edit_Image: "",
+  Restaurant_Edit_Price: 0,
+  Restaurant_Edit_Number: 0,
+  Restaurant_Edit_Status: false,
+  Restaurant_Edit_Image: {},
+};
+export const addDefaultValues = {
+  Restaurant_Add_Title_en: "",
+  Restaurant_Add_Title_ar: "",
+  Restaurant_Add_Subtitle_en: "",
+  Restaurant_Add_Subtitle_ar: "",
+  Restaurant_Add_Description_en: "",
+  Restaurant_Add_Description_ar: "",
+  Restaurant_Add_Editor_en: "",
+  Restaurant_Add_Editor_ar: "",
+  Restaurant_Add_Category: "",
+  Restaurant_Add_Image: "",
+  Restaurant_Add_Price: 0,
+  Restaurant_Add_Number: 0,
+  Restaurant_Add_Status: false,
+  Restaurant_Add_Image: {},
+};
+export const EditSubDefaultValues = {
+  Category_Edit_Title_en: "",
+  Category_Edit_Title_ar: "",
+  Category_Edit_Category_Tags: [],
+  Category_Edit_Status: false,
+  Category_Edit_Image: {},
+};
+export const addSubDefaultValues = {
+  Category_Add_Title_en: "",
+  Category_Add_Title_ar: "",
+  Category_Add_Category_Tags: [],
+  Category_Add_Status: false,
+  Category_Add_Image: {},
+};
