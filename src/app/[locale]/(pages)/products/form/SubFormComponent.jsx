@@ -8,18 +8,16 @@ import { Form } from "@/components/ui/form";
 import TitleInput from "@/components/custom/formInputs/TitleInput";
 import StatusInput from "@/components/custom/formInputs/StatusInput";
 import EditImage from "@/components/custom/EditImage";
-import TagsInputs from "@/components/custom/formInputs/TagsInputs";
 import { addSubSchema, editSubSchema } from "./formData/schema";
 import {
   addSubDefaultValues,
   EditSubDefaultValues,
 } from "./formData/defaultValues";
 import { useLocale } from "next-intl";
-import { useState } from "react";
+import TagForm from "@/components/custom/formInputs/TagForm";
 
 const SubFormComponent = ({ isEdit, sectionTitle }) => {
   const locale = useLocale();
-  const [tabTags, setTabTags] = useState([]);
 
   const form = useForm({
     resolver: zodResolver(isEdit ? editSubSchema : addSubSchema),
@@ -107,13 +105,10 @@ const SubFormComponent = ({ isEdit, sectionTitle }) => {
               />
             </div>
             {/* Tags */}
-            <TagsInputs
+            <TagForm
               form={form}
-              title="Keywords"
+              title="Tags"
               name={`${sectionName}_Product_Tags`}
-              placeholder="Enter a tag"
-              tags={tabTags}
-              setTags={setTabTags}
             />
             {/* Status */}
             <div className="pt-4">

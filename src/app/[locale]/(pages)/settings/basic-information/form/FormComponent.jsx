@@ -10,16 +10,13 @@ import DescriptionInput from "@/components/custom/formInputs/DescriptionInput";
 import LinkInput from "@/components/custom/formInputs/LinkInput";
 import SelectInput from "@/components/custom/formInputs/SelectInput";
 import RadioInput from "@/components/custom/formInputs/RadioInput";
-import TagsInputs from "@/components/custom/formInputs/TagsInputs";
 import { schema } from "./formData/schema";
 import { defaultValues } from "./formData/defaultValues";
 import { useLocale } from "next-intl";
-import { useState } from "react";
+import TagForm from "@/components/custom/formInputs/TagForm";
 
 const FormComponent = () => {
   const locale = useLocale();
-  const [tab1Tags, setTab1Tags] = useState([]);
-  const [tab2Tags, setTab2Tags] = useState([]);
 
   const form = useForm({
     resolver: zodResolver(schema),
@@ -296,14 +293,7 @@ const FormComponent = () => {
                 title="Website Description"
               />
               {/* Tags */}
-              <TagsInputs
-                form={form}
-                placeholder="Enter a tag"
-                name="Info_Website_Tags_en"
-                title="Tags"
-                tags={tab1Tags}
-                setTags={setTab1Tags}
-              />
+              <TagForm form={form} title="Tags" name="Info_Website_Tags_en" />
             </TabsContent>
             <TabsContent value="arabic" className="rtl-grid space-y-4 w-full">
               {/* Title */}
@@ -325,14 +315,7 @@ const FormComponent = () => {
                 title="Website Description"
               />
               {/* Tags */}
-              <TagsInputs
-                form={form}
-                title="Tags"
-                placeholder="Enter a tag"
-                name="Info_Website_Tags_ar"
-                tags={tab2Tags}
-                setTags={setTab2Tags}
-              />
+              <TagForm form={form} title="Tags" name="Info_Website_Tags_ar" />
             </TabsContent>
           </Tabs>
         </div>

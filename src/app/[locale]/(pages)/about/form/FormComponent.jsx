@@ -4,7 +4,6 @@ import SubmitButton from "@/components/custom/buttons/SubmitButton";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "@/components/ui/form";
-import TagsInputs from "@/components/custom/formInputs/TagsInputs";
 import { schema } from "./formData/schema";
 import { defaultValues } from "./formData/defaultValues";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -21,6 +20,7 @@ import DescriptionInput from "@/components/custom/formInputs/DescriptionInput";
 // Dynamically import CKEditor to prevent SSR issues
 import dynamic from "next/dynamic";
 import { useLocale } from "next-intl";
+import TagForm from "@/components/custom/formInputs/TagForm";
 const CustomEditor = dynamic(
   () => import("@/components/custom/ckeditor5/CustomEditor"),
   {
@@ -30,7 +30,6 @@ const CustomEditor = dynamic(
 
 const FormComponent = () => {
   const locale = useLocale();
-  const [tabTags, setTabTags] = useState([]);
 
   const form = useForm({
     resolver: zodResolver(schema),
@@ -251,14 +250,7 @@ const FormComponent = () => {
             Preferences:
           </h1>
           {/* Tags */}
-          <TagsInputs
-            form={form}
-            title="Tags"
-            placeholder="Enter a tag"
-            name="About_Tags"
-            tags={tabTags}
-            setTags={setTabTags}
-          />
+          <TagForm form={form} title="Tags" name="About_Tags" />
         </div>
         <div className="flex items-center justify-end my-8">
           <SubmitButton title="Update" />

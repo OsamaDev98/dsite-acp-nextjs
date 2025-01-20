@@ -9,9 +9,8 @@ import { Form } from "@/components/ui/form";
 import TitleInput from "@/components/custom/formInputs/TitleInput";
 import SubtitleInput from "@/components/custom/formInputs/SubtitleInput";
 import StatusInput from "@/components/custom/formInputs/StatusInput";
-import TagsInputs from "@/components/custom/formInputs/TagsInputs";
 import { useLocale } from "next-intl";
-import { useState } from "react";
+import TagForm from "./formInputs/TagForm";
 
 const formSchema = z.object({
   Config_Edit_Title_en: z.string().optional(),
@@ -25,8 +24,6 @@ const formSchema = z.object({
 
 const ConfigForm = () => {
   const locale = useLocale();
-  const [tab1Tags, setTab1Tags] = useState([]);
-  const [tab2Tags, setTab2Tags] = useState([]);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -92,13 +89,10 @@ const ConfigForm = () => {
                   title="Page subtitle"
                 />
                 {/* Tags */}
-                <TagsInputs
+                <TagForm
                   form={form}
                   title="Keywords"
                   name="Config_Edit_Tags_en"
-                  placeholder="Enter a tag"
-                  tags={tab1Tags}
-                  setTags={setTab1Tags}
                 />
               </TabsContent>
               <TabsContent value="arabic" className="rtl-grid space-y-4 w-full">
@@ -121,13 +115,10 @@ const ConfigForm = () => {
                   title="Page subtitle"
                 />
                 {/* Tags */}
-                <TagsInputs
+                <TagForm
                   form={form}
                   title="Keywords"
                   name="Config_Edit_Tags_ar"
-                  placeholder="Enter a tag"
-                  tags={tab2Tags}
-                  setTags={setTab2Tags}
                 />
               </TabsContent>
             </Tabs>

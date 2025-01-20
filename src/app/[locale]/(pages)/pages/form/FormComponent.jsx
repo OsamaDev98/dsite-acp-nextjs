@@ -8,15 +8,13 @@ import { Form } from "@/components/ui/form";
 import TitleInput from "@/components/custom/formInputs/TitleInput";
 import SubtitleInput from "@/components/custom/formInputs/SubtitleInput";
 import ContentInput from "@/components/custom/formInputs/ContentInput";
-import TagsInputs from "@/components/custom/formInputs/TagsInputs";
 import { editSchema, addSchema } from "./formData/schema";
 import { addDefaultValues, editDefaultValues } from "./formData/defaultValues";
 import { useLocale } from "next-intl";
-import { useState } from "react";
+import TagForm from "@/components/custom/formInputs/TagForm";
 
 const FormComponent = ({ isEdit }) => {
   const locale = useLocale();
-  const [tabTags, setTabTags] = useState([]);
 
   const form = useForm({
     resolver: zodResolver(isEdit ? editSchema : addSchema),
@@ -119,14 +117,7 @@ const FormComponent = ({ isEdit }) => {
           <h1 className="text-[22px] text-[#707070] font-bold mb-8">
             Preferences:
           </h1>
-          <TagsInputs
-            form={form}
-            title="Tags"
-            name={`${sectionName}_Tags`}
-            placeholder="Enter a tag"
-            tags={tabTags}
-            setTags={setTabTags}
-          />
+          <TagForm form={form} title="Tags" name={`${sectionName}_Tags`} />
         </div>
         <div className="flex items-center justify-end my-8">
           <SubmitButton title="Update" />

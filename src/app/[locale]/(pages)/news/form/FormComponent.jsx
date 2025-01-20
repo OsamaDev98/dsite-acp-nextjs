@@ -9,7 +9,6 @@ import TitleInput from "@/components/custom/formInputs/TitleInput";
 import SubtitleInput from "@/components/custom/formInputs/SubtitleInput";
 import EditImage from "@/components/custom/EditImage";
 import StatusInput from "@/components/custom/formInputs/StatusInput";
-import TagsInputs from "@/components/custom/formInputs/TagsInputs";
 import DescriptionInput from "@/components/custom/formInputs/DescriptionInput";
 import { addSchema, editSchema } from "./formData/schema";
 import { addDefaultValues, editDefaultValues } from "./formData/defaultValues";
@@ -17,7 +16,7 @@ import { addDefaultValues, editDefaultValues } from "./formData/defaultValues";
 import dynamic from "next/dynamic";
 import DateInput from "@/components/custom/formInputs/DateInput";
 import { useLocale } from "next-intl";
-import { useState } from "react";
+import TagForm from "@/components/custom/formInputs/TagForm";
 const CustomEditor = dynamic(
   () => import("@/components/custom/ckeditor5/CustomEditor"),
   {
@@ -27,7 +26,6 @@ const CustomEditor = dynamic(
 
 const FormComponent = ({ isEdit }) => {
   const locale = useLocale();
-  const [tabTags, setTabTags] = useState([]);
 
   const form = useForm({
     resolver: zodResolver(isEdit ? editSchema : addSchema),
@@ -197,14 +195,7 @@ const FormComponent = ({ isEdit }) => {
             {/* Date */}
             <DateInput form={form} name={`${sectionName}_Date`} title="Date" />
             {/* Tags */}
-            <TagsInputs
-              form={form}
-              title="Tags"
-              name={`${sectionName}_Tags`}
-              placeholder="Enter a tag"
-              tags={tabTags}
-              setTags={setTabTags}
-            />
+            <TagForm form={form} title="Tags" name={`${sectionName}_Tags`} />
             <div className="pt-4">
               {/* Status */}
               <StatusInput
