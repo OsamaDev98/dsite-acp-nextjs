@@ -1,4 +1,4 @@
-import FormsTable from "@/components/custom/tables/formsTable";
+import FormsTable from "@/components/custom/tables/FormsTable";
 import { tableData } from "./data/formsData";
 import AddButton from "@/components/custom/buttons/AddButton";
 
