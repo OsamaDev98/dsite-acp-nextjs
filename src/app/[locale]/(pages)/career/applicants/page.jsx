@@ -1,6 +1,6 @@
 import ExportButton from "@/components/custom/buttons/ExportButton";
 import { tableData } from "../data/applicantData";
-import ApplicantTable from "@/components/custom/tables/applicantTable";
+import ApplicantTable from "@/components/custom/tables/ApplicantTable";
 
 // // When export project
 // export function generateStaticParams() {
