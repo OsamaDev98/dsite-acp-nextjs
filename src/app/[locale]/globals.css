@@ -57,6 +57,11 @@ html[lang="en"] {
 }
 /* End canvas */
 
+.rdp-month_caption,
+.rdp-dropdown.rdp-years_dropdown {
+  padding: 0 10px !important;
+}
+
 button[role="switch"] {
   margin-top: 0 !important;
 }

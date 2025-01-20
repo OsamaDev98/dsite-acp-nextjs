@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
 import {
   FormControl,
   FormField,
@@ -13,10 +12,15 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
-import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
+import { useLocale } from "next-intl";
+import { DayPicker } from "react-day-picker";
+import { arSA } from "react-day-picker/locale";
+import "react-day-picker/style.css";
 
 const DateInput = ({ form, name, title }) => {
+  const locale = useLocale();
+
   return (
     <FormField
       control={form.control}
@@ -37,25 +41,25 @@ const DateInput = ({ form, name, title }) => {
                       !field.value && "text-muted-foreground"
                     )}
                   >
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span>Pick a date</span>
-                    )}
+                    {field.value
+                      ? field.value.toLocaleDateString()
+                      : "Pick a day."}
                     <CalendarIcon className="ltr:ml-auto rtl:mr-auto h-4 w-4 opacity-50" />
                   </Button>
                 </FormControl>
               </PopoverTrigger>
               <PopoverContent className="w-full p-0" align="start">
-                <Calendar
-                  mode="single"
-                  selected={field.value}
-                  onSelect={field.onChange}
+                <DayPicker
                   disabled={(date) =>
                     date > new Date() || date < new Date("1900-01-01")
                   }
-                  initialFocus
                   className="dark:bg-mainDark-900"
+                  mode="single"
+                  captionLayout="dropdown"
+                  selected={field.value}
+                  onSelect={field.onChange}
+                  locale={locale == "ar" && arSA}
+                  dir={locale == "ar" ? "rtl" : "ltr"}
                 />
               </PopoverContent>
             </Popover>

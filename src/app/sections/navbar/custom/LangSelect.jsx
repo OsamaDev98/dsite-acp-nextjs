@@ -200,7 +200,7 @@ const LangSelect = () => {
         <ChevronDown className="w-4 h-4" />
       </button>
       {isOpen && (
-        <ul className="absolute z-10 mt-1 w-full rounded-md border bg-white dark:bg-mainDark-900 shadow-lg">
+        <ul className="absolute z-10 mt-1 w-full rounded-md border bg-white dark:bg-mainDark-900 shadow-lg !mx-0">
           {options.map((option) => (
             <li
               key={option.title}
