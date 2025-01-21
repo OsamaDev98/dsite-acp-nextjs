@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
-import OptionForm from "./optionForm";
+import OptionForm from "./OptionForm";
 import RequiredButton from "../buttons/RequiredButton";
 import DeleteButton from "../buttons/DeleteButton";
 import AddOptionForm from "./AddOptionForm";
@@ -32,7 +32,7 @@ const SelectForm = ({
   //   remove: formRemoveOptions,
   // } = useFieldArray({
   //   control,
-  //   name: `Fields.${index}.values.options`,
+  //   name: `Fields.${index}.values`,
   // });
 
   return (
