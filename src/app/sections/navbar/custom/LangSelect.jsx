@@ -205,7 +205,7 @@ const LangSelect = () => {
             <li
               key={option.title}
               onClick={() => handleLangChange(option.title)}
-              className="px-4 py-2 hover:bg-indigo-100 cursor-pointer flex justify-center items-center"
+              className="px-4 py-2 hover:bg-indigo-100 cursor-pointer flex justify-center items-center border-b"
             >
               {option.flag}
             </li>

@@ -16,7 +16,7 @@ import StatusInput from "@/components/custom/formInputs/StatusInput";
 import { addDefaultValues, editDefaultValues } from "./formData/defaultValues";
 import { addSchema, editSchema } from "./formData/schema";
 import { useLocale } from "next-intl";
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import Sortable from "sortablejs";
 import {
   Select,
@@ -27,7 +27,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import TextForm from "../custom/inputs/TextForm";
-import MobileForm from "../custom/inputs/MobileForm";
+import SelectForm from "../custom/inputs/SelectForm";
 import {
   AlarmClock,
   Calendar,
@@ -38,12 +38,7 @@ import {
   SquareCheck,
   Type,
 } from "lucide-react";
-import TextareaForm from "../custom/inputs/TextareaForm";
-import EmailForm from "../custom/inputs/EmailForm";
-import DateForm from "../custom/inputs/DateForm";
-import TimeForm from "../custom/inputs/TimeForm";
-import SelectForm from "../custom/inputs/SelectForm";
-import RadioForm from "../custom/inputs/RadioForm";
+
 const FormComponent = ({ isEdit }) => {
   const locale = useLocale();
 
@@ -55,103 +50,28 @@ const FormComponent = ({ isEdit }) => {
   const control = form.control;
 
   const {
-    fields: formFieldsText,
-    append: formAppendText,
-    remove: formRemoveText,
+    fields: formFields,
+    append: formAppend,
+    remove: formRemove,
   } = useFieldArray({
     control,
-    name: isEdit ? "Form_Edit_Text" : "Form_Add_Text",
-  });
-  const {
-    fields: formFieldsMobile,
-    append: formAppendMobile,
-    remove: formRemoveMobile,
-  } = useFieldArray({
-    control,
-    name: isEdit ? "Form_Edit_Mobile" : "Form_Add_Mobile",
-  });
-  const {
-    fields: formFieldsEmail,
-    append: formAppendEmail,
-    remove: formRemoveEmail,
-  } = useFieldArray({
-    control,
-    name: isEdit ? "Form_Edit_Email" : "Form_Add_Email",
-  });
-  const {
-    fields: formFieldsDate,
-    append: formAppendDate,
-    remove: formRemoveDate,
-  } = useFieldArray({
-    control,
-    name: isEdit ? "Form_Edit_Date" : "Form_Add_Date",
-  });
-  const {
-    fields: formFieldsTime,
-    append: formAppendTime,
-    remove: formRemoveTime,
-  } = useFieldArray({
-    control,
-    name: isEdit ? "Form_Edit_Time" : "Form_Add_Time",
-  });
-  const {
-    fields: formFieldsTextarea,
-    append: formAppendTextarea,
-    remove: formRemoveTextarea,
-  } = useFieldArray({
-    control,
-    name: isEdit ? "Form_Edit_Textarea" : "Form_Add_Textarea",
-  });
-  const {
-    fields: formFieldsSelect,
-    append: formAppendSelect,
-    remove: formRemoveSelect,
-  } = useFieldArray({
-    control,
-    name: isEdit ? "Form_Edit_Select" : "Form_Add_Select",
-  });
-  const {
-    fields: formFieldsRadio,
-    append: formAppendRadio,
-    remove: formRemoveRadio,
-  } = useFieldArray({
-    control,
-    name: isEdit ? "Form_Edit_Radio" : "Form_Add_Radio",
+    name: "Fields",
   });
 
-  const handleCreateInput = (value) => {
-    value == "text" &&
-      formAppendText({
-        textValue: "",
-      });
-    value == "mobile" &&
-      formAppendMobile({
-        mobileValue: "",
-      });
-    value == "email" &&
-      formAppendEmail({
-        emailValue: "",
-      });
-    value == "date" &&
-      formAppendDate({
-        dateValue: "",
-      });
-    value == "time" &&
-      formAppendTime({
-        timeValue: "",
-      });
-    value == "textarea" &&
-      formAppendTextarea({
-        textareaValue: "",
-      });
-    value == "select" &&
-      formAppendSelect({
-        selectValue: "",
-      });
-    value == "radio" &&
-      formAppendRadio({
-        radioValue: "",
-      });
+  const handleCreateInput = (type) => {
+    formAppend({
+      type,
+      values: [
+        {
+          value_en: type === "number" ? undefined : "",
+          value_ar: type === "number" ? undefined : "",
+          options: {
+            option_en: "",
+            option_ar: "",
+          },
+        },
+      ],
+    });
   };
 
   function onSubmit(values) {
@@ -170,9 +90,9 @@ const FormComponent = ({ isEdit }) => {
     { id: 3, value: "email", title: "Email" },
     { id: 4, value: "date", title: "Date" },
     { id: 5, value: "time", title: "Time" },
-    { id: 6, value: "select", title: "Multiple selection" },
-    { id: 7, value: "radio", title: "Radio" },
-    { id: 8, value: "textarea", title: "Text area" },
+    { id: 6, value: "textarea", title: "Text area" },
+    { id: 7, value: "select", title: "Multiple selection" },
+    { id: 8, value: "radio", title: "Radio" },
   ];
 
   // sortable config
@@ -265,8 +185,8 @@ const FormComponent = ({ isEdit }) => {
                             field.onChange(value); // Update the form value
                             handleCreateInput(value);
                           }}
-                          // value={field.value}
-                          // defaultValue={field.value}
+                          value={field.value}
+                          defaultValue={field.value}
                           name={`${sectionName}_Select_Input`}
                           dir={locale == "en" ? "ltr" : "rtl"}
                         >
@@ -298,134 +218,117 @@ const FormComponent = ({ isEdit }) => {
                   className="flex flex-col justify-center items-center gap-2 min-w-[900px]"
                   id="FormContent"
                 >
-                  {formFieldsText?.map((field, i) => {
-                    return (
+                  {formFields?.map((field, i) =>
+                    field.type == "text" ? (
                       <TextForm
                         key={field.id}
                         form={form}
-                        name_en={`${sectionName}_Text${i + 1}_en`}
-                        name_ar={`${sectionName}_Text${i + 1}_ar`}
+                        name_en={`Fields.${i}.values.0.value_en`}
+                        name_ar={`Fields.${i}.values.0.value_ar`}
                         placeholder_en="Text"
                         placeholder_ar="النص"
-                        removeAction={() => formRemoveText(i)}
-                        index={i + 1}
-                        boxId="requiredText"
-                        icon={<Type className="text-gray-500 w-5 h-5" />}
-                      />
-                    );
-                  })}
-                  {formFieldsMobile?.map((field, i) => {
-                    return (
-                      <MobileForm
-                        key={field.id}
-                        form={form}
-                        name_en={`${sectionName}_Mobile${i + 1}_en`}
-                        name_ar={`${sectionName}_Mobile${i + 1}_ar`}
-                        placeholder_en="Mobile"
-                        placeholder_ar="الموبايل"
                         removeAction={() => formRemove(i)}
                         index={i + 1}
-                        boxId="requiredMobile"
-                        icon={<Hash className="text-gray-500 w-5 h-5" />}
+                        boxId={`requiredText${i}`}
+                        icon={<Type className="text-gray-500 w-5 h-5" />}
                       />
-                    );
-                  })}
-                  {formFieldsEmail?.map((field, i) => {
-                    return (
-                      <EmailForm
+                    ) : field.type == "mobile" ? (
+                      <TextForm
                         key={field.id}
                         form={form}
-                        name_en={`${sectionName}_Email${i + 1}_en`}
-                        name_ar={`${sectionName}_Email${i + 1}_ar`}
+                        name_en={`Fields.${i}.values.0.value_en`}
+                        name_ar={`Fields.${i}.values.0.value_ar`}
+                        placeholder_en="Mobile"
+                        placeholder_ar="موبايل"
+                        removeAction={() => formRemove(i)}
+                        index={i + 1}
+                        boxId={`requiredMobile${i}`}
+                        icon={<Hash className="text-gray-500 w-5 h-5" />}
+                      />
+                    ) : field.type == "email" ? (
+                      <TextForm
+                        key={field.id}
+                        form={form}
+                        name_en={`Fields.${i}.values.0.value_en`}
+                        name_ar={`Fields.${i}.values.0.value_ar`}
                         placeholder_en="Email"
                         placeholder_ar="الميل"
                         removeAction={() => formRemove(i)}
                         index={i + 1}
-                        boxId="requiredEmail"
+                        boxId={`requiredEmail${i}`}
                         icon={<Mail className="text-gray-500 w-5 h-5" />}
                       />
-                    );
-                  })}
-                  {formFieldsDate?.map((field, i) => {
-                    return (
-                      <DateForm
+                    ) : field.type == "date" ? (
+                      <TextForm
                         key={field.id}
                         form={form}
-                        name_en={`${sectionName}_Date${i + 1}_en`}
-                        name_ar={`${sectionName}_Date${i + 1}_ar`}
+                        name_en={`Fields.${i}.values.0.value_en`}
+                        name_ar={`Fields.${i}.values.0.value_ar`}
                         placeholder_en="Date"
                         placeholder_ar="التاريخ"
                         removeAction={() => formRemove(i)}
                         index={i + 1}
-                        boxId="requiredDate"
+                        boxId={`requiredDate${i}`}
                         icon={<Calendar className="text-gray-500 w-5 h-5" />}
                       />
-                    );
-                  })}
-                  {formFieldsTime?.map((field, i) => {
-                    return (
-                      <TimeForm
+                    ) : field.type == "time" ? (
+                      <TextForm
                         key={field.id}
                         form={form}
-                        name_en={`${sectionName}_Time${i + 1}_en`}
-                        name_ar={`${sectionName}_Time${i + 1}_ar`}
+                        name_en={`Fields.${i}.values.0.value_en`}
+                        name_ar={`Fields.${i}.values.0.value_ar`}
                         placeholder_en="Time"
                         placeholder_ar="الوقت"
                         removeAction={() => formRemove(i)}
                         index={i + 1}
-                        boxId="requiredTime"
+                        boxId={`requiredTime${i}`}
                         icon={<AlarmClock className="text-gray-500 w-5 h-5" />}
                       />
-                    );
-                  })}
-                  {formFieldsTextarea?.map((field, i) => {
-                    return (
-                      <TextareaForm
+                    ) : field.type == "textarea" ? (
+                      <TextForm
                         key={field.id}
                         form={form}
-                        name_en={`${sectionName}_Textarea${i + 1}_en`}
-                        name_ar={`${sectionName}_Textarea${i + 1}_ar`}
+                        name_en={`Fields.${i}.values.0.value_en`}
+                        name_ar={`Fields.${i}.values.0.value_ar`}
                         placeholder_en="Textarea"
-                        placeholder_ar="نص محتوي"
+                        placeholder_ar="وصف محتوي"
                         removeAction={() => formRemove(i)}
                         index={i + 1}
-                        boxId="requiredTextarea"
+                        boxId={`requiredTextarea${i}`}
                         icon={<NotepadText className="text-gray-500 w-5 h-5" />}
                       />
-                    );
-                  })}
-                  {formFieldsSelect?.map((field, i) => {
-                    return (
+                    ) : field.type == "select" ? (
                       <SelectForm
                         key={field.id}
                         form={form}
-                        name_en={`${sectionName}_Select${i + 1}_en`}
-                        name_ar={`${sectionName}_Select${i + 1}_ar`}
+                        control={control}
+                        name_en={`Fields.${i}.values.0.value_en`}
+                        name_ar={`Fields.${i}.values.0.value_ar`}
                         placeholder_en="City"
                         placeholder_ar="المدينة"
                         removeAction={() => formRemove(i)}
                         index={i + 1}
-                        boxId="requiredSelect"
+                        boxId={`requiredSelect${i}`}
                         icon={<SquareCheck className="text-gray-500 w-5 h-5" />}
                       />
-                    );
-                  })}
-                  {formFieldsRadio?.map((field, i) => {
-                    return (
-                      <RadioForm
+                    ) : field.type == "radio" ? (
+                      <SelectForm
                         key={field.id}
                         form={form}
-                        name_en={`${sectionName}_Radio${i + 1}_en`}
-                        name_ar={`${sectionName}_Radio${i + 1}_ar`}
+                        control={control}
+                        name_en={`Fields.${i}.values.0.value_en`}
+                        name_ar={`Fields.${i}.values.0.value_ar`}
                         placeholder_en="Gander"
                         placeholder_ar="الجنس"
                         removeAction={() => formRemove(i)}
                         index={i + 1}
-                        boxId="requiredRadio"
+                        boxId={`requiredRadio${i}`}
                         icon={<CircleDot className="text-gray-500 w-5 h-5" />}
                       />
-                    );
-                  })}
+                    ) : (
+                      ""
+                    )
+                  )}
                 </div>
               </div>
             </div>

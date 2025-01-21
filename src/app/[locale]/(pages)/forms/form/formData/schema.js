@@ -1,18 +1,59 @@
 import * as z from "zod";
 
+const valuesSchema = z.object({
+  value_en: z
+    .string()
+    .regex(/^[a-zA-Z0-9]*$/, "At least 3 letters.")
+    .optional(),
+  value_ar: z
+    .string()
+    .regex(/^[a-zA-Z0-9]*$/, "At least 3 letters.")
+    .optional(),
+  options: z.object({
+    option_en: z
+      .string()
+      .regex(/^[a-zA-Z0-9]*$/, "At least 3 letters.")
+      .optional(),
+    option_ar: z
+      .string()
+      .regex(/^[a-zA-Z0-9]*$/, "At least 3 letters.")
+      .optional(),
+  }),
+});
+
+const fieldSchema = z.object({
+  type: z.enum([
+    "text",
+    "mobile",
+    "email",
+    "date",
+    "time",
+    "textarea",
+    "select",
+    "radio",
+  ]),
+  values: z.array(valuesSchema).optional(),
+});
+
 export const editSchema = z.object({
   Forms_Edit_Title_en: z.string().optional(),
   Forms_Edit_Title_ar: z.string().optional(),
   Forms_Edit_Status: z.boolean().optional(),
-  Forms_Edit_Fields: z
+  Fields: z.array(fieldSchema),
+});
+export const addSchema = z.object({
+  Forms_Add_Title_en: z.string().optional(),
+  Forms_Add_Title_ar: z.string().optional(),
+  Forms_Add_Status: z.boolean().optional(),
+  Fields: z
     .array(
       z.object({
         type: z.enum([
           "text",
-          "mobile",
+          "number",
           "email",
-          "time",
           "date",
+          "time",
           "select",
           "radio",
           "textarea",
@@ -21,17 +62,4 @@ export const editSchema = z.object({
       })
     )
     .optional(),
-});
-export const addSchema = z.object({
-  Forms_Add_Title_en: z.string().optional(),
-  Forms_Add_Title_ar: z.string().optional(),
-  Forms_Add_Status: z.boolean().optional(),
-  Forms_Add_Text: z.array(z.string()).optional(),
-  Forms_Add_Mobile: z.array(z.string()).optional(),
-  Forms_Add_Email: z.array(z.string()).optional(),
-  Forms_Add_Time: z.array(z.string()).optional(),
-  Forms_Add_Date: z.array(z.string()).optional(),
-  Forms_Add_Textarea: z.array(z.string()).optional(),
-  Forms_Add_Select: z.array(z.string()).optional(),
-  Forms_Add_Radio: z.array(z.string()).optional(),
 });

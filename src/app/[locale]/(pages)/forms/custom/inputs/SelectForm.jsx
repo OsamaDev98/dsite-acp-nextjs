@@ -7,21 +7,34 @@ import {
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import OptionForm from "./optionForm";
-import AddOptionForm from "./AddOptionForm";
 import RequiredButton from "../buttons/RequiredButton";
 import DeleteButton from "../buttons/DeleteButton";
+import AddOptionForm from "./AddOptionForm";
+import { Fragment } from "react";
+import { useFieldArray } from "react-hook-form";
 
 const SelectForm = ({
   form,
+  type,
   name_en,
   name_ar,
   placeholder_en,
   placeholder_ar,
   removeAction,
+  control,
   index,
   boxId,
   icon,
 }) => {
+  // const {
+  //   fields: formFieldsOptions,
+  //   append: formAppendOptions,
+  //   remove: formRemoveOptions,
+  // } = useFieldArray({
+  //   control,
+  //   name: `Fields.${index}.values.options`,
+  // });
+
   return (
     <div
       className="flex flex-col items-center justify-center gap-4 border rounded-md"
@@ -82,10 +95,10 @@ const SelectForm = ({
         />
         <div className="flex items-center justify-center gap-1 ltr:border-l rtl:border-r px-2">
           <RequiredButton boxId={boxId} />
-          <DeleteButton isMulti={true} />
+          <DeleteButton removeAction={removeAction} />
         </div>
       </div>
-      <div className="flex flex-col items-end gap-2 w-full mb-4 px-4">
+      {/* <div className="flex flex-col items-end gap-2 w-full mb-4 px-4">
         <OptionForm
           form={form}
           name_en={`FORM_DROPDOWN_${index}[en[options][]]`}
@@ -96,10 +109,26 @@ const SelectForm = ({
           name_en={`FORM_DROPDOWN_${index}[en[options][]]`}
           name_ar={`FORM_DROPDOWN_${index}[ar[options][]]`}
         />
-        <button className="text-mainColor-500 text-sm font-medium cursor-pointer">
+        {console.log(formFieldsOptions)}
+        {formFieldsOptions?.map((field, i) => (
+          <Fragment key={field.id}>
+            {console.log(field)}
+            <AddOptionForm
+              form={form}
+              removeAction={() => formRemoveOptions(i)}
+              name_en={`Fields.${index}.values.0.options.option_en`}
+              name_ar={`Fields.${index}.values.0.options.option_ar`}
+            />
+          </Fragment>
+        ))}
+        <button
+          type="button"
+          className="text-mainColor-500 text-sm font-medium cursor-pointer"
+          onClick={() => formAppendOptions()}
+        >
           add option
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
