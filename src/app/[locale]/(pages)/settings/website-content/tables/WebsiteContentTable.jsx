@@ -15,17 +15,19 @@ const WebsiteContentTable = ({ tableData }) => {
 
   // sortable config
   useEffect(() => {
-    const elements = document.querySelector("#itemsTable tbody");
-    const sortable = new Sortable(elements, {
-      handle: ".sortable_icon", // Drag handle selector within list items
-      onEnd: function () {
-        const rows = document.querySelectorAll("#itemsTable tbody tr");
-        rows.forEach((row, index) => {
-          const indexCell = row.querySelector("td:first-child");
-          indexCell.innerHTML = index + 1; // Update the index based on row position
-        });
-      },
-    });
+    if (typeof window !== "undefined") {
+      const elements = document.querySelector("#itemsTable tbody");
+      const sortable = new Sortable(elements, {
+        handle: ".sortable_icon", // Drag handle selector within list items
+        onEnd: function () {
+          const rows = document.querySelectorAll("#itemsTable tbody tr");
+          rows.forEach((row, index) => {
+            const indexCell = row.querySelector("td:first-child");
+            indexCell.innerHTML = index + 1; // Update the index based on row position
+          });
+        },
+      });
+    }
   }, []);
 
   const columns = [

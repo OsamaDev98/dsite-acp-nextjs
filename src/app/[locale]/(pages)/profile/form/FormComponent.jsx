@@ -34,7 +34,13 @@ const FormComponent = () => {
             <FormLabel className="text-[#b5b5b5] text-md lg:pt-2 dark:text-mainDark-200">
               Profile picture
             </FormLabel>
-            <EditImage profile={true} name="Profile_Edit_Picture" />
+            <EditImage
+              profile={true}
+              name="Profile_Edit_Picture"
+              // w="1920"
+              // h="1200"
+              form={form}
+            />
           </div>
           <TitleInput
             form={form}

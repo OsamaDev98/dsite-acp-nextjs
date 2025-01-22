@@ -11,9 +11,11 @@ import { toast } from "sonner";
 const ChangeColor = ({ form, name, title, color }) => {
   const handlePickColor = async (e) => {
     e.stopPropagation();
-    if (!window.EyeDropper) {
-      toast.error("EyeDropper is not supported in your browser.");
-      return;
+    if (typeof window !== "undefined") {
+      if (!window.EyeDropper) {
+        toast.error("EyeDropper is not supported in your browser.");
+        return;
+      }
     }
 
     try {

@@ -10,7 +10,7 @@ const CopyButton = ({ targetText }) => {
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(text);
+      navigator && (await navigator.clipboard.writeText(text));
       setCopied(true);
       toast.success("Copied!");
       setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds

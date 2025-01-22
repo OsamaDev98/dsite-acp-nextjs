@@ -65,10 +65,8 @@ const FormComponent = ({ isEdit }) => {
         {
           value_en: type === "number" ? undefined : "",
           value_ar: type === "number" ? undefined : "",
-          options: {
-            option_en: "",
-            option_ar: "",
-          },
+          options_en: [""],
+          options_ar: [""],
         },
       ],
     });
@@ -97,17 +95,19 @@ const FormComponent = ({ isEdit }) => {
 
   // sortable config
   useEffect(() => {
-    const elements = document.querySelector("#FormContent");
-    const sortable = new Sortable(elements, {
-      handle: ".sortable_icon", // Drag handle selector within list items
-      onEnd: function () {
-        const rows = document.querySelectorAll("#FormContent #formRow");
-        rows.forEach((row, index) => {
-          const indexCell = row.querySelector("#formId");
-          indexCell.innerHTML = index + 1; // Update the index based on row position
-        });
-      },
-    });
+    if (typeof window !== "undefined") {
+      const elements = document.querySelector("#FormContent");
+      const sortable = new Sortable(elements, {
+        handle: ".sortable_icon", // Drag handle selector within list items
+        onEnd: function () {
+          const rows = document.querySelectorAll("#FormContent #formRow");
+          rows.forEach((row, index) => {
+            const indexCell = row.querySelector("#formId");
+            indexCell.innerHTML = index + 1; // Update the index based on row position
+          });
+        },
+      });
+    }
   }, []);
 
   return (
@@ -307,7 +307,7 @@ const FormComponent = ({ isEdit }) => {
                         placeholder_en="City"
                         placeholder_ar="المدينة"
                         removeAction={() => formRemove(i)}
-                        index={i + 1}
+                        index={i}
                         boxId={`requiredSelect${i}`}
                         icon={<SquareCheck className="text-gray-500 w-5 h-5" />}
                       />
@@ -321,7 +321,7 @@ const FormComponent = ({ isEdit }) => {
                         placeholder_en="Gander"
                         placeholder_ar="الجنس"
                         removeAction={() => formRemove(i)}
-                        index={i + 1}
+                        index={i}
                         boxId={`requiredRadio${i}`}
                         icon={<CircleDot className="text-gray-500 w-5 h-5" />}
                       />

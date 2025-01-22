@@ -15,25 +15,24 @@ import { useFieldArray } from "react-hook-form";
 
 const SelectForm = ({
   form,
-  type,
+  control,
   name_en,
   name_ar,
   placeholder_en,
   placeholder_ar,
   removeAction,
-  control,
   index,
   boxId,
   icon,
 }) => {
-  // const {
-  //   fields: formFieldsOptions,
-  //   append: formAppendOptions,
-  //   remove: formRemoveOptions,
-  // } = useFieldArray({
-  //   control,
-  //   name: `Fields.${index}.values`,
-  // });
+  const {
+    fields: formFieldsOptions,
+    append: formAppendOptions,
+    remove: formRemoveOptions,
+  } = useFieldArray({
+    control,
+    name: `Fields.${index}.values`, // Path to the array in the schema
+  });
 
   return (
     <div
@@ -42,7 +41,7 @@ const SelectForm = ({
     >
       <div className="flex items-center justify-center gap-8 border-b">
         <div className="flex items-center gap-6 px-4">
-          <span id="formId">{index}</span>
+          <span id="formId">{index + 1}</span>
           <Image
             src="https://dsite.sa/public/assets/acp/img/sort.svg"
             alt="Sortable icon"
@@ -98,7 +97,7 @@ const SelectForm = ({
           <DeleteButton removeAction={removeAction} />
         </div>
       </div>
-      {/* <div className="flex flex-col items-end gap-2 w-full mb-4 px-4">
+      <div className="flex flex-col items-end gap-2 w-full mb-4 px-4">
         <OptionForm
           form={form}
           name_en={`FORM_DROPDOWN_${index}[en[options][]]`}
@@ -109,26 +108,31 @@ const SelectForm = ({
           name_en={`FORM_DROPDOWN_${index}[en[options][]]`}
           name_ar={`FORM_DROPDOWN_${index}[ar[options][]]`}
         />
-        {console.log(formFieldsOptions)}
         {formFieldsOptions?.map((field, i) => (
           <Fragment key={field.id}>
-            {console.log(field)}
             <AddOptionForm
               form={form}
               removeAction={() => formRemoveOptions(i)}
-              name_en={`Fields.${index}.values.0.options.option_en`}
-              name_ar={`Fields.${index}.values.0.options.option_ar`}
+              name_en={`Fields.${index}.values.0.options_en.${i}`}
+              name_ar={`Fields.${index}.values.0.options_ar.${i}`}
             />
           </Fragment>
         ))}
         <button
           type="button"
           className="text-mainColor-500 text-sm font-medium cursor-pointer"
-          onClick={() => formAppendOptions()}
+          onClick={() =>
+            formAppendOptions({
+              value_en: "",
+              value_ar: "",
+              options_en: [""],
+              options_ar: [""],
+            })
+          } // Default values after the array.
         >
           add option
         </button>
-      </div> */}
+      </div>
     </div>
   );
 };

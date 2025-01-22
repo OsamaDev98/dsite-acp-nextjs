@@ -1,4 +1,3 @@
-import { useLocale } from "next-intl";
 import { redirect } from "next/navigation";
 
 // // When export project
@@ -8,7 +7,6 @@ import { redirect } from "next/navigation";
 // }
 
 const page = () => {
-  const locale = useLocale();
   const redirectPath = true;
   redirectPath && redirect(`settings/basic-information`);
 

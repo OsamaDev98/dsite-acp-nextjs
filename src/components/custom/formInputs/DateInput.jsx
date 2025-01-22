@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import {
   FormControl,
@@ -51,7 +53,7 @@ const DateInput = ({ form, name, title }) => {
               <PopoverContent className="w-full p-0" align="start">
                 <DayPicker
                   disabled={(date) =>
-                    date > new Date() || date < new Date("1900-01-01")
+                    date > new Date() || date < new Date("2000-01-01")
                   }
                   className="dark:bg-mainDark-900"
                   mode="single"
