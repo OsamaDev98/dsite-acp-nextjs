@@ -7,11 +7,11 @@ import {
 import { Input } from "@/components/ui/input";
 import DeleteButton from "../buttons/DeleteButton";
 
-const AddOptionForm = ({ form, removeAction, name_en, name_ar }) => {
+const AddOptionForm = ({ control, removeAction, name_en, name_ar }) => {
   return (
     <div className="flex items-center justify-center gap-2 w-full">
       <FormField
-        control={form.control}
+        control={control}
         name={name_en}
         render={({ field }) => (
           <FormItem className="w-full">
@@ -31,7 +31,7 @@ const AddOptionForm = ({ form, removeAction, name_en, name_ar }) => {
         )}
       />
       <FormField
-        control={form.control}
+        control={control}
         name={name_ar}
         render={({ field }) => (
           <FormItem className="w-full">

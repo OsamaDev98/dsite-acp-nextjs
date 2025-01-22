@@ -1,3 +1,5 @@
+import FormComponent from "../form/FormComponent";
+
 // // When export project
 // export function generateStaticParams() {
 //   const locales = ["en", "ar"]; // Add all supported locales
@@ -7,7 +9,7 @@
 const page = () => {
   return (
     <div className="section-container">
-      {/* <FormComponent isEdit={false} /> */}
+      <FormComponent isEdit={false} />
     </div>
   );
 };

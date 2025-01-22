@@ -2,15 +2,23 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SubmitButton from "@/components/custom/buttons/SubmitButton";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import TitleInput from "@/components/custom/formInputs/TitleInput";
 import SubtitleInput from "@/components/custom/formInputs/SubtitleInput";
 import { useState } from "react";
 import { schema } from "./formData/schema";
 import { defaultValues } from "./formData/defaultValues";
 import { useLocale } from "next-intl";
+import { Input } from "@/components/ui/input";
 
 const FormComponent = () => {
   const [youtubeLink, setYoutubeLink] = useState(
@@ -31,6 +39,14 @@ const FormComponent = () => {
       console.error("Form submission error", error);
     }
   }
+
+  const handleYoutubeVideo = (e) => {
+    const targetLink = e.target.value;
+    console.log(targetLink);
+    targetLink.includes("youtu.be")
+      ? setYoutubeLink(targetLink.replace("youtu.be", "www.youtube.com/embed"))
+      : setYoutubeLink(targetLink);
+  };
 
   return (
     <Form {...form}>
@@ -102,15 +118,39 @@ const FormComponent = () => {
           </h1>
           <div className="space-y-4 w-full">
             {/* Link */}
-            <TitleInput
-              form={form}
-              section="Show_Link"
-              title="Link"
+            <FormField
+              control={form.control}
               name="Show_Link_Title"
-              placeholder="Link"
-              isLink="true"
-              youtubeLink={youtubeLink}
-              setYoutubeLink={setYoutubeLink}
+              render={({ field }) => (
+                <FormItem className="grid lg:grid-cols-6 items-start w-full">
+                  <FormLabel className="text-[#b5b5b5] text-md lg:pt-2 dark:text-mainDark-200 text-start">
+                    Link
+                  </FormLabel>
+                  <div className="col-span-3">
+                    <FormControl>
+                      <Controller
+                        name="Show_Link_Title"
+                        control={form.control}
+                        defaultValue=""
+                        render={({ field }) => (
+                          <Input
+                            {...field}
+                            value={field.value ? field.value : youtubeLink} // Controlled value
+                            onChange={(e) => {
+                              field.onChange(e); // Call React Hook Form's onChange
+                              handleYoutubeVideo(e); // Call custom handler
+                            }}
+                            placeholder="Link"
+                            type="text"
+                            className="h-12 dark:bg-mainDark-900"
+                          />
+                        )}
+                      />
+                    </FormControl>
+                    <FormMessage className="mt-2" />
+                  </div>
+                </FormItem>
+              )}
             />
             {/* Video */}
             <div className="grid grid-cols-6">
@@ -118,7 +158,11 @@ const FormComponent = () => {
                 className="col-start-1 col-end-7 col lg:col-start-2 lg:col-end-5"
                 width="100%"
                 height="400"
-                src={youtubeLink}
+                src={
+                  youtubeLink.length > 0
+                    ? youtubeLink
+                    : "https://www.youtube.com/embed/bZnrExAoXwA"
+                }
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

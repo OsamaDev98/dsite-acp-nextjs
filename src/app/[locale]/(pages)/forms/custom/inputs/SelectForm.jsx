@@ -51,7 +51,7 @@ const SelectForm = ({
           />
         </div>
         <FormField
-          control={form.control}
+          control={control}
           name={name_en}
           render={({ field }) => (
             <FormItem className="w-1/3">
@@ -72,7 +72,7 @@ const SelectForm = ({
           )}
         />
         <FormField
-          control={form.control}
+          control={control}
           name={name_ar}
           render={({ field }) => (
             <FormItem className="w-1/3">
@@ -111,24 +111,17 @@ const SelectForm = ({
         {formFieldsOptions?.map((field, i) => (
           <Fragment key={field.id}>
             <AddOptionForm
-              form={form}
+              control={control}
               removeAction={() => formRemoveOptions(i)}
-              name_en={`Fields.${index}.values.0.options_en.${i}`}
-              name_ar={`Fields.${index}.values.0.options_ar.${i}`}
+              name_en={`Fields.${index}.values.${i}.options_en.${i}`}
+              name_ar={`Fields.${index}.values.${i}.options_ar.${i}`}
             />
           </Fragment>
         ))}
         <button
           type="button"
           className="text-mainColor-500 text-sm font-medium cursor-pointer"
-          onClick={() =>
-            formAppendOptions({
-              value_en: "",
-              value_ar: "",
-              options_en: [""],
-              options_ar: [""],
-            })
-          } // Default values after the array.
+          onClick={() => formAppendOptions()}
         >
           add option
         </button>
