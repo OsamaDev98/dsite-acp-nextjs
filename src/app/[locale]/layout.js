@@ -18,6 +18,10 @@ export const metadata = {
   description: "Admin Control Panel",
 };
 
+export const viewport = {
+  content: "width=device-width, initial-scale=1",
+};
+
 export default async function RootLayout({ children, params }) {
   const { locale } = await params;
   // Ensure that the incoming `locale` is valid
@@ -28,7 +32,11 @@ export default async function RootLayout({ children, params }) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} dir={locale == "en" ? "ltr" : "rtl"}>
+    <html
+      lang={locale}
+      dir={locale == "en" ? "ltr" : "rtl"}
+      title="dsite | Admin Control Panel"
+    >
       <body className={`${inter.className} bg-[#f5f5f5] flex min-h-screen`}>
         <NextIntlClientProvider messages={messages}>
           <FixedSidebar />

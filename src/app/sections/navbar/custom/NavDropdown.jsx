@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { User, Settings, Key, LogOut } from "lucide-react";
 import { Link } from "@/i18n/routing";
+import DefaultUser from "@/app/img/user-default.png";
 
 export default function NavDropdown() {
   const dropdownData = [
@@ -48,10 +49,7 @@ export default function NavDropdown() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-11 w-11 rounded-full">
           <Avatar className="h-11 w-11">
-            <AvatarImage
-              src={"https://dsite.sa/public/assets/img/user-default.png"}
-              alt="@User"
-            />
+            <AvatarImage src={DefaultUser} alt="@User" />
             <AvatarFallback>US</AvatarFallback>
           </Avatar>
         </Button>

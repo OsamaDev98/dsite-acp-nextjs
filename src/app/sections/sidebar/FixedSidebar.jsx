@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useGlobalState, setGlobalState } from "@/context/GlobalStateContext";
 import { CircleX } from "lucide-react";
+import Logo from "@/app/img/dsite-logo.svg";
 
 export default function FixedSidebar() {
   const isOpen = useGlobalState("openSidebar")[0];
@@ -52,14 +53,9 @@ export default function FixedSidebar() {
         <div className="flex items-center justify-center mt-8">
           <div className="text-center flex flex-col items-center justify-center mt-4 xl:mt-0">
             <Link href="/" title="home page">
-              <Image
-                src="https://dsite.sa/public/assets/acp/img/logo.svg"
-                alt="dsite logo"
-                width={120}
-                height={60}
-              />
+              <Image src={Logo} alt="dsite logo" width={120} height={60} />
             </Link>
-            <p className="text-center mb-0 text-slate-400">
+            <p className="text-center my-4 text-slate-400">
               Website Control Management
             </p>
           </div>
