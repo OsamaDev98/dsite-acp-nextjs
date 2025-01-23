@@ -3,7 +3,7 @@
 import { ChevronDown } from "lucide-react";
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const LangSelect = () => {
   const arabicFlag = (
@@ -174,6 +174,21 @@ const LangSelect = () => {
   const [selected, setSelected] = useState(localeCondition);
   const pathname = usePathname();
   const router = useRouter();
+  const dropdownRef = useRef(null);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleLangChange = (newValue) => {
     const path = pathname.split("/").slice(2).join("/");
@@ -191,7 +206,7 @@ const LangSelect = () => {
   ];
 
   return (
-    <div className="relative w-[60px]">
+    <div className="relative w-[60px]" ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
         className="w-full rounded-md border p-1.5 shadow-sm focus:outline-none flex items-center justify-between h-11"

@@ -103,6 +103,14 @@ input[aria-invalid="true"] {
 .editor_container__word-count {
   display: none;
 }
+[dir="ltr"] .ck.ck-editor .ck-content {
+  direction: ltr;
+  text-align: left;
+}
+[dir="rtl"] .ck.ck-editor .ck-content {
+  direction: rtl;
+  text-align: right;
+}
 html.dark .ck.ck-editor .ck-toolbar,
 html.dark .ck.ck-editor .ck-content {
   background-color: #121212;

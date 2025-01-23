@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronDownIcon, Search } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function SearchableDropdown({
   items,
@@ -11,6 +11,21 @@ export default function SearchableDropdown({
   const [selectedItem, setSelectedItem] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState(items);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleSearch = (e) => {
     const value = e.target.value.toLowerCase();
@@ -30,7 +45,7 @@ export default function SearchableDropdown({
   };
 
   return (
-    <div className="relative w-48 md:w-56 hidden md:flex">
+    <div className="relative w-48 md:w-56 hidden md:flex" ref={dropdownRef}>
       {/* Dropdown Button */}
       <button
         onClick={toggleDropdown}
