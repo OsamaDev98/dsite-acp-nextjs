@@ -65,8 +65,20 @@ const FormComponent = ({ isEdit }) => {
         {
           value_en: type === "number" ? undefined : "",
           value_ar: type === "number" ? undefined : "",
-          options_en: [],
-          options_ar: [],
+        },
+      ],
+      defaultOptions: [
+        {
+          option1_en: "",
+          option1_ar: "",
+          option2_en: "",
+          option2_ar: "",
+        },
+      ],
+      options: [
+        {
+          option_en: "",
+          option_ar: "",
         },
       ],
     });

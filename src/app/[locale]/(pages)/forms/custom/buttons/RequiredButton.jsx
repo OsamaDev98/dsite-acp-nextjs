@@ -7,7 +7,7 @@ const RequiredButton = ({ boxId }) => {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <>
+    <div>
       <input
         type="checkbox"
         className="hidden"
@@ -28,7 +28,7 @@ const RequiredButton = ({ boxId }) => {
           }`}
         />
       </label>
-    </>
+    </div>
   );
 };
 export default RequiredButton;

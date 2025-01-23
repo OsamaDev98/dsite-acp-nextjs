@@ -6,15 +6,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
-import OptionForm from "./OptionForm";
 import RequiredButton from "../buttons/RequiredButton";
 import DeleteButton from "../buttons/DeleteButton";
-import AddOptionForm from "./AddOptionForm";
+import OptionForm from "./OptionForm";
 import { Fragment } from "react";
 import { useFieldArray } from "react-hook-form";
 
 const SelectForm = ({
-  form,
   control,
   name_en,
   name_ar,
@@ -31,7 +29,7 @@ const SelectForm = ({
     remove: formRemoveOptions,
   } = useFieldArray({
     control,
-    name: `Fields.${index}.values`, // Path to the array in the schema
+    name: `Fields.${index}.options`, // Path to the array in the schema
   });
 
   return (
@@ -99,22 +97,22 @@ const SelectForm = ({
       </div>
       <div className="flex flex-col items-end gap-2 w-full mb-4 px-4">
         <OptionForm
-          form={form}
-          name_en={`FORM_DROPDOWN_${index}[en[options][]]`}
-          name_ar={`FORM_DROPDOWN_${index}[ar[options][]]`}
+          control={control}
+          name_en={`Fields.${index}.defaultOptions.0.option1_en`}
+          name_ar={`Fields.${index}.defaultOptions.0.option1_ar`}
         />
         <OptionForm
-          form={form}
-          name_en={`FORM_DROPDOWN_${index}[en[options][]]`}
-          name_ar={`FORM_DROPDOWN_${index}[ar[options][]]`}
+          control={control}
+          name_en={`Fields.${index}.defaultOptions.1.option2_en`}
+          name_ar={`Fields.${index}.defaultOptions.1.option2_ar`}
         />
         {formFieldsOptions?.map((field, i) => (
           <Fragment key={field.id}>
-            <AddOptionForm
+            <OptionForm
               control={control}
               removeAction={() => formRemoveOptions(i)}
-              name_en={`Fields.${index}.values.${i}.options_en.${i}`}
-              name_ar={`Fields.${index}.values.${i}.options_ar.${i}`}
+              name_en={`Fields.${index}.options.${i}.option_en`}
+              name_ar={`Fields.${index}.options.${i}.option_ar`}
             />
           </Fragment>
         ))}

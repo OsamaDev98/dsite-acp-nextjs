@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm, useFieldArray } from "react-hook-form";
+import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
@@ -41,12 +41,19 @@ const PlanFeature = ({ form, sectionName }) => {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input
+                      <Controller
                         name={`planFeatures.${index}.feature_en`}
-                        placeholder="Feature EN"
-                        type="text"
-                        className="h-12 dark:bg-mainDark-900"
-                        {...field}
+                        control={form.control}
+                        defaultValue=""
+                        render={({ field }) => (
+                          <Input
+                            name={`planFeatures.${index}.feature_en`}
+                            placeholder="Feature EN"
+                            type="text"
+                            className="h-12 dark:bg-mainDark-900"
+                            {...field}
+                          />
+                        )}
                       />
                     </FormControl>
                     <FormMessage className="mt-2" />
@@ -59,12 +66,19 @@ const PlanFeature = ({ form, sectionName }) => {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input
+                      <Controller
                         name={`planFeatures.${index}.feature_ar`}
-                        placeholder="Feature AR"
-                        type="text"
-                        className="h-12 dark:bg-mainDark-900"
-                        {...field}
+                        control={form.control}
+                        defaultValue=""
+                        render={({ field }) => (
+                          <Input
+                            name={`planFeatures.${index}.feature_ar`}
+                            placeholder="Feature AR"
+                            type="text"
+                            className="h-12 dark:bg-mainDark-900"
+                            {...field}
+                          />
+                        )}
                       />
                     </FormControl>
                     <FormMessage className="mt-2" />

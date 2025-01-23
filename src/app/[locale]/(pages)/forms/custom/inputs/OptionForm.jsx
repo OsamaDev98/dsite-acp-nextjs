@@ -5,23 +5,32 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import DeleteButton from "../buttons/DeleteButton";
+import { Controller } from "react-hook-form";
 
-const OptionForm = ({ form, name_en, name_ar }) => {
+const OptionForm = ({ control, removeAction, name_en, name_ar }) => {
   return (
     <div className="flex items-center justify-center gap-2 w-full">
       <FormField
-        control={form.control}
+        control={control}
         name={name_en}
         render={({ field }) => (
           <FormItem className="w-full">
             <FormControl>
               <div className="flex items-center">
-                <Input
+                <Controller
                   name={name_en}
-                  placeholder="Option"
-                  type="text"
-                  className="h-12 border outline-none !ring-0 shadow-none"
-                  {...field}
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <Input
+                      name={name_en}
+                      placeholder="Option"
+                      type="text"
+                      className="h-12 border outline-none !ring-0 shadow-none"
+                      {...field}
+                    />
+                  )}
                 />
               </div>
             </FormControl>
@@ -30,18 +39,25 @@ const OptionForm = ({ form, name_en, name_ar }) => {
         )}
       />
       <FormField
-        control={form.control}
+        control={control}
         name={name_ar}
         render={({ field }) => (
           <FormItem className="w-full">
             <FormControl>
               <div className="flex items-center">
-                <Input
+                <Controller
                   name={name_ar}
-                  placeholder="الاختيار"
-                  type="text"
-                  className="h-12 border outline-none !ring-0 shadow-none"
-                  {...field}
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <Input
+                      name={name_ar}
+                      placeholder="الاختيار"
+                      type="text"
+                      className="h-12 border outline-none !ring-0 shadow-none"
+                      {...field}
+                    />
+                  )}
                 />
               </div>
             </FormControl>
@@ -49,6 +65,7 @@ const OptionForm = ({ form, name_en, name_ar }) => {
           </FormItem>
         )}
       />
+      {removeAction && <DeleteButton removeAction={removeAction} />}
     </div>
   );
 };

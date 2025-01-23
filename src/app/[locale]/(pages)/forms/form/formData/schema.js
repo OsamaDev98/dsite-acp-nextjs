@@ -21,8 +21,24 @@ export const editSchema = z.object({
           z.object({
             value_en: z.string().optional(),
             value_ar: z.string().optional(),
-            options_en: z.array(z.string().optional()).optional(),
-            options_ar: z.array(z.string().optional()).optional(),
+          })
+        )
+        .optional(),
+      defaultOptions: z
+        .array(
+          z.object({
+            option1_en: z.string().optional(),
+            option1_ar: z.string().optional(),
+            option2_en: z.string().optional(),
+            option2_ar: z.string().optional(),
+          })
+        )
+        .optional(),
+      options: z
+        .array(
+          z.object({
+            option_en: z.string().optional(),
+            option_ar: z.string().optional(),
           })
         )
         .optional(),
