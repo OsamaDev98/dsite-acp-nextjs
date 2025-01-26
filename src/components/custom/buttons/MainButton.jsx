@@ -25,6 +25,7 @@ const MainButton = ({ buttonName, buttonPath, buttonIcon = "" }) => {
     <>
       <Link
         href={buttonPath}
+        title={`${buttonName}`}
         className={`bg-mainColor-500 text-white text-lg font-medium px-6 rounded-md transition duration-300 hover:bg-mainColor-400 hover:shadow-lg hover:-translate-y-[3px] flex items-center gap-3 ${
           buttonIcon == "preview" ? "py-3 md:py-[8px]" : "py-[8px]"
         }`}

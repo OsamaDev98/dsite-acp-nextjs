@@ -2,11 +2,11 @@ import RequestsTable from "@/components/custom/tables/RequestsTable";
 import { tableData } from "../data/requestsData";
 import ExportButton from "@/components/custom/buttons/ExportButton";
 
-// // When export project
-// export function generateStaticParams() {
-//   const locales = ["en", "ar"]; // Add all supported locales
-//   return locales.map((locale) => ({ locale }));
-// }
+// When building the project, create static pages (we don't have any changes to the page in real time).
+export function generateStaticParams() {
+  const locales = ["en", "ar"]; // Add all supported locales
+  return locales.map((locale) => ({ locale }));
+}
 
 export const metadata = {
   title: "Products requests page",

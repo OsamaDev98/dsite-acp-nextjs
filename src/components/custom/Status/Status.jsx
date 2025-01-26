@@ -49,6 +49,7 @@ const Status = ({ statusType }) => {
       {statusType && statusTypes[statusType] && (
         <Link
           href={statusTypes[statusType].statusPath}
+          title={statusTypes[statusType].statusName}
           className={statusStyle}
           style={{
             backgroundColor: statusTypes[statusType].statusBg,

@@ -209,6 +209,7 @@ const LangSelect = () => {
     <div className="relative w-[60px]" ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
+        aria-label="Select language"
         className="w-full rounded-md border p-1.5 shadow-sm focus:outline-none flex items-center justify-between h-11"
       >
         {selected}

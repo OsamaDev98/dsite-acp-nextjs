@@ -2,11 +2,11 @@ import FormsTable from "@/components/custom/tables/FormsTable";
 import { tableData } from "./data/formsData";
 import AddButton from "@/components/custom/buttons/AddButton";
 
-// // When export project
-// export function generateStaticParams() {
-//   const locales = ["en", "ar"]; // Add all supported locales
-//   return locales.map((locale) => ({ locale }));
-// }
+// When building the project, create static pages (we don't have any changes to the page in real time).
+export function generateStaticParams() {
+  const locales = ["en", "ar"]; // Add all supported locales
+  return locales.map((locale) => ({ locale }));
+}
 
 export const metadata = {
   title: "Forms page",
