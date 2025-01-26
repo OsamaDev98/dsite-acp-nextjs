@@ -6,6 +6,10 @@ import SubFormComponent from "../../form/SubFormComponent";
 //   return locales.map((locale) => ({ locale }));
 // }
 
+export const metadata = {
+  title: "Edit restaurant category page",
+};
+
 const page = () => {
   return (
     <div className="section-container">

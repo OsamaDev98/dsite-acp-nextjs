@@ -8,6 +8,10 @@ import ItemsTable from "@/components/custom/tables/ItemsTable";
 //   return locales.map((locale) => ({ locale }));
 // }
 
+export const metadata = {
+  title: "Product category page",
+};
+
 const page = () => {
   const actions = [{ key: "delete", title: "Delete" }];
 

@@ -8,6 +8,10 @@ import AddButton from "@/components/custom/buttons/AddButton";
 //   return locales.map((locale) => ({ locale }));
 // }
 
+export const metadata = {
+  title: "Forms page",
+};
+
 const actions = [{ key: "delete", title: "Delete" }];
 
 const page = () => {

@@ -8,6 +8,10 @@ import ApplicantTable from "@/components/custom/tables/ApplicantTable";
 //   return locales.map((locale) => ({ locale }));
 // }
 
+export const metadata = {
+  title: "Applicants page",
+};
+
 const page = () => {
   const tableName = "Applicants";
   const domainName = "dsite.sa";

@@ -8,6 +8,10 @@ import Status from "@/components/custom/Status/Status";
 //   return locales.map((locale) => ({ locale }));
 // }
 
+export const metadata = {
+  title: "Subscriptions page",
+};
+
 const page = () => {
   return (
     <div className="section-container mt-8">

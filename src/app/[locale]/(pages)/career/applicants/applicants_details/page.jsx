@@ -7,6 +7,10 @@ import { applicantDetails } from "../../data/applicantDetailsData";
 //   return locales.map((locale) => ({ locale }));
 // }
 
+export const metadata = {
+  title: "Applicants details page",
+};
+
 const page = () => {
   return (
     <section className="section-container">

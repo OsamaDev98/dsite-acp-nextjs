@@ -6,6 +6,10 @@ import FormComponent from "./form/FormComponent";
 //   return locales.map((locale) => ({ locale }));
 // }
 
+export const metadata = {
+  title: "Website design page",
+};
+
 const page = () => {
   return (
     <div className="section-container mt-8">

@@ -1,9 +1,7 @@
 import ChartsComp from "@/components/custom/charts/ChartsComp";
 
 export const metadata = {
-  title: {
-    absolute: "dsite | Admin Control Panel | Website charts",
-  },
+  title: "dsite | Admin Control Panel | Website charts",
 };
 
 // // When export project

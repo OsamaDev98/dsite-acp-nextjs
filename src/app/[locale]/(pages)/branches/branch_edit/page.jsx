@@ -5,6 +5,10 @@ import FormComponent from "../form/FormComponent";
 //   return locales.map((locale) => ({ locale }));
 // }
 
+export const metadata = {
+  title: "Branch edit page",
+};
+
 const page = () => {
   return (
     <div className="section-container">

@@ -8,6 +8,10 @@ import ExportButton from "@/components/custom/buttons/ExportButton";
 //   return locales.map((locale) => ({ locale }));
 // }
 
+export const metadata = {
+  title: "Project request page",
+};
+
 const page = () => {
   const tableName = "BMW Car";
   const domainName = "dsite.sa";

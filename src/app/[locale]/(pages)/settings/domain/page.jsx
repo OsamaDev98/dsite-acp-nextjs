@@ -9,6 +9,10 @@ import CopyButton from "@/components/custom/buttons/CopyButton";
 //   return locales.map((locale) => ({ locale }));
 // }
 
+export const metadata = {
+  title: "Domains page",
+};
+
 const page = () => {
   return (
     <div className="section-container mt-8">

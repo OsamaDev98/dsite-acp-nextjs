@@ -7,6 +7,10 @@ import WebsiteContentTable from "./tables/WebsiteContentTable";
 //   return locales.map((locale) => ({ locale }));
 // }
 
+export const metadata = {
+  title: "Website content page",
+};
+
 const page = () => {
   return (
     <div className="section-container mt-8">

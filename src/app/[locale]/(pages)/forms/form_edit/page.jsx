@@ -5,6 +5,10 @@
 // }
 import FormComponent from "../form/FormComponent";
 
+export const metadata = {
+  title: "Forms edit page",
+};
+
 const page = () => {
   return (
     <div className="section-container">

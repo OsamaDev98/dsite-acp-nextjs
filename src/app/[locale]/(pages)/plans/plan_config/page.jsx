@@ -6,6 +6,10 @@ import ConfigForm from "@/components/custom/ConfigForm";
 //   return locales.map((locale) => ({ locale }));
 // }
 
+export const metadata = {
+  title: "Plans config page",
+};
+
 const page = () => {
   return (
     <>

@@ -420,7 +420,7 @@ export const tableData = [
           </g>
         </svg>
       ),
-      title: "Project",
+      title: "Showreel",
     },
     status: true,
   },
@@ -872,7 +872,7 @@ export const tableData = [
           </g>
         </svg>
       ),
-      title: "Find Restaurant",
+      title: "Restaurant delivery",
     },
     status: true,
   },
