@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Inter, Noto_Kufi_Arabic } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import FixedSidebar from "../sections/sidebar/FixedSidebar";
@@ -9,6 +9,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 
 const inter = Inter({ subsets: ["latin"] });
+const noto = Noto_Kufi_Arabic({ subsets: ["latin"] });
 
 export const metadata = {
   title: {
@@ -37,7 +38,11 @@ export default async function RootLayout({ children, params }) {
       dir={locale == "en" ? "ltr" : "rtl"}
       title="dsite | Admin Control Panel"
     >
-      <body className={`${inter.className} bg-[#f5f5f5] flex min-h-screen`}>
+      <body
+        className={`${
+          locale == "en" ? inter.className : noto.className
+        } bg-[#f5f5f5] flex min-h-screen`}
+      >
         <NextIntlClientProvider messages={messages}>
           <FixedSidebar />
           <main className="py-6 px-8 flex-1 dark:bg-mainDark-900">
