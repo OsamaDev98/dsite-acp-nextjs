@@ -1,6 +1,8 @@
 // next-sitemap.config.js
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://dsite.sa/en/acp", // Your website's URL.
+  siteUrl:
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    "https://dsite-acp-system.vercel.app/en", // Your website's URL.
   generateRobotsTxt: true, // Generates robots.txt along with the sitemap
   robotsTxtOptions: {
     policies: [
