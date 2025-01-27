@@ -15,7 +15,7 @@ import { addDefaultValues, editDefaultValues } from "./formData/defaultValues";
 import { addSchema, editSchema } from "./formData/schema";
 // Dynamically import CKEditor to prevent SSR issues
 import dynamic from "next/dynamic";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 const CustomEditor = dynamic(
   () => import("@/components/custom/ckeditor5/CustomEditor"),
   {
@@ -25,6 +25,11 @@ const CustomEditor = dynamic(
 
 const FormComponent = ({ isEdit }) => {
   const locale = useLocale();
+  const t = useTranslations("ServicesPage");
+  const tt = useTranslations("Tabs");
+  const tp = useTranslations("Preferences");
+  const tpl = useTranslations("Placeholder");
+  const tb = useTranslations("Buttons");
 
   const form = useForm({
     resolver: zodResolver(isEdit ? editSchema : addSchema),
@@ -67,13 +72,13 @@ const FormComponent = ({ isEdit }) => {
                 value="english"
                 className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
               >
-                English
+                {tt("en")}
               </TabsTrigger>
               <TabsTrigger
                 value="arabic"
                 className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
               >
-                Arabic
+                {tt("ar")}
               </TabsTrigger>
             </TabsList>
             <TabsContent value="english" className="space-y-4 w-full">
@@ -83,8 +88,8 @@ const FormComponent = ({ isEdit }) => {
                 section="Service_Edit"
                 name={`${sectionName}_Title_en`}
                 lang="en"
-                title="Main title"
-                placeholder="Title"
+                title={t("title")}
+                placeholder={tpl("title")}
                 setYoutubeLink={false}
                 isLink={false}
               />
@@ -93,23 +98,23 @@ const FormComponent = ({ isEdit }) => {
                 form={form}
                 section="Service_Edit"
                 name={`${sectionName}_Subtitle_en`}
-                placeholder="Subtitle"
+                placeholder={tpl("subtitle")}
                 lang="en"
-                title="Subtitle"
+                title={t("subtitle")}
               />
               {/* Short description */}
               <DescriptionInput
                 form={form}
                 section="Service_Edit"
-                placeholder="Description"
+                placeholder={tpl("description")}
                 name={`${sectionName}_Description_en`}
                 lang="en"
-                title="Short Description"
+                title={t("description")}
               />
               {/* Content */}
               <div className="grid lg:grid-cols-6 items-start w-full">
                 <label className="text-[#b5b5b5] text-md mb-3 lg:mb-0 lg:pt-2 text-start">
-                  Content
+                  {t("content")}
                 </label>
                 <div className="col-span-3">
                   <CustomEditor
@@ -130,8 +135,8 @@ const FormComponent = ({ isEdit }) => {
                 section="Service_Edit"
                 name={`${sectionName}_Title_ar`}
                 lang="ar"
-                title="Main title"
-                placeholder="Title"
+                title={tpl("title")}
+                placeholder={t("title")}
                 setYoutubeLink={false}
                 isLink={false}
               />
@@ -140,23 +145,23 @@ const FormComponent = ({ isEdit }) => {
                 form={form}
                 section="Service_Edit"
                 name={`${sectionName}_Subtitle_ar`}
-                placeholder="Subtitle"
+                placeholder={tpl("subtitle")}
                 lang="ar"
-                title="Subtitle"
+                title={t("subtitle")}
               />
               {/* Short description */}
               <DescriptionInput
                 form={form}
                 section="Service_Edit"
-                placeholder="Description"
+                placeholder={tpl("description")}
                 name={`${sectionName}_Description_ar`}
                 lang="ar"
-                title="Short Description"
+                title={t("description")}
               />
               {/* Content */}
               <div className="grid lg:grid-cols-6 items-start w-full">
                 <label className="text-[#b5b5b5] text-md mb-3 lg:mb-0 lg:pt-2 text-start">
-                  Content
+                  {t("content")}
                 </label>
                 <div className="col-span-3">
                   <CustomEditor
@@ -174,13 +179,13 @@ const FormComponent = ({ isEdit }) => {
         </div>
         <div className="card-style items-start">
           <h1 className="text-[22px] text-[#707070] font-bold mb-8">
-            Preferences:
+            {tp("preferences")}
           </h1>
           <SelectInputWithAction
             form={form}
-            title="The link type"
+            title={t("type")}
             section="Service_Edit"
-            placeholder="Select type"
+            placeholder={tpl("type")}
             defaultValue="subpage"
             name={`${sectionName}_Link`}
             selectData={linkType}
@@ -189,7 +194,7 @@ const FormComponent = ({ isEdit }) => {
             {/* Edit image */}
             <div className="grid grid-cols-6 gap-4 my-8">
               <label className="font-medium text-[#b5b5b5] text-md lg:pt-2 text-start">
-                Image
+                {t("image")}
               </label>
               <EditImage
                 w="1920"
@@ -203,7 +208,7 @@ const FormComponent = ({ isEdit }) => {
               <StatusInput
                 form={form}
                 section="Service_Edit"
-                title="Status"
+                title={t("status")}
                 name={`${sectionName}_Status`}
               />
               {/* Flip image */}
@@ -211,7 +216,7 @@ const FormComponent = ({ isEdit }) => {
           </div>
         </div>
         <div className="flex items-center justify-end my-8">
-          <SubmitButton title="Update" />
+          <SubmitButton title={tb("update")} />
         </div>
       </form>
     </Form>

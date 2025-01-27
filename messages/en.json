@@ -146,6 +146,12 @@
   "Tags": {
     "tags": "tags"
   },
+  "ConfigPage": {
+    "title": "Page Title",
+    "subtitle": "Page Subtitle",
+    "keywords": "Keywords",
+    "show": "Show in header"
+  },
   "SliderPage": {
     "title": "Slide Main Title",
     "subtitle": "Slide Subtitle",
@@ -163,6 +169,42 @@
     "content": "Content",
     "statistics": "Statistics"
   },
+  "PagesPage": {
+    "title": "Page Title",
+    "subtitle": "Page Subtitle",
+    "content": "Page Content"
+  },
+  "ServicesPage": {
+    "title": "Page Title",
+    "subtitle": "Page Subtitle",
+    "description": "Short Description",
+    "content": "Page Content",
+    "type": "The link type",
+    "image": "Image",
+    "status": "Status"
+  },
+  "ProjectsPage": {
+    "title": "Main title",
+    "subtitle": "Subtitle",
+    "description": "Short Description",
+    "content": "Content",
+    "image": "Image",
+    "status": "Status"
+  },
+  "ProductsPage": {
+    "title": "Main title",
+    "subtitle": "Subtitle",
+    "description": "Short Description",
+    "content": "Content",
+    "image": "Image",
+    "otherImages": "Other images",
+    "price": "Product price",
+    "number": "Product number",
+    "type": "The link type",
+    "category": "Category",
+    "brand": "Brand",
+    "status": "Status"
+  },
   "Placeholder": {
     "title": "Title",
     "subtitle": "Subtitle",
@@ -172,6 +214,12 @@
     "url": "URL",
     "description": "Description",
     "value": "Value",
+    "category": "Category",
+    "brand": "Brand",
+    "number": "Number",
+    "price": "Price",
+    "value": "Value",
+    "type": "Select type",
     "tags": "Enter a tag",
     "language": "Language",
     "country": "Country",
@@ -192,7 +240,9 @@
     "deleteP": "Delete picture",
     "update": "Update",
     "add": "Add",
-    "edit": "Edit"
+    "edit": "Edit",
+    "category": "Categories",
+    "brand": "Brands"
   },
   "Alert": {
     "title": "Are you absolutely sure?",

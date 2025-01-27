@@ -146,6 +146,12 @@
   "Tags": {
     "tags": "الكلمات الدلالية"
   },
+  "ConfigPage": {
+    "title": "عنوان الصفحة",
+    "subtitle": "عنوان فرعي للصفحة",
+    "keywords": "الكلمات الدلالية",
+    "show": "إظهار في الهيدر"
+  },
   "SliderPage": {
     "title": "اسم الشريحة الرئيسي",
     "subtitle": "العنوان الفرعي للشريحة",
@@ -163,6 +169,42 @@
     "content": "المحتوي",
     "statistics": "الاحصائيات"
   },
+  "PagesPage": {
+    "title": "عنوان الصفحة",
+    "subtitle": "عنوان فرعي للصفحة",
+    "content": "المحتوى"
+  },
+  "ServicesPage": {
+    "title": "العنوان الرئيسي",
+    "subtitle": "العنوان الفرعي",
+    "description": "وصف قصير",
+    "content": "المحتوى",
+    "type": "تحديد نوع الربط",
+    "image": "الصورة",
+    "status": "الحالة"
+  },
+  "ProjectsPage": {
+    "title": "العنوان الرئيسي",
+    "subtitle": "العنوان الفرعي",
+    "description": "وصف قصير",
+    "content": "المحتوى",
+    "image": "الصورة",
+    "status": "الحالة"
+  },
+  "ProductsPage": {
+    "title": "العنوان الرئيسي",
+    "subtitle": "العنوان الفرعي",
+    "description": "وصف قصير",
+    "content": "المحتوى",
+    "image": "الصورة",
+    "otherImages": "صور اخرى",
+    "price": "سعر المنتج",
+    "number": "رقم المنتج",
+    "type": "نوع الرابط",
+    "category": "فئة",
+    "brand": "ماركة",
+    "status": "الحالة"
+  },
   "Placeholder": {
     "title": "العنوان",
     "subtitle": "العنوان الفرعي",
@@ -170,8 +212,13 @@
     "content": "المحتوي",
     "action": "الاجراء",
     "url": "اللينك",
+    "category": "فئة",
+    "brand": "ماركة",
+    "number": "الرقم",
+    "price": "السعر",
     "description": "الوصف",
     "value": "القيمة",
+    "type": "اختر النوع",
     "tags": "ادخل كلمة",
     "language": "اللغة",
     "country": "الدولة",
@@ -191,7 +238,9 @@
     "changeP": "تغيير الصورة",
     "deleteP": "حذف الصورة",
     "update": "تحديث",
-    "add": "اضافة"
+    "add": "اضافة",
+    "category": "فئات",
+    "brand": "العلامات التجارية"
   },
   "Alert": {
     "title": "هل أنت متأكد تماما؟",

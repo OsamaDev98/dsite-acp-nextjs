@@ -9,7 +9,7 @@ import { Form } from "@/components/ui/form";
 import TitleInput from "@/components/custom/formInputs/TitleInput";
 import SubtitleInput from "@/components/custom/formInputs/SubtitleInput";
 import StatusInput from "@/components/custom/formInputs/StatusInput";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import TagForm from "./formInputs/TagForm";
 
 const formSchema = z.object({
@@ -24,6 +24,11 @@ const formSchema = z.object({
 
 const ConfigForm = () => {
   const locale = useLocale();
+  const t = useTranslations("ConfigPage");
+  const tt = useTranslations("Tabs");
+  const ttg = useTranslations("Tags");
+  const tpl = useTranslations("Placeholder");
+  const tb = useTranslations("Buttons");
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -50,7 +55,7 @@ const ConfigForm = () => {
     <div className="section-container">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
-          <div className="card-style">
+          <div className="card-style rounded-t-none">
             <Tabs
               defaultValue={locale == "en" ? "english" : "arabic"}
               className="tabs-style w-full"
@@ -64,13 +69,13 @@ const ConfigForm = () => {
                   value="english"
                   className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
                 >
-                  English
+                  {tt("en")}
                 </TabsTrigger>
                 <TabsTrigger
                   value="arabic"
                   className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
                 >
-                  Arabic
+                  {tt("ar")}
                 </TabsTrigger>
               </TabsList>
               <TabsContent value="english" className="space-y-4 w-full">
@@ -78,24 +83,24 @@ const ConfigForm = () => {
                 <TitleInput
                   form={form}
                   section="Config"
-                  placeholder="Title"
+                  placeholder={tpl("title")}
                   name="Config_Edit_Title_en"
                   lang="en"
-                  title="Page title"
+                  title={t("title")}
                 />
                 {/* Subtitle */}
                 <SubtitleInput
                   form={form}
                   section="Config"
-                  placeholder="Subtitle"
+                  placeholder={tpl("subtitle")}
                   name="Config_Edit_Subtitle_en"
                   lang="en"
-                  title="Page subtitle"
+                  title={t("subtitle")}
                 />
                 {/* Tags */}
                 <TagForm
                   form={form}
-                  title="Keywords"
+                  title={ttg("tags")}
                   name="Config_Edit_Tags_en"
                 />
               </TabsContent>
@@ -104,24 +109,24 @@ const ConfigForm = () => {
                 <TitleInput
                   form={form}
                   section="Config"
-                  placeholder="Title"
+                  placeholder={tpl("title")}
                   name="Config_Edit_Title_ar"
                   lang="ar"
-                  title="Page title"
+                  title={t("title")}
                 />
                 {/* Subtitle */}
                 <SubtitleInput
                   form={form}
                   section="Config"
-                  placeholder="Subtitle"
+                  placeholder={tpl("subtitle")}
                   name="Config_Edit_Subtitle_ar"
                   lang="ar"
-                  title="Page subtitle"
+                  title={t("subtitle")}
                 />
                 {/* Tags */}
                 <TagForm
                   form={form}
-                  title="Keywords"
+                  title={ttg("tags")}
                   name="Config_Edit_Tags_ar"
                 />
               </TabsContent>
@@ -131,12 +136,12 @@ const ConfigForm = () => {
             <StatusInput
               form={form}
               section="Config"
-              title="Show in header"
+              title={t("show")}
               name="Config_Edit_Status"
             />
           </div>
           <div className="flex items-center justify-end my-8">
-            <SubmitButton title="Update" />
+            <SubmitButton title={tb("update")} />
           </div>
         </form>
       </Form>
