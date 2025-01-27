@@ -61,7 +61,7 @@ const ActionsBtn = ({ editTarget, itemId, actions, setData }) => {
           </DropdownMenuContent>
         </DropdownMenu>
         <AlertDialogContent>
-          <AlertDialogHeader>
+          <AlertDialogHeader className="!text-start">
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             <AlertDialogDescription>
               This action cannot be undone. This will permanently delete your

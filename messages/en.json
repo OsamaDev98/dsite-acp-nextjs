@@ -26,6 +26,17 @@
     "forms": "Forms",
     "terms": "Terms and Conditions"
   },
+  "Status": {
+    "active": "active",
+    "warning": "warning",
+    "inactive": "inactive",
+    "trial": "trial",
+    "suspended": "suspended",
+    "error": "error"
+  },
+  "Preview": {
+    "preview": "Preview"
+  },
   "ChartPage": {
     "doughnut": "Visitors info",
     "line": "Monthly report"
@@ -38,5 +49,160 @@
     "pixel": "Pixel",
     "domain": "Domain",
     "subscriptions": "Subscriptions"
+  },
+  "Tabs": {
+    "ar": "Arabic",
+    "en": "English"
+  },
+  "websiteContent": {
+    "title": "website content",
+    "status": "Status",
+    "slider": "Slider",
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "products": "Products",
+    "portfolios": "Portfolios",
+    "why": "Why we are?",
+    "news": "News",
+    "branches": "Branches",
+    "showreel": "Showreel",
+    "gallery": "Gallery",
+    "clients": "Clients",
+    "download": "Download App",
+    "team": "Team",
+    "career": "Career",
+    "partners": "Partners",
+    "plans": "Plans",
+    "restaurant": "Restaurant",
+    "delivery": "Restaurant delivery",
+    "contact": "Contact us"
+  },
+  "websiteDesign": {
+    "logos": "Logos",
+    "colors": "Colors",
+    "colorful": "Colorful logo",
+    "white": "White",
+    "favicon": "Favicon",
+    "title": "Main title",
+    "subtitle": "Subtitle",
+    "light": "Light",
+    "dark": "Dark",
+    "button": "Button",
+    "paragraph": "Paragraph",
+    "footer": "Footer",
+    "background": "Light Background"
+  },
+  "Admins": {
+    "name": "Name",
+    "email": "Email",
+    "status": "status",
+    "actions": "Actions"
+  },
+  "Pixel": {
+    "name": "Name",
+    "user": "User id",
+    "status": "status",
+    "actions": "Actions"
+  },
+  "Domain": {
+    "domain": "Domain",
+    "status": "domain status",
+    "disconnect": "Not connected",
+    "connect": "Connected",
+    "server": "Your name server is",
+    "token": "Verification token",
+    "replace": "Replace your domains name server to:",
+    "copy": "Click to copy",
+    "verify": "Verify",
+    "dns": "DNS records",
+    "name": "Name",
+    "content": "Content",
+    "type": "Type",
+    "actions": "Actions"
+  },
+  "Subscriptions": {
+    "subscription": "Subscription",
+    "plan": "Plan name",
+    "renew": "Renew subscription",
+    "status": "Status",
+    "expiry": "Expiry date",
+    "history": "Order history",
+    "name": "Plan name",
+    "amount": "Amount",
+    "type": "Type",
+    "card": "Card type",
+    "payment": "Payment Verified",
+    "date": "Date"
+  },
+  "Plans": {
+    "plans": "Plans",
+    "monthly": "Monthly",
+    "Annually": "Annually"
+  },
+  "Preferences": {
+    "preferences": "Preferences"
+  },
+  "Tags": {
+    "tags": "tags"
+  },
+  "SliderPage": {
+    "title": "Slide Main Title",
+    "subtitle": "Slide Subtitle",
+    "content": "Slide Content",
+    "actionBtn": "Action button",
+    "url": "URL",
+    "file": "File type",
+    "image": "Image",
+    "status": "Status",
+    "flip": "Flip image horizontally"
+  },
+  "AboutPage": {
+    "title": "Page title",
+    "description": "Short description",
+    "content": "Content",
+    "statistics": "Statistics"
+  },
+  "Placeholder": {
+    "title": "Title",
+    "subtitle": "Subtitle",
+    "email": "Email",
+    "content": "Content",
+    "action": "Action",
+    "url": "URL",
+    "description": "Description",
+    "value": "Value",
+    "tags": "Enter a tag",
+    "language": "Language",
+    "country": "Country",
+    "status": "Status",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "linkedin": "Linkedin",
+    "youtube": "Youtube",
+    "instagram": "Instagram",
+    "whatsapp": "WhatsApp",
+    "snapchat": "Snapchat",
+    "tiktok": "Tiktok"
+  },
+  "Buttons": {
+    "change": "Change",
+    "delete": "Delete",
+    "changeP": "Change picture",
+    "deleteP": "Delete picture",
+    "update": "Update",
+    "add": "Add",
+    "edit": "Edit"
+  },
+  "Alert": {
+    "title": "Are you absolutely sure?",
+    "message": "This action cannot be undone. This will permanently delete your image and remove your image from our servers.",
+    "continue": "Continue",
+    "cancel": "Cancel"
+  },
+  "mainTable": {
+    "slide": "Slide",
+    "status": "Status",
+    "actions": "Actions"
   }
 }

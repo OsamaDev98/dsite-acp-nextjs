@@ -4,9 +4,11 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { useTranslations } from "next-intl";
 
 export default function Tags({ value = [], onChange }) {
   const [inputValue, setInputValue] = useState("");
+  const tpl = useTranslations("Placeholder");
 
   const addTag = (tag) => {
     if (!value.includes(tag) && tag.trim()) {
@@ -46,7 +48,7 @@ export default function Tags({ value = [], onChange }) {
           }
         }}
         className="border-none shadow-none !ring-0 px-0 flex-1 min-w-52 max-w-52"
-        placeholder="Enter a tag"
+        placeholder={tpl("tags")}
       />
     </div>
   );

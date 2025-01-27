@@ -72,6 +72,9 @@ button[role="switch"] {
 .dt-container table {
   min-width: 1000px !important;
 }
+table th {
+  text-align: start !important;
+}
 .dt-paging {
   display: flex;
   justify-content: flex-end;

@@ -38,7 +38,11 @@ const FormComponent = ({ isEdit }) => {
             defaultValue={locale == "en" ? "english" : "arabic"}
             className="tabs-style w-full"
           >
-            <TabsList className="absolute -top-12 -right-1 h-auto bg-transparent gap-2">
+            <TabsList
+              className={`absolute -top-12 h-auto bg-transparent gap-2 ${
+                locale == "en" ? "-right-1" : "-left-1"
+              }`}
+            >
               <TabsTrigger
                 value="english"
                 className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"

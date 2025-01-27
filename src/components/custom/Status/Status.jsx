@@ -1,6 +1,9 @@
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 const Status = ({ statusType }) => {
+  const t = useTranslations("Status");
+
   const statusTypes = {
     active: {
       statusName: "Active",
@@ -61,7 +64,7 @@ const Status = ({ statusType }) => {
             style={{ backgroundColor: statusTypes[statusType].statusColor }}
           ></span>
           <span className="hidden md:flex">
-            {statusTypes[statusType].statusName}
+            {t(statusTypes[statusType].statusName.toLowerCase())}
           </span>
         </Link>
       )}

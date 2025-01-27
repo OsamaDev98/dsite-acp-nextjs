@@ -11,7 +11,7 @@ export const tableData = [
     item: {
       image:
         "https://dsite.sa/public/contents/slides/OFEweGJKL1hGdDBiVzlMcUdMd2k4UGFhM09sNmNqd096ZEZGbDZmbHBPaz0=.jpg",
-      title: "Detailing services with a personal touch",
+        title: "Detailing services with a personal touch",
     },
     status: true,
   },

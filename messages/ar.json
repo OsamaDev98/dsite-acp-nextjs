@@ -26,6 +26,17 @@
     "forms": "النماذج",
     "terms": "الشروط والاحكام"
   },
+  "Status": {
+    "active": "نشط",
+    "warning": "تنبيه",
+    "inactive": "غير نشط",
+    "trial": "تجريبي",
+    "suspended": "موقوف",
+    "error": "خطأ"
+  },
+  "Preview": {
+    "preview": "معاينة"
+  },
   "ChartPage": {
     "doughnut": "إحصائيات أنواع الأجهزة",
     "line": "التقارير الشهرية"
@@ -38,5 +49,159 @@
     "pixel": "Pixel",
     "domain": "النطاق",
     "subscriptions": "الاشتركات"
+  },
+  "Tabs": {
+    "ar": "العربي",
+    "en": "الانجليزي"
+  },
+  "websiteContent": {
+    "title": "محتويات الموقع",
+    "status": "الحالة",
+    "slider": "الشرئح",
+    "about": "عنا",
+    "services": "الخدمات",
+    "projects": "المشاريع",
+    "products": "المنتجات",
+    "portfolios": "الاعمال",
+    "why": "لماذا نحن؟",
+    "news": "الاخبار",
+    "branches": "الفروع",
+    "showreel": "الفديو التعريفي",
+    "gallery": "معرض الصور",
+    "clients": "العملاء",
+    "download": "تحميل التطبيق",
+    "team": "الفريق",
+    "career": "الوظائف",
+    "partners": "الشركاء",
+    "plans": "الخطط",
+    "restaurant": "المطاعم",
+    "delivery": "توصيل المطاعم",
+    "contact": "اتصل بنا"
+  },
+  "websiteDesign": {
+    "logos": "الشعارات",
+    "colors": "الالوان",
+    "colorful": "الشعار الملون",
+    "white": "الشعار الابيض",
+    "favicon": "ايقونة الموقع",
+    "title": "العنوان الرئيسي",
+    "subtitle": "العنوان الفرعي",
+    "light": "اللون الفاتح",
+    "dark": "اللون الداكن",
+    "button": "الزرار",
+    "paragraph": "النص",
+    "footer": "الذيل",
+    "background": "الخلفية الفاتحة"
+  },
+  "Admins": {
+    "name": "الاسم",
+    "email": "الايميل",
+    "status": "الحالة",
+    "actions": "الاجراء"
+  },
+  "Pixel": {
+    "name": "الاسم",
+    "user": "رقم المستخدم",
+    "status": "الحالة",
+    "actions": "الاجراء"
+  },
+  "Domain": {
+    "domain": "النطاق",
+    "status": "حالة النطاق",
+    "disconnect": "غير متصل",
+    "connect": "متصل",
+    "server": "اسم السيرفر",
+    "token": "رمز التحقق",
+    "replace": "استبدال اسم النطاقات الي:",
+    "copy": "اضغط للنسخ",
+    "verify": "التحقق",
+    "dns": "سجلات DNS",
+    "name": "الاسم",
+    "content": "المحتوي",
+    "type": "النوع",
+    "actions": "الاجراء"
+  },
+  "Subscriptions": {
+    "subscription": "الاشتراكات",
+    "plan": "اسم الخطة",
+    "renew": "تجديد الاشتراك",
+    "status": "الحالة",
+    "expiry": "تاريخ الانتهاء",
+    "history": "سجل الطلبات",
+    "name": "اسم الخطة",
+    "amount": "الكمية",
+    "type": "النوع",
+    "card": "نوع الكارت",
+    "payment": "عملية الدفع",
+    "date": "التاريخ"
+  },
+  "Plans": {
+    "plans": "الخطط",
+    "monthly": "شهري",
+    "Annually": "سنوي"
+  },
+  "Preferences": {
+    "preferences": "التفضيلات"
+  },
+  "Tags": {
+    "tags": "الكلمات الدلالية"
+  },
+  "SliderPage": {
+    "title": "اسم الشريحة الرئيسي",
+    "subtitle": "العنوان الفرعي للشريحة",
+    "content": "محتوي الشريحة",
+    "actionBtn": "اجراء الزرار",
+    "url": "اللينك",
+    "file": "نوع الملف",
+    "image": "الصورة",
+    "status": "الحالة",
+    "flip": "قلب الصورة أفقيا"
+  },
+  "AboutPage": {
+    "title": "عنوان الصفحة",
+    "description": "وصف قصير",
+    "content": "المحتوي",
+    "statistics": "الاحصائيات"
+  },
+  "Placeholder": {
+    "title": "العنوان",
+    "subtitle": "العنوان الفرعي",
+    "email": "الايميل",
+    "content": "المحتوي",
+    "action": "الاجراء",
+    "url": "اللينك",
+    "description": "الوصف",
+    "value": "القيمة",
+    "tags": "ادخل كلمة",
+    "language": "اللغة",
+    "country": "الدولة",
+    "status": "الحالة",
+    "facebook": "فيس بوك",
+    "twitter": "تويتر",
+    "linkedin": "لينكدان",
+    "youtube": "يوتيوب",
+    "instagram": "انستجرام",
+    "whatsapp": "واتس اب",
+    "snapchat": "سناب شات",
+    "tiktok": "تيك توك"
+  },
+  "Buttons": {
+    "change": "تغيير",
+    "delete": "حذف",
+    "changeP": "تغيير الصورة",
+    "deleteP": "حذف الصورة",
+    "update": "تحديث",
+    "add": "اضافة"
+  },
+  "Alert": {
+    "title": "هل أنت متأكد تماما؟",
+    "message": "لا يمكن التراجع عن هذا الإجراء. سيؤدي هذا إلى حذف صورتك بشكل دائم وإزالتها من خوادمنا",
+    "continue": "تأكيد",
+    "cancel": "الغاء"
+  },
+  "mainTable": {
+    "slide": "الشريحة",
+    "status": "الحالة",
+    "actions": "الاجراء"
   }
 }

@@ -14,11 +14,16 @@ import SelectInputWithAction from "@/components/custom/formInputs/SelectInputWit
 import { useState } from "react";
 import { addSchema, editSchema } from "./formData/schema";
 import { addDefaultValues, editDefaultValues } from "./formData/defaultValues";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const FormComponent = ({ isEdit }) => {
   const [isVideo, setIsVideo] = useState("");
   const locale = useLocale();
+  const t = useTranslations("SliderPage");
+  const tt = useTranslations("Tabs");
+  const tp = useTranslations("Preferences");
+  const tpl = useTranslations("Placeholder");
+  const tb = useTranslations("Buttons");
 
   const form = useForm({
     resolver: zodResolver(isEdit ? editSchema : addSchema),
@@ -48,18 +53,22 @@ const FormComponent = ({ isEdit }) => {
             defaultValue={locale == "en" ? "english" : "arabic"}
             className="tabs-style w-full"
           >
-            <TabsList className="absolute -top-12 -right-1 h-auto bg-transparent gap-2">
+            <TabsList
+              className={`absolute -top-12 h-auto bg-transparent gap-2 ${
+                locale == "en" ? "-right-1" : "-left-1"
+              }`}
+            >
               <TabsTrigger
                 value="english"
                 className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
               >
-                English
+                {tt("en")}
               </TabsTrigger>
               <TabsTrigger
                 value="arabic"
                 className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
               >
-                Arabic
+                {tt("ar")}
               </TabsTrigger>
             </TabsList>
             <TabsContent value="english" className="space-y-4 w-full">
@@ -67,46 +76,46 @@ const FormComponent = ({ isEdit }) => {
               <TitleInput
                 form={form}
                 section={sectionName}
-                placeholder="Title"
+                placeholder={tpl("title")}
                 name={`${sectionName}_Title_en`}
                 lang="en"
-                title="Slide Main Title"
+                title={t("title")}
               />
               {/* SubTitle */}
               <SubtitleInput
                 form={form}
                 section={sectionName}
-                placeholder="Subtitle"
+                placeholder={tpl("subtitle")}
                 name={`${sectionName}_Subtitle_en`}
                 lang="en"
-                title="Slide Subtitle"
+                title={t("subtitle")}
               />
               {/* Content */}
               <ContentInput
                 form={form}
                 section={sectionName}
-                placeholder="Content"
+                placeholder={tpl("content")}
                 name={`${sectionName}_Content_en`}
                 lang="en"
-                title="Slide Content"
+                title={t("content")}
               />
               {/* Button Action */}
               <TitleInput
                 form={form}
                 section={sectionName}
-                placeholder="Action"
+                placeholder={tpl("action")}
                 name={`${sectionName}_Action_en`}
                 lang="en"
-                title="Action button"
+                title={t("actionBtn")}
               />
               {/* URL */}
               <TitleInput
                 form={form}
                 section={sectionName}
-                placeholder="URL"
+                placeholder={tpl("url")}
                 name={`${sectionName}_Url_en`}
                 lang="en"
-                title="URL"
+                title={t("url")}
               />
             </TabsContent>
             <TabsContent value="arabic" className="rtl-grid space-y-4 w-full">
@@ -114,57 +123,57 @@ const FormComponent = ({ isEdit }) => {
               <TitleInput
                 form={form}
                 section={sectionName}
-                placeholder="Title"
+                placeholder={tpl("title")}
                 name={`${sectionName}_Title_ar`}
                 lang="ar"
-                title="Slide Main Title"
+                title={t("title")}
               />
               {/* SubTitle */}
               <SubtitleInput
                 form={form}
                 section={sectionName}
-                placeholder="Subtitle"
+                placeholder={tpl("subtitle")}
                 name={`${sectionName}_Subtitle_ar`}
                 lang="ar"
-                title="Slide Subtitle"
+                title={t("title")}
               />
               {/* Content */}
               <ContentInput
                 form={form}
                 section={sectionName}
-                placeholder="Content"
+                placeholder={tpl("content")}
                 name={`${sectionName}_Content_ar`}
                 lang="ar"
-                title="Slide Content"
+                title={t("content")}
               />
               {/* Button Action */}
               <TitleInput
                 form={form}
                 section={sectionName}
-                placeholder="Action"
+                placeholder={tpl("action")}
                 name={`${sectionName}_Action_ar`}
                 lang="ar"
-                title="Action button"
+                title={t("actionBtn")}
               />
               {/* URL */}
               <TitleInput
                 form={form}
                 section={sectionName}
-                placeholder="URL"
+                placeholder={tpl("url")}
                 name={`${sectionName}_Url_ar`}
                 lang="ar"
-                title="URL"
+                title={t("url")}
               />
             </TabsContent>
           </Tabs>
         </div>
         <div className="card-style items-start">
           <h1 className="text-[22px] text-[#707070] font-bold mb-8">
-            Preferences:
+            {tp("preferences")}
           </h1>
           <SelectInputWithAction
             form={form}
-            title="File type"
+            title={t("file")}
             section={sectionName}
             name={`${sectionName}_Link`}
             placeholder="File type"
@@ -180,7 +189,7 @@ const FormComponent = ({ isEdit }) => {
               }`}
             >
               <label className="font-medium text-[#b5b5b5] text-md lg:pt-2 text-start">
-                Image
+                {t("image")}
               </label>
               <EditImage
                 w="1920"
@@ -195,7 +204,7 @@ const FormComponent = ({ isEdit }) => {
                 <StatusInput
                   form={form}
                   section={sectionName}
-                  title="Status"
+                  title={t("status")}
                   name={`${sectionName}_Status`}
                 />
               </div>
@@ -203,14 +212,14 @@ const FormComponent = ({ isEdit }) => {
               <StatusInput
                 form={form}
                 section="Slider_Flip"
-                title="Flip image horizontally"
+                title={t("flip")}
                 name={`${sectionName}_Flip_Status`}
               />
             </div>
           </div>
         </div>
         <div className="flex items-center justify-end my-8">
-          <SubmitButton title="Update" />
+          <SubmitButton title={tb("update")} />
         </div>
       </form>
     </Form>

@@ -33,11 +33,7 @@ export default async function RootLayout({ children, params }) {
   const messages = await getMessages();
 
   return (
-    <html
-      lang={locale}
-      dir={locale == "en" ? "ltr" : "rtl"}
-      title="dsite | Admin Control Panel"
-    >
+    <html lang={locale} dir={locale == "en" ? "ltr" : "rtl"}>
       <body
         className={`${
           locale == "en" ? inter.className : noto.className

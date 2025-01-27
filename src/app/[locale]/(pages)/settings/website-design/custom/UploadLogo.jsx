@@ -129,14 +129,14 @@ const UploadLogo = ({ form, name, title, classTitle, size, logoId }) => {
             <span>Delete</span>
           </AlertDialogTrigger>
           <AlertDialogContent className="dark:bg-mainDark-900">
-            <AlertDialogHeader>
+            <AlertDialogHeader className="!text-start">
               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
               <AlertDialogDescription>
                 This action cannot be undone. This will permanently delete your
                 image and remove your image from our servers.
               </AlertDialogDescription>
             </AlertDialogHeader>
-            <AlertDialogFooter>
+            <AlertDialogFooter className="flex items-center gap-2 flex-wrap">
               <AlertDialogCancel className="dark:bg-mainDark-800">
                 Cancel
               </AlertDialogCancel>

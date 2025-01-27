@@ -1,6 +1,9 @@
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 const MainButton = ({ buttonName, buttonPath, buttonIcon = "" }) => {
+  const t = useTranslations("Preview");
+
   const previewIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -30,10 +33,16 @@ const MainButton = ({ buttonName, buttonPath, buttonIcon = "" }) => {
           buttonIcon == "preview" ? "py-3 md:py-[8px]" : "py-[8px]"
         }`}
       >
-        {buttonIcon == "preview" && previewIcon}
-        <span className={buttonIcon == "preview" ? "hidden md:flex" : ""}>
-          {buttonName}
-        </span>
+        {buttonIcon == "preview" ? (
+          <>
+            {previewIcon}
+            <span className="hidden md:flex">
+              {t(buttonName.toLowerCase())}
+            </span>
+          </>
+        ) : (
+          <span> {buttonName} </span>
+        )}
       </Link>
     </>
   );

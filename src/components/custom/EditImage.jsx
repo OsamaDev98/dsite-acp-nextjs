@@ -25,8 +25,12 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
+import { useTranslations } from "next-intl";
 
 const EditImage = ({ h, w, profile, name, form, imageLink }) => {
+  const tb = useTranslations("Buttons");
+  const ta = useTranslations("Alert");
+
   const [imgUrl, setImgUrl] = useState(
     imageLink?.length > 0 ? imageLink : defaultImg
   );
@@ -89,7 +93,7 @@ const EditImage = ({ h, w, profile, name, form, imageLink }) => {
             <FormItem>
               <FormLabel className="flex items-center justify-center gap-2 text-neutral-400 bg-gray-100 py-3.5 px-5 rounded-md duration-300 hover:text-neutral-700 hover:-translate-y-1 hover:shadow-lg cursor-pointer dark:bg-mainDark-900 text-md text-start">
                 <SquarePen className="w-4 h-4" />
-                <span>Change picture</span>
+                <span>{tb("changeP")}</span>
               </FormLabel>
               <FormControl>
                 <Input
@@ -112,20 +116,17 @@ const EditImage = ({ h, w, profile, name, form, imageLink }) => {
             className="flex items-center justify-center gap-2 text-neutral-400 bg-gray-100 py-3 px-5 rounded-md duration-300 hover:text-neutral-700 hover:-translate-y-1 hover:shadow-lg cursor-pointer dark:bg-mainDark-900"
           >
             <Trash2 className="w-4 h-4" />
-            <span>Delete picture</span>
+            <span>{tb("deleteP")}</span>
           </AlertDialogTrigger>
           <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-              <AlertDialogDescription>
-                This action cannot be undone. This will permanently delete your
-                image and remove your image from our servers.
-              </AlertDialogDescription>
+            <AlertDialogHeader className="!text-start">
+              <AlertDialogTitle>{ta("title")}</AlertDialogTitle>
+              <AlertDialogDescription>{ta("message")}</AlertDialogDescription>
             </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogFooter className="flex items-center gap-2 flex-wrap">
+              <AlertDialogCancel>{ta("cancel")}</AlertDialogCancel>
               <AlertDialogAction onClick={() => handleRemoveImage()}>
-                Continue
+                {ta("continue")}
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

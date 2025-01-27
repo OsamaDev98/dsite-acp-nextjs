@@ -19,7 +19,7 @@ import TitleInput from "@/components/custom/formInputs/TitleInput";
 import DescriptionInput from "@/components/custom/formInputs/DescriptionInput";
 // Dynamically import CKEditor to prevent SSR issues
 import dynamic from "next/dynamic";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import TagForm from "@/components/custom/formInputs/TagForm";
 const CustomEditor = dynamic(
   () => import("@/components/custom/ckeditor5/CustomEditor"),
@@ -30,6 +30,12 @@ const CustomEditor = dynamic(
 
 const FormComponent = () => {
   const locale = useLocale();
+  const t = useTranslations("AboutPage");
+  const tt = useTranslations("Tabs");
+  const ttg = useTranslations("Tags");
+  const tp = useTranslations("Preferences");
+  const tpl = useTranslations("Placeholder");
+  const tb = useTranslations("Buttons");
 
   const form = useForm({
     resolver: zodResolver(schema),
@@ -57,18 +63,22 @@ const FormComponent = () => {
             defaultValue={locale == "en" ? "english" : "arabic"}
             className="tabs-style w-full"
           >
-            <TabsList className="absolute -top-12 -right-1 h-auto bg-transparent gap-2">
+            <TabsList
+              className={`absolute -top-12 h-auto bg-transparent gap-2 ${
+                locale == "en" ? "-right-1" : "-left-1"
+              }`}
+            >
               <TabsTrigger
                 value="english"
                 className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
               >
-                English
+                {tt("en")}
               </TabsTrigger>
               <TabsTrigger
                 value="arabic"
                 className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
               >
-                Arabic
+                {tt("ar")}
               </TabsTrigger>
             </TabsList>
             <TabsContent value="english" className="space-y-4 w-full">
@@ -77,24 +87,24 @@ const FormComponent = () => {
                 form={form}
                 section="About"
                 lang="en"
-                title="Page title"
+                title={t("title")}
                 name={`${sectionName}_Title_en`}
-                placeholder="Title"
+                placeholder={tpl("title")}
               />
               {/* Short description */}
               <DescriptionInput
                 form={form}
                 section="About"
                 lang="en"
-                title="Short description"
+                title={t("description")}
                 name={`${sectionName}_Description_en`}
-                placeholder="Description"
+                placeholder={tpl("description")}
               />
               {/* Content */}
               <div className="col-span-3">
                 <div className="grid lg:grid-cols-6 items-start w-full">
                   <label className="text-[#b5b5b5] text-md mb-3 lg:mb-0 lg:pt-2 text-start">
-                    Content
+                    {t("content")}
                   </label>
                   <div className="col-span-3">
                     <CustomEditor
@@ -111,7 +121,7 @@ const FormComponent = () => {
               {/* Statistics */}
               <div className="grid lg:grid-cols-6 gap-3">
                 <label className="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#b5b5b5] text-md lg:pt-2 text-start">
-                  Statistics
+                  {t("statistics")}
                 </label>
                 <div className="flex flex-col gap-3 col-span-3">
                   {[1, 1, 1, 1, 1, 1, 1, 1].map((_, i) => {
@@ -124,7 +134,7 @@ const FormComponent = () => {
                             <FormItem>
                               <FormControl>
                                 <Input
-                                  placeholder="Title"
+                                  placeholder={tpl("title")}
                                   type="text"
                                   className="h-12 col-span-3"
                                   {...field}
@@ -141,7 +151,7 @@ const FormComponent = () => {
                             <FormItem>
                               <FormControl>
                                 <Input
-                                  placeholder="Value"
+                                  placeholder={tpl("value")}
                                   type="text"
                                   className="h-12 col-span-3"
                                   {...field}
@@ -163,24 +173,24 @@ const FormComponent = () => {
                 form={form}
                 section="About"
                 lang="ar"
-                title="Page title"
+                title={t("title")}
                 name={`${sectionName}_Title_ar`}
-                placeholder="Title"
+                placeholder={tpl("title")}
               />
               {/* Short description */}
               <DescriptionInput
                 form={form}
                 section="About"
                 lang="ar"
-                title="Short description"
+                title={t("description")}
                 name={`${sectionName}_Description_ar`}
-                placeholder="Description"
+                placeholder={t("description")}
               />
               {/* Content */}
               <div className="col-span-3">
                 <div className="grid lg:grid-cols-6 items-start w-full">
                   <label className="text-[#b5b5b5] text-md mb-3 lg:mb-0 lg:pt-2 text-start">
-                    Content
+                    {t("content")}
                   </label>
                   <div className="col-span-3">
                     <CustomEditor
@@ -197,7 +207,7 @@ const FormComponent = () => {
               {/* Statistics */}
               <div className="grid grid-cols-6">
                 <label className="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#b5b5b5] text-md lg:pt-2 text-start">
-                  Statistics
+                  {t("statistics")}
                 </label>
                 <div className="grid grid-cols-2 gap-4 col-span-3">
                   {[1, 1, 1, 1, 1, 1, 1, 1].map((_, i) => {
@@ -210,7 +220,7 @@ const FormComponent = () => {
                             <FormItem>
                               <FormControl>
                                 <Input
-                                  placeholder="Title"
+                                  placeholder={tpl("title")}
                                   type="text"
                                   className="h-12"
                                   {...field}
@@ -227,7 +237,7 @@ const FormComponent = () => {
                             <FormItem>
                               <FormControl>
                                 <Input
-                                  placeholder="Value"
+                                  placeholder={tpl("value")}
                                   type="text"
                                   className="h-12"
                                   {...field}
@@ -247,13 +257,13 @@ const FormComponent = () => {
         </div>
         <div className="card-style items-start rounded-tr-lg">
           <h1 className="text-[22px] text-[#707070] font-bold mb-8">
-            Preferences:
+            {tp("preferences")}
           </h1>
           {/* Tags */}
-          <TagForm form={form} title="Tags" name="About_Tags" />
+          <TagForm form={form} title={ttg("tags")} name="About_Tags" />
         </div>
         <div className="flex items-center justify-end my-8">
-          <SubmitButton title="Update" />
+          <SubmitButton title={tb("update")} />
         </div>
       </form>
     </Form>
