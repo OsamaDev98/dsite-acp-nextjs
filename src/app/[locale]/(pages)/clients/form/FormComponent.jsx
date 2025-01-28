@@ -1,6 +1,6 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import SubmitButton from "@/components/custom/buttons/SubmitButton";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,10 +11,15 @@ import StatusInput from "@/components/custom/formInputs/StatusInput";
 import LinkInput from "@/components/custom/formInputs/LinkInput";
 import { addDefaultValues, editDefaultValues } from "./formData/defaultValues";
 import { addSchema, editSchema } from "./formData/schema";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import TabsListComp from "@/components/custom/TabsListComp";
 
 const FormComponent = ({ isEdit }) => {
   const locale = useLocale();
+  const t = useTranslations("ClientsPage");
+  const tp = useTranslations("Preferences");
+  const tpl = useTranslations("Placeholder");
+  const tb = useTranslations("Buttons");
 
   const form = useForm({
     resolver: zodResolver(isEdit ? editSchema : addSchema),
@@ -39,24 +44,7 @@ const FormComponent = ({ isEdit }) => {
             defaultValue={locale == "en" ? "english" : "arabic"}
             className="tabs-style w-full"
           >
-            <TabsList
-              className={`absolute -top-12 h-auto bg-transparent gap-2 ${
-                locale == "en" ? "-right-1" : "-left-1"
-              }`}
-            >
-              <TabsTrigger
-                value="english"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                English
-              </TabsTrigger>
-              <TabsTrigger
-                value="arabic"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                Arabic
-              </TabsTrigger>
-            </TabsList>
+            <TabsListComp />
             <TabsContent value="english" className="space-y-4 w-full">
               {/* Title */}
               <TitleInput
@@ -64,8 +52,8 @@ const FormComponent = ({ isEdit }) => {
                 section={sectionName}
                 name={`${sectionName}_Title_en`}
                 lang="en"
-                title="Main title"
-                placeholder="Title"
+                title={t("title")}
+                placeholder={tpl("title")}
                 setYoutubeLink={false}
                 isLink={false}
               />
@@ -77,8 +65,8 @@ const FormComponent = ({ isEdit }) => {
                 section={sectionName}
                 name={`${sectionName}_Title_ar`}
                 lang="ar"
-                title="Main title"
-                placeholder="Title"
+                title={t("title")}
+                placeholder={tpl("title")}
                 setYoutubeLink={false}
                 isLink={false}
               />
@@ -87,13 +75,13 @@ const FormComponent = ({ isEdit }) => {
         </div>
         <div className="card-style items-start">
           <h1 className="text-[22px] text-[#707070] font-bold mb-8">
-            Preferences:
+            {tp("preferences")}
           </h1>
           <div className="space-y-4 w-full">
             {/* Edit image */}
             <div className="grid grid-cols-6 gap-4 my-8">
               <label className="font-medium text-[#b5b5b5] text-md lg:pt-2 text-start">
-                Image
+                {t("image")}
               </label>
               <EditImage
                 w="1920"
@@ -105,10 +93,10 @@ const FormComponent = ({ isEdit }) => {
             <LinkInput
               form={form}
               section={sectionName}
-              placeholder="Link"
+              placeholder={tpl("link")}
               name={`${sectionName}_Link`}
               isIcon={false}
-              title="Link"
+              title={t("link")}
               label="Link"
             />
             {/* Status */}
@@ -116,14 +104,14 @@ const FormComponent = ({ isEdit }) => {
               <StatusInput
                 form={form}
                 section={sectionName}
-                title="Status"
+                title={t("status")}
                 name={`${sectionName}_Status`}
               />
             </div>
           </div>
         </div>
         <div className="flex items-center justify-end my-8">
-          <SubmitButton title="Update" />
+          <SubmitButton title={tb("update")} />
         </div>
       </form>
     </Form>

@@ -34,6 +34,24 @@
     "suspended": "suspended",
     "error": "error"
   },
+  "ProfileMenu": {
+    "profile": "Profile",
+    "password": "Change password",
+    "settings": "Settings",
+    "signout": "Sign out"
+  },
+  "ProfilePage": {
+    "image": "Profile picture",
+    "name": "FullName",
+    "email": "Email",
+    "phone": "Phone number",
+    "address": "Address"
+  },
+  "PasswordPage": {
+    "old": "Old password",
+    "new": "New password",
+    "confirm": "Confirm password"
+  },
   "Preview": {
     "preview": "Preview"
   },
@@ -205,6 +223,71 @@
     "brand": "Brand",
     "status": "Status"
   },
+  "PortfoliosPage": {
+    "title": "Main title",
+    "subtitle": "Subtitle",
+    "description": "Short Description",
+    "content": "Content",
+    "image": "Image",
+    "type": "The link type",
+    "status": "Status"
+  },
+  "WhyPage": {
+    "title": "Main title",
+    "subtitle": "Subtitle",
+    "content": "Content"
+  },
+  "NewsPage": {
+    "title": "Main title",
+    "subtitle": "Subtitle",
+    "description": "Short Description",
+    "content": "Content",
+    "image": "Image",
+    "author": "Author",
+    "date": "Date",
+    "status": "Status"
+  },
+  "BranchesPage": {
+    "title": "Branch title",
+    "description": "Branch details",
+    "status": "Status"
+  },
+  "ShowPage": {
+    "title": "Main title",
+    "subtitle": "Subtitle",
+    "link": "Link"
+  },
+  "GalleryPage": {
+    "title": "Main title",
+    "image": "Image",
+    "status": "Status"
+  },
+  "ClientsPage": {
+    "title": "Main title",
+    "image": "Image",
+    "link": "Link",
+    "status": "Status"
+  },
+  "PartnersPage": {
+    "title": "Main title",
+    "image": "Image",
+    "link": "Link",
+    "status": "Status"
+  },
+  "DownloadPage": {
+    "title": "Main title",
+    "image": "Image",
+    "android": "Android",
+    "ios": "IOS",
+    "appGallery": "AppGallery"
+  },
+  "TeamPage": {
+    "name": "Name",
+    "position": "Position",
+    "content": "Content",
+    "image": "Image",
+    "status": "Status"
+  },
   "Placeholder": {
     "title": "Title",
     "subtitle": "Subtitle",
@@ -212,6 +295,7 @@
     "content": "Content",
     "action": "Action",
     "url": "URL",
+    "link": "Link",
     "description": "Description",
     "value": "Value",
     "category": "Category",
@@ -219,6 +303,12 @@
     "number": "Number",
     "price": "Price",
     "value": "Value",
+    "author": "Author",
+    "date": "Date",
+    "name": "Name",
+    "position": "Position",
+    "address": "Address",
+    "password": "Enter a password",
     "type": "Select type",
     "tags": "Enter a tag",
     "language": "Language",
@@ -231,7 +321,10 @@
     "instagram": "Instagram",
     "whatsapp": "WhatsApp",
     "snapchat": "Snapchat",
-    "tiktok": "Tiktok"
+    "tiktok": "Tiktok",
+    "android": "Android app",
+    "ios": "IOS app",
+    "appGallery": "AppGallery app"
   },
   "Buttons": {
     "change": "Change",

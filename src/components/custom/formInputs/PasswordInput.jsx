@@ -6,9 +6,11 @@ import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { useLocale } from "next-intl";
 
 const PasswordInput = ({ className, ...props }, ref) => {
   const [showPassword, setShowPassword] = React.useState(false);
+  const locale = useLocale();
   const disabled =
     props.value === "" || props.value === undefined || props.disabled;
 
@@ -16,7 +18,10 @@ const PasswordInput = ({ className, ...props }, ref) => {
     <div className="relative">
       <Input
         type={showPassword ? "text" : "password"}
-        className={cn("hide-password-toggle pr-10", className)}
+        className={cn(
+          `hide-password-toggle ${locale == "en" ? "pr-10" : "pl-10"}`,
+          className
+        )}
         ref={ref}
         {...props}
       />
@@ -24,7 +29,9 @@ const PasswordInput = ({ className, ...props }, ref) => {
         type="button"
         variant="ghost"
         size="sm"
-        className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+        className={`absolute top-0 h-full px-3 py-2 hover:bg-transparent ${
+          locale == "en" ? "right-0" : "left-0"
+        }`}
         onClick={() => setShowPassword((prev) => !prev)}
         disabled={disabled}
       >

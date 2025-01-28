@@ -34,6 +34,24 @@
     "suspended": "موقوف",
     "error": "خطأ"
   },
+  "ProfileMenu": {
+    "profile": "الملف الشخصي",
+    "password": "تغيير الرقم السري",
+    "settings": "الاعدادات",
+    "signout": "تسجيل الخروج"
+  },
+  "ProfilePage": {
+    "image": "صورة الملف",
+    "name": "الاسم بالكامل",
+    "email": "الايميل",
+    "phone": "رقم المحمول",
+    "address": "العنوان"
+  },
+  "PasswordPage": {
+    "old": "الرقم السري القديم",
+    "new": "الرقم السري الجديد",
+    "confirm": "تأكيد الرقم السري"
+  },
   "Preview": {
     "preview": "معاينة"
   },
@@ -205,6 +223,71 @@
     "brand": "ماركة",
     "status": "الحالة"
   },
+  "PortfoliosPage": {
+    "title": "العنوان الرئيسي",
+    "subtitle": "العنوان الفرعي",
+    "description": "وصف قصير",
+    "content": "المحتوى",
+    "image": "الصورة",
+    "type": "نوع الرابط",
+    "status": "الحالة"
+  },
+  "WhyPage": {
+    "title": "العنوان الرئيسي",
+    "subtitle": "العنوان الفرعي",
+    "content": "المحتوى"
+  },
+  "NewsPage": {
+    "title": "العنوان الرئيسي",
+    "subtitle": "العنوان الفرعي",
+    "description": "وصف قصير",
+    "content": "المحتوى",
+    "image": "الصورة",
+    "author": "المؤلف",
+    "date": "التاريخ",
+    "status": "الحالة"
+  },
+  "BranchesPage": {
+    "title": "اسم الفرع",
+    "description": "تفاصيل الفرع",
+    "status": "الحالة"
+  },
+  "ShowPage": {
+    "title": "العنوان الرئيسي",
+    "subtitle": "العنوان الفرعي",
+    "link": "اللينك"
+  },
+  "GalleryPage": {
+    "title": "العنوان الرئيسي",
+    "image": "الصورة",
+    "status": "الحالة"
+  },
+  "ClientsPage": {
+    "title": "العنوان الرئيسي",
+    "image": "الصورة",
+    "link": "اللينك",
+    "status": "الحالة"
+  },
+  "PartnersPage": {
+    "title": "العنوان الرئيسي",
+    "image": "الصورة",
+    "link": "اللينك",
+    "status": "الحالة"
+  },
+  "DownloadPage": {
+    "title": "العنوان الرئيسي",
+    "image": "الصورة",
+    "android": "أندرويد",
+    "ios": "ايفون",
+    "appGallery": "هواوي"
+  },
+  "TeamPage": {
+    "name": "الاسم",
+    "position": "الوظيفة",
+    "content": "المحتوي",
+    "image": "الصورة",
+    "status": "الحالة"
+  },
   "Placeholder": {
     "title": "العنوان",
     "subtitle": "العنوان الفرعي",
@@ -218,11 +301,18 @@
     "price": "السعر",
     "description": "الوصف",
     "value": "القيمة",
+    "author": "المؤلف",
+    "date": "التاريخ",
+    "link": "اللينك",
+    "name": "الاسم",
+    "position": "الوظيفة",
     "type": "اختر النوع",
     "tags": "ادخل كلمة",
     "language": "اللغة",
     "country": "الدولة",
     "status": "الحالة",
+    "address": "العنوان",
+    "password": "ادخل الرقم السري",
     "facebook": "فيس بوك",
     "twitter": "تويتر",
     "linkedin": "لينكدان",
@@ -230,7 +320,10 @@
     "instagram": "انستجرام",
     "whatsapp": "واتس اب",
     "snapchat": "سناب شات",
-    "tiktok": "تيك توك"
+    "tiktok": "تيك توك",
+    "android": "تطبيق أندرويد",
+    "ios": "تطبيق ايفون",
+    "appGallery": "تطبيق هواوي"
   },
   "Buttons": {
     "change": "تغيير",

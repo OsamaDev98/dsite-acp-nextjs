@@ -13,30 +13,33 @@ import {
 import { User, Settings, Key, LogOut } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import DefaultUser from "@/app/img/user-default.png";
+import { useTranslations } from "next-intl";
 
 export default function NavDropdown() {
+  const t = useTranslations("ProfileMenu");
+
   const dropdownData = [
     {
       id: 1,
-      title: "Profile",
+      title: "profile",
       href: "/profile",
       icon: <User className="mr-2 h-4 w-4" />,
     },
     {
       id: 2,
-      title: "Change password",
+      title: "password",
       href: "/change_password",
       icon: <Key className="mr-2 h-4 w-4" />,
     },
     {
       id: 3,
-      title: "Settings",
+      title: "settings",
       href: "/settings",
       icon: <Settings className="mr-2 h-4 w-4" />,
     },
     {
       id: 4,
-      title: "Sign out",
+      title: "signout",
       href: "/",
       icon: <LogOut className="mr-2 h-4 w-4" />,
     },
@@ -62,7 +65,7 @@ export default function NavDropdown() {
         {dropdownData?.map((item) => {
           return (
             <Link href={item.href} key={item.id}>
-              {item.title == "Sign out" ? (
+              {item.title == "signout" ? (
                 <>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
@@ -70,7 +73,7 @@ export default function NavDropdown() {
                     className="text-red-600 cursor-pointer"
                   >
                     {item.icon}
-                    <span>{item.title}</span>
+                    <span>{t(item.title.toLowerCase())}</span>
                   </DropdownMenuItem>
                 </>
               ) : (
@@ -79,7 +82,7 @@ export default function NavDropdown() {
                   onClick={() => setOpen(false)}
                 >
                   {item.icon}
-                  <span>{item.title}</span>
+                  <span>{t(item.title.toLowerCase())}</span>
                 </DropdownMenuItem>
               )}
             </Link>

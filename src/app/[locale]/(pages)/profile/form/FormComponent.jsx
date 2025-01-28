@@ -1,4 +1,5 @@
 "use client";
+"use client";
 
 import SubmitButton from "@/components/custom/buttons/SubmitButton";
 import { useForm } from "react-hook-form";
@@ -11,8 +12,13 @@ import EmailInput from "@/components/custom/formInputs/EmailInput";
 import TelephoneInput from "@/components/custom/formInputs/TelephoneInput";
 import DescriptionInput from "@/components/custom/formInputs/DescriptionInput";
 import EditImage from "@/components/custom/EditImage";
+import { useTranslations } from "next-intl";
 
 const FormComponent = () => {
+  const t = useTranslations("ProfilePage");
+  const tb = useTranslations("Buttons");
+  const tpl = useTranslations("Placeholder");
+
   const form = useForm({
     resolver: zodResolver(schema),
     defaultValues: defaultValues,
@@ -32,7 +38,7 @@ const FormComponent = () => {
         <div className="card-style flex flex-col gap-3">
           <div className="space-y-2 grid lg:grid-cols-6 items-start w-full">
             <FormLabel className="text-[#b5b5b5] text-md lg:pt-2 dark:text-mainDark-200">
-              Profile picture
+              {t("image")}
             </FormLabel>
             <EditImage
               profile={true}
@@ -45,36 +51,36 @@ const FormComponent = () => {
           <TitleInput
             form={form}
             section="Profile"
-            placeholder="FullName"
+            placeholder={tpl("name")}
             name="Profile_Edit_Name"
-            title="FullName"
+            title={t("name")}
           />
           <EmailInput
             form={form}
             section="Profile"
-            placeholder="Email"
+            placeholder={tpl("email")}
             name="Profile_Edit_Email"
-            title="Email"
+            title={t("email")}
             icon={false}
           />
           <TelephoneInput
             form={form}
             section="Profile"
-            placeholder="Phone Number"
+            placeholder={tpl("number")}
             name="Profile_Edit_Phone"
-            title="Phone Number"
+            title={t("phone")}
             icon={false}
           />
           <DescriptionInput
             form={form}
             section="Profile"
-            placeholder="Address"
+            placeholder={tpl("address")}
             name="Profile_Edit_Address"
-            title="Address"
+            title={t("address")}
           />
         </div>
         <div className="flex items-center justify-end my-8">
-          <SubmitButton title="Update" />
+          <SubmitButton title={tb("update")} />
         </div>
       </form>
     </Form>

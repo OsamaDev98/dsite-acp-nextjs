@@ -9,12 +9,16 @@ import { useDropzone } from "react-dropzone";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import SubmitButton from "../buttons/SubmitButton";
+import { useLocale, useTranslations } from "next-intl";
 
 const schema = z.object({
   files: z.array(z.instanceof(File)),
 });
 
 const DropzoneForm = ({ sectionName }) => {
+  const locale = useLocale();
+  const tb = useTranslations("Buttons");
+
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const { control, handleSubmit, setValue, getValues } = useForm({
     defaultValues: { files: [] },
@@ -61,7 +65,9 @@ const DropzoneForm = ({ sectionName }) => {
                 <input {...getInputProps()} />
                 {uploadedFiles?.length > 0 || (
                   <p className="text-3xl text-center font-bold text-[#4579e5]">
-                    Drop files or click here to upload
+                    {locale == "en"
+                      ? "Drop files or click here to upload"
+                      : "اسحب الملفات او اضغط هنا للتحميل"}
                   </p>
                 )}
                 {uploadedFiles?.length > 0 &&
@@ -91,7 +97,7 @@ const DropzoneForm = ({ sectionName }) => {
         )}
       />
       <div className="flex items-center justify-end my-8">
-        <SubmitButton title="Update" />
+        <SubmitButton title={tb("update")} />
       </div>
     </form>
   );

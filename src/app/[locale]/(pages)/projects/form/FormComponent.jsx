@@ -1,6 +1,6 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import SubmitButton from "@/components/custom/buttons/SubmitButton";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,6 +15,7 @@ import { Form } from "@/components/ui/form";
 // Dynamically import CKEditor to prevent SSR issues
 import dynamic from "next/dynamic";
 import { useLocale, useTranslations } from "next-intl";
+import TabsListComp from "@/components/custom/TabsListComp";
 const CustomEditor = dynamic(
   () => import("@/components/custom/ckeditor5/CustomEditor"),
   {
@@ -25,7 +26,6 @@ const CustomEditor = dynamic(
 const FormComponent = ({ isEdit }) => {
   const locale = useLocale();
   const t = useTranslations("ProjectsPage");
-  const tt = useTranslations("Tabs");
   const tp = useTranslations("Preferences");
   const tpl = useTranslations("Placeholder");
   const tb = useTranslations("Buttons");
@@ -56,24 +56,7 @@ const FormComponent = ({ isEdit }) => {
             defaultValue={locale == "en" ? "english" : "arabic"}
             className="tabs-style w-full"
           >
-            <TabsList
-              className={`absolute -top-12 h-auto bg-transparent gap-2 ${
-                locale == "en" ? "-right-1" : "-left-1"
-              }`}
-            >
-              <TabsTrigger
-                value="english"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                {tt("en")}
-              </TabsTrigger>
-              <TabsTrigger
-                value="arabic"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                {tt("ar")}
-              </TabsTrigger>
-            </TabsList>
+            <TabsListComp />
             <TabsContent value="english" className="space-y-4 w-full">
               {/* Title */}
               <TitleInput

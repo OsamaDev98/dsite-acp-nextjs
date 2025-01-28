@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { addSchema, editSchema } from "./formData/schema";
 import { addDefaultValues, editDefaultValues } from "./formData/defaultValues";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import TitleInput from "@/components/custom/formInputs/TitleInput";
 import SubtitleInput from "@/components/custom/formInputs/SubtitleInput";
 import EditImage from "@/components/custom/EditImage";
@@ -13,7 +13,8 @@ import SubmitButton from "@/components/custom/buttons/SubmitButton";
 import { Form } from "@/components/ui/form";
 // Dynamically import CKEditor to prevent SSR issues
 import dynamic from "next/dynamic";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import TabsListComp from "@/components/custom/TabsListComp";
 const CustomEditor = dynamic(
   () => import("@/components/custom/ckeditor5/CustomEditor"),
   {
@@ -23,6 +24,10 @@ const CustomEditor = dynamic(
 
 const FormComponent = ({ isEdit }) => {
   const locale = useLocale();
+  const t = useTranslations("TeamPage");
+  const tp = useTranslations("Preferences");
+  const tpl = useTranslations("Placeholder");
+  const tb = useTranslations("Buttons");
 
   const form = useForm({
     resolver: zodResolver(isEdit ? editSchema : addSchema),
@@ -50,24 +55,7 @@ const FormComponent = ({ isEdit }) => {
             defaultValue={locale == "en" ? "english" : "arabic"}
             className="tabs-style w-full"
           >
-            <TabsList
-              className={`absolute -top-12 h-auto bg-transparent gap-2 ${
-                locale == "en" ? "-right-1" : "-left-1"
-              }`}
-            >
-              <TabsTrigger
-                value="english"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                English
-              </TabsTrigger>
-              <TabsTrigger
-                value="arabic"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                Arabic
-              </TabsTrigger>
-            </TabsList>
+            <TabsListComp />
             <TabsContent value="english" className="space-y-4 w-full">
               {/* Title */}
               <TitleInput
@@ -75,8 +63,8 @@ const FormComponent = ({ isEdit }) => {
                 section={sectionName}
                 lang="en"
                 name={`${sectionName}_Name_en`}
-                placeholder="Name"
-                title="Name"
+                placeholder={tpl("name")}
+                title={t("name")}
                 setYoutubeLink={false}
                 isLink={false}
               />
@@ -86,13 +74,13 @@ const FormComponent = ({ isEdit }) => {
                 section={sectionName}
                 lang="en"
                 name={`${sectionName}_Position_en`}
-                placeholder="position"
-                title="Position"
+                placeholder={tpl("position")}
+                title={t("position")}
               />
               {/* Content */}
               <div className="grid lg:grid-cols-6 items-start w-full">
                 <label className="text-[#b5b5b5] text-md mb-3 lg:mb-0 lg:pt-2 text-start">
-                  Content
+                  {t("content")}
                 </label>
                 <div className="col-span-3">
                   <CustomEditor
@@ -113,8 +101,8 @@ const FormComponent = ({ isEdit }) => {
                 section={sectionName}
                 lang="ar"
                 name={`${sectionName}_Name_ar`}
-                placeholder="Name"
-                title="Name"
+                placeholder={tpl("name")}
+                title={t("name")}
                 setYoutubeLink={false}
                 isLink={false}
               />
@@ -124,13 +112,13 @@ const FormComponent = ({ isEdit }) => {
                 section={sectionName}
                 lang="ar"
                 name={`${sectionName}_Position_ar`}
-                placeholder="position"
-                title="Position"
+                placeholder={tpl("position")}
+                title={t("position")}
               />
               {/* Content */}
               <div className="grid lg:grid-cols-6 items-start w-full">
                 <label className="text-[#b5b5b5] text-md mb-3 lg:mb-0 lg:pt-2 text-start">
-                  Content
+                  {t("content")}
                 </label>
                 <div className="col-span-3">
                   <CustomEditor
@@ -148,13 +136,13 @@ const FormComponent = ({ isEdit }) => {
         </div>
         <div className="card-style items-start">
           <h1 className="text-[22px] text-[#707070] font-bold mb-8">
-            Preferences:
+            {tp("preferences")}
           </h1>
           <div className="space-y-4 w-full">
             {/* Edit image */}
             <div className="grid grid-cols-6 gap-4 my-8">
               <label className="font-medium text-[#b5b5b5] text-md lg:pt-2 text-start">
-                Image
+                {t("image")}
               </label>
               <EditImage
                 w="1920"
@@ -168,14 +156,14 @@ const FormComponent = ({ isEdit }) => {
               <StatusInput
                 form={form}
                 section={sectionName}
-                title="Status"
+                title={t("status")}
                 name={`${sectionName}_Status`}
               />
             </div>
           </div>
         </div>
         <div className="flex items-center justify-end my-8">
-          <SubmitButton title="Update" />
+          <SubmitButton title={tb("update")} />
         </div>
       </form>
     </Form>

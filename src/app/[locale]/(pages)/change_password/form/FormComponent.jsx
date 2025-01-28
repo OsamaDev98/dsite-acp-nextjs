@@ -7,8 +7,13 @@ import { Form } from "@/components/ui/form";
 import { schema } from "./formData/schema";
 import { defaultValues } from "./formData/defaultValues";
 import PasswordField from "@/components/custom/formInputs/PasswordField";
+import { useTranslations } from "next-intl";
 
 const FormComponent = () => {
+  const t = useTranslations("PasswordPage");
+  const tb = useTranslations("Buttons");
+  const tpl = useTranslations("Placeholder");
+
   const form = useForm({
     resolver: zodResolver(schema),
     defaultValues: defaultValues,
@@ -29,27 +34,27 @@ const FormComponent = () => {
           <PasswordField
             form={form}
             section="ChangePassword"
-            placeholder="Enter a password"
+            placeholder={tpl("password")}
             name="Change_Old_Password"
-            title="Old password"
+            title={t("old")}
           />
           <PasswordField
             form={form}
             section="ChangePassword"
-            placeholder="Enter a password"
+            placeholder={tpl("password")}
             name="Change_New_Password"
-            title="New password"
+            title={t("new")}
           />
           <PasswordField
             form={form}
             section="ChangePassword"
-            placeholder="Enter a password"
+            placeholder={tpl("password")}
             name="Confirm_New_Password"
-            title="Confirm password"
+            title={t("confirm")}
           />
         </div>
         <div className="flex items-center justify-end my-8">
-          <SubmitButton title="Update" />
+          <SubmitButton title={tb("update")} />
         </div>
       </form>
     </Form>

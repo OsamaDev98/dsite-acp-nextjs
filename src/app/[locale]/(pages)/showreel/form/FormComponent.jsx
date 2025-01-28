@@ -1,6 +1,6 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import SubmitButton from "@/components/custom/buttons/SubmitButton";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,8 +17,9 @@ import SubtitleInput from "@/components/custom/formInputs/SubtitleInput";
 import { useState } from "react";
 import { schema } from "./formData/schema";
 import { defaultValues } from "./formData/defaultValues";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
+import TabsListComp from "@/components/custom/TabsListComp";
 
 const FormComponent = () => {
   const [youtubeLink, setYoutubeLink] = useState(
@@ -26,6 +27,10 @@ const FormComponent = () => {
   );
 
   const locale = useLocale();
+  const t = useTranslations("ShowPage");
+  const tp = useTranslations("Preferences");
+  const tpl = useTranslations("Placeholder");
+  const tb = useTranslations("Buttons");
 
   const form = useForm({
     resolver: zodResolver(schema),
@@ -56,24 +61,7 @@ const FormComponent = () => {
             defaultValue={locale == "en" ? "english" : "arabic"}
             className="tabs-style w-full"
           >
-            <TabsList
-              className={`absolute -top-[3.2rem] h-auto bg-transparent gap-2 ${
-                locale == "en" ? "-right-1" : "-left-1"
-              }`}
-            >
-              <TabsTrigger
-                value="english"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                English
-              </TabsTrigger>
-              <TabsTrigger
-                value="arabic"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                Arabic
-              </TabsTrigger>
-            </TabsList>
+            <TabsListComp />
             <TabsContent value="english" className="space-y-4 w-full">
               {/* Title */}
               <TitleInput
@@ -81,8 +69,8 @@ const FormComponent = () => {
                 section="Show"
                 lang="en"
                 name="Show_Title_en"
-                placeholder="Title"
-                title="Page title"
+                placeholder={tpl("title")}
+                title={t("title")}
               />
               {/* Subtitle */}
               <SubtitleInput
@@ -90,8 +78,8 @@ const FormComponent = () => {
                 section="Show"
                 lang="en"
                 name="Show_Subtitle_en"
-                placeholder="Subtitle"
-                title="Page subtitle"
+                placeholder={tpl("subtitle")}
+                title={t("subtitle")}
               />
             </TabsContent>
             <TabsContent value="arabic" className="rtl-grid space-y-4 w-full">
@@ -99,26 +87,26 @@ const FormComponent = () => {
               <TitleInput
                 form={form}
                 section="Show"
-                placeholder="Title"
+                placeholder={tpl("title")}
                 lang="ar"
                 name="Show_Title_ar"
-                title="Page title"
+                title={t("title")}
               />
               {/* Subtitle */}
               <SubtitleInput
                 form={form}
                 section="Show"
-                placeholder="Subtitle"
+                placeholder={tpl("subtitle")}
                 lang="ar"
                 name="Show_Subtitle_ar"
-                title="Page subtitle"
+                title={t("subtitle")}
               />
             </TabsContent>
           </Tabs>
         </div>
         <div className="card-style items-start">
           <h1 className="text-[22px] text-[#707070] font-bold mb-8">
-            Preferences:
+            {tp("preferences")}
           </h1>
           <div className="space-y-4 w-full">
             {/* Link */}
@@ -128,7 +116,7 @@ const FormComponent = () => {
               render={({ field }) => (
                 <FormItem className="grid lg:grid-cols-6 items-start w-full">
                   <FormLabel className="text-[#b5b5b5] text-md lg:pt-2 dark:text-mainDark-200 text-start">
-                    Link
+                    {t("link")}
                   </FormLabel>
                   <div className="col-span-3">
                     <FormControl>
@@ -144,7 +132,7 @@ const FormComponent = () => {
                               field.onChange(e); // Call React Hook Form's onChange
                               handleYoutubeVideo(e); // Call custom handler
                             }}
-                            placeholder="Link"
+                            placeholder={tpl("link")}
                             type="text"
                             className="h-12 dark:bg-mainDark-900"
                           />
@@ -177,7 +165,7 @@ const FormComponent = () => {
           </div>
         </div>
         <div className="flex items-center justify-end my-8">
-          <SubmitButton title="Update" />
+          <SubmitButton title={tb("update")} />
         </div>
       </form>
     </Form>
