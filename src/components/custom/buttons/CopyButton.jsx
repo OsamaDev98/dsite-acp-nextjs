@@ -3,10 +3,13 @@
 import { useState } from "react";
 import { Copy } from "lucide-react";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 const CopyButton = ({ targetText }) => {
   const [text, setText] = useState(targetText);
   const [copied, setCopied] = useState(false);
+
+  const tb = useTranslations("Buttons");
 
   const handleCopy = async () => {
     try {
@@ -22,7 +25,7 @@ const CopyButton = ({ targetText }) => {
   return (
     <button onClick={handleCopy} className="copy-style dark:bg-mainDark-900">
       <Copy className="h-4 w-4" />
-      <span>{copied ? "Copied!" : "Click to copy"}</span>
+      <span>{copied ? tb("copied") : tb("copy")}</span>
     </button>
   );
 };

@@ -8,12 +8,13 @@ import { useForm } from "react-hook-form";
 import { schema } from "./formData/schema";
 import { defaultValues } from "./formData/defaultValues";
 import SubmitButton from "@/components/custom/buttons/SubmitButton";
+import { useTranslations } from "next-intl";
 
 const logoData = [
-  { id: 1, title: "Colorful logo", classTitle: "colorful_logo", size: "large" },
+  { id: 1, title: "Colorful", classTitle: "colorful_logo", size: "large" },
   {
     id: 2,
-    title: "White logo",
+    title: "White",
     classTitle: "white_logo",
     size: "large",
   },
@@ -28,13 +29,13 @@ const logoData = [
 const colorsData = [
   {
     id: 1,
-    title: "Main title color",
+    title: "title",
     name: "Main_Color",
     color: "#000000",
   },
   {
     id: 2,
-    title: "Subtitle color",
+    title: "Subtitle",
     name: "Subtitle_Color",
     color: "#f0dcc8",
   },
@@ -52,7 +53,7 @@ const colorsData = [
   },
   {
     id: 5,
-    title: "Button color",
+    title: "Button",
     name: "Button_Color",
     color: "#f0dcdc",
   },
@@ -70,13 +71,15 @@ const colorsData = [
   },
   {
     id: 8,
-    title: "Light background",
+    title: "background",
     name: "Light_Background_Color",
     color: "#f0f0dc",
   },
 ];
 
 const LogoAndColors = () => {
+  const t = useTranslations("WebsiteDesign");
+
   const form = useForm({
     resolver: zodResolver(schema),
     defaultValues: defaultValues,
@@ -95,7 +98,7 @@ const LogoAndColors = () => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
         <div className="card-style mt-2 rounded-tr-lg">
           <h1 className="text-3xl text-mainColor-500 text-center font-bold capitalize mb-12">
-            logos
+            {t("logos")}
           </h1>
           <div className="w-full flex justify-center gap-8 lg:gap-24 flex-wrap">
             {logoData?.map((item) => {
@@ -103,7 +106,7 @@ const LogoAndColors = () => {
                 <UploadLogo
                   key={item.id}
                   form={form}
-                  title={item.title}
+                  title={t(item.title.toLowerCase())}
                   name={item.classTitle}
                   classTitle={item.classTitle}
                   size={item.size}
@@ -113,7 +116,7 @@ const LogoAndColors = () => {
             })}
           </div>
           <h1 className="text-3xl text-mainColor-500 text-center font-bold capitalize my-12">
-            colors
+            {t("colors")}
           </h1>
           <div className="w-full grid md:grid-cols-2 gap-4">
             {colorsData?.map((item) => {
@@ -122,7 +125,7 @@ const LogoAndColors = () => {
                   key={item.id}
                   form={form}
                   name={item.name}
-                  title={item.title}
+                  title={t(item.title.toLowerCase())}
                   color={item.color}
                 />
               );

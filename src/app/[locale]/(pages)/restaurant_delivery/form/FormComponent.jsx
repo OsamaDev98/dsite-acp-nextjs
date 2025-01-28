@@ -1,6 +1,6 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import SubmitButton from "@/components/custom/buttons/SubmitButton";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,10 +16,14 @@ import Ninja from "@/app/img/restaurant_delivery/ninja.webp";
 import Noon from "@/app/img/restaurant_delivery/noon.webp";
 import TheChefz from "@/app/img/restaurant_delivery/theChefz.webp";
 import Toyou from "@/app/img/restaurant_delivery/toyou.webp";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import TabsListComp from "@/components/custom/TabsListComp";
 
 const FormComponent = () => {
   const locale = useLocale();
+  const t = useTranslations("DeliveryPage");
+  const tb = useTranslations("Buttons");
+  const tpl = useTranslations("Placeholder");
 
   const form = useForm({
     resolver: zodResolver(schema),
@@ -43,24 +47,7 @@ const FormComponent = () => {
             defaultValue={locale == "en" ? "english" : "arabic"}
             className="tabs-style w-full"
           >
-            <TabsList
-              className={`absolute -top-[3.2rem] h-auto bg-transparent gap-2 ${
-                locale == "en" ? "-right-1" : "-left-1"
-              }`}
-            >
-              <TabsTrigger
-                value="english"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                English
-              </TabsTrigger>
-              <TabsTrigger
-                value="arabic"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                Arabic
-              </TabsTrigger>
-            </TabsList>
+            <TabsListComp />
             <TabsContent value="english" className="space-y-4 w-full">
               {/* Title */}
               <TitleInput
@@ -68,8 +55,8 @@ const FormComponent = () => {
                 section="Delivery"
                 name="Delivery_Edit_Title_en"
                 lang="en"
-                placeholder="Title"
-                title="Page title"
+                placeholder={tpl("title")}
+                title={t("title")}
               />
             </TabsContent>
             <TabsContent value="arabic" className="rtl-grid space-y-4 w-full">
@@ -79,8 +66,8 @@ const FormComponent = () => {
                 section="Delivery"
                 name="Delivery_Edit_Title_ar"
                 lang="ar"
-                placeholder="Title"
-                title="Page title"
+                placeholder={tpl("title")}
+                title={t("title")}
               />
             </TabsContent>
           </Tabs>
@@ -121,7 +108,7 @@ const FormComponent = () => {
           </div>
         </div>
         <div className="flex items-center justify-end my-8">
-          <SubmitButton title="Update" />
+          <SubmitButton title={tb("update")} />
         </div>
       </form>
     </Form>

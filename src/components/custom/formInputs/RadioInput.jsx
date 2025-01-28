@@ -36,7 +36,7 @@ const RadioInput = ({ form, title = "", name }) => {
                   <RadioGroupItem value="active" className="radio-style" />
                 </FormControl>
                 <FormLabel className="font-bold text-gray-500">
-                  Active
+                  {locale == "en" ? "Active" : "نشط"}
                 </FormLabel>
               </FormItem>
               <FormItem className="flex items-center space-x-3 space-y-0">
@@ -44,7 +44,7 @@ const RadioInput = ({ form, title = "", name }) => {
                   <RadioGroupItem value="inactive" className="radio-style" />
                 </FormControl>
                 <FormLabel className="font-bold text-gray-500">
-                  Inactive
+                  {locale == "en" ? "Inactive" : "غير نشط"}
                 </FormLabel>
               </FormItem>
             </RadioGroup>

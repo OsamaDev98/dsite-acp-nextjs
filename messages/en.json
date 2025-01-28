@@ -72,7 +72,16 @@
     "ar": "Arabic",
     "en": "English"
   },
-  "websiteContent": {
+  "WebsiteInfo": {
+    "title": "website information",
+    "name": "Website Title",
+    "description": "Website Description",
+    "language": "Language",
+    "country": "Country",
+    "status": "Website status",
+    "social": "Social Media Accounts"
+  },
+  "WebsiteContent": {
     "title": "website content",
     "status": "Status",
     "slider": "Slider",
@@ -96,7 +105,7 @@
     "delivery": "Restaurant delivery",
     "contact": "Contact us"
   },
-  "websiteDesign": {
+  "WebsiteDesign": {
     "logos": "Logos",
     "colors": "Colors",
     "colorful": "Colorful logo",
@@ -131,7 +140,6 @@
     "server": "Your name server is",
     "token": "Verification token",
     "replace": "Replace your domains name server to:",
-    "copy": "Click to copy",
     "verify": "Verify",
     "dns": "DNS records",
     "name": "Name",
@@ -288,6 +296,78 @@
     "image": "Image",
     "status": "Status"
   },
+  "CareerPage": {
+    "title": "Title",
+    "content": "Content",
+    "status": "Status"
+  },
+  "ApplicantPage": {
+    "title": "Applicants"
+  },
+  "ApplicantDetailsPage": {
+    "title": "Applicant details",
+    "name": "Name",
+    "email": "Email",
+    "gender": "Gender",
+    "dob": "DOB",
+    "phone": "Phone No.",
+    "apply": "Applied for",
+    "nationality": "Nationality",
+    "cor": "City of residence",
+    "order": "Order number",
+    "date": "Date",
+    "cv": "CV",
+    "download": "Download CV"
+  },
+  "PlansPage": {
+    "title": "Name",
+    "content": "Content",
+    "duration": "Duration",
+    "price": "Price",
+    "image": "Image",
+    "status": "Status",
+    "features": "Plan features"
+  },
+  "RestaurantPage": {
+    "title": "Main title",
+    "subtitle": "Subtitle",
+    "description": "Short Description",
+    "content": "Content",
+    "category": "Category",
+    "image": "Image",
+    "author": "Author",
+    "price": "Product price",
+    "number": "Product number",
+    "status": "Status"
+  },
+  "RestaurantCategoryPage": {
+    "title": "Main title",
+    "image": "Image",
+    "tag": "Keywords",
+    "status": "Status"
+  },
+  "DeliveryPage": {
+    "title": "Page title"
+  },
+  "ContactPage": {
+    "title": "Page title",
+    "subtitle": "Page subtitle",
+    "content": "Content",
+    "email": "Email",
+    "telephone": "TelePhone",
+    "phone": "Phone",
+    "contact": "Contact email"
+  },
+  "FormsPage": {
+    "title": "form title",
+    "status": "Status"
+  },
+  "TermsPage": {
+    "title": "Page title",
+    "subtitle": "Page subtitle",
+    "content": "Content",
+    "status": "Status"
+  },
   "Placeholder": {
     "title": "Title",
     "subtitle": "Subtitle",
@@ -303,6 +383,7 @@
     "number": "Number",
     "price": "Price",
     "value": "Value",
+    "phone": "Phone",
     "author": "Author",
     "date": "Date",
     "name": "Name",
@@ -322,9 +403,10 @@
     "whatsapp": "WhatsApp",
     "snapchat": "Snapchat",
     "tiktok": "Tiktok",
-    "android": "Android app",
-    "ios": "IOS app",
-    "appGallery": "AppGallery app"
+    "app": "App name",
+    "android": "Android Link",
+    "ios": "Apple Link",
+    "appGallery": "AppGallery Link"
   },
   "Buttons": {
     "change": "Change",
@@ -334,8 +416,13 @@
     "update": "Update",
     "add": "Add",
     "edit": "Edit",
+    "export": "Export",
+    "details": "details",
     "category": "Categories",
-    "brand": "Brands"
+    "brand": "Brands",
+    "feature": "Add feature",
+    "copy": "Click to copy",
+    "copied": "Copied!"
   },
   "Alert": {
     "title": "Are you absolutely sure?",

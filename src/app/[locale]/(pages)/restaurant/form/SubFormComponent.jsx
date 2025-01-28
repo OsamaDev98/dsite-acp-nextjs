@@ -1,6 +1,6 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import SubmitButton from "@/components/custom/buttons/SubmitButton";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,11 +13,17 @@ import {
   addSubDefaultValues,
   EditSubDefaultValues,
 } from "./formData/defaultValues";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import TagForm from "@/components/custom/formInputs/TagForm";
+import TabsListComp from "@/components/custom/TabsListComp";
 
 const SubFormComponent = ({ isEdit, sectionTitle }) => {
   const locale = useLocale();
+  const t = useTranslations("RestaurantCategoryPage");
+  const tp = useTranslations("Preferences");
+  const tb = useTranslations("Buttons");
+  const tpl = useTranslations("Placeholder");
+  const ttg = useTranslations("Tags");
 
   const form = useForm({
     resolver: zodResolver(isEdit ? editSubSchema : addSubSchema),
@@ -49,24 +55,7 @@ const SubFormComponent = ({ isEdit, sectionTitle }) => {
             defaultValue={locale == "en" ? "english" : "arabic"}
             className="tabs-style w-full"
           >
-            <TabsList
-              className={`absolute -top-12 h-auto bg-transparent gap-2 ${
-                locale == "en" ? "-right-1" : "-left-1"
-              }`}
-            >
-              <TabsTrigger
-                value="english"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                English
-              </TabsTrigger>
-              <TabsTrigger
-                value="arabic"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                Arabic
-              </TabsTrigger>
-            </TabsList>
+            <TabsListComp />
             <TabsContent value="english" className="space-y-4 w-full">
               {/* Title */}
               <TitleInput
@@ -74,8 +63,8 @@ const SubFormComponent = ({ isEdit, sectionTitle }) => {
                 section={sectionName}
                 lang="en"
                 name={`${sectionName}_Title_en`}
-                placeholder="Main title"
-                title="Main title"
+                placeholder={tpl("title")}
+                title={t("title")}
               />
             </TabsContent>
             <TabsContent value="arabic" className="rtl-grid space-y-4 w-full">
@@ -85,21 +74,21 @@ const SubFormComponent = ({ isEdit, sectionTitle }) => {
                 section={sectionName}
                 lang="ar"
                 name={`${sectionName}_Title_ar`}
-                placeholder="Main title"
-                title="Main title"
+                placeholder={tpl("title")}
+                title={t("title")}
               />
             </TabsContent>
           </Tabs>
         </div>
         <div className="card-style items-start">
           <h1 className="text-[22px] text-[#707070] font-bold mb-8">
-            Preferences:
+            {tp("preferences")}
           </h1>
           <div className="space-y-4 w-full">
             {/* Edit image */}
             <div className="grid grid-cols-6 gap-4 my-8">
               <label className="font-medium text-[#b5b5b5] text-md lg:pt-2 text-start">
-                Image
+                {t("image")}
               </label>
               <EditImage
                 w="1920"
@@ -111,7 +100,7 @@ const SubFormComponent = ({ isEdit, sectionTitle }) => {
             {/* Tags */}
             <TagForm
               form={form}
-              title="Keywords"
+              title={ttg("tags")}
               name={`${sectionName}_Category_Tags`}
             />
             {/* Status */}
@@ -119,14 +108,14 @@ const SubFormComponent = ({ isEdit, sectionTitle }) => {
               <StatusInput
                 form={form}
                 section={sectionName}
-                title="Status"
+                title={t("status")}
                 name={`${sectionName}_Status`}
               />
             </div>
           </div>
         </div>
         <div className="flex items-center justify-end my-8">
-          <SubmitButton title="Update" />
+          <SubmitButton title={tb("update")} />
         </div>
       </form>
     </Form>

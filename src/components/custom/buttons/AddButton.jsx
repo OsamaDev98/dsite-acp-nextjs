@@ -1,7 +1,10 @@
 import { Plus } from "lucide-react";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 const AddButton = ({ title, target }) => {
+  const tb = useTranslations("Buttons");
+
   return (
     <div className="flex items-center justify-end mb-4">
       <Link
@@ -10,7 +13,7 @@ const AddButton = ({ title, target }) => {
         title="Add page"
       >
         <Plus className="w-6 h-6" />
-        <span>{title?.length > 0 ? title : "Add"}</span>
+        <span>{title?.length > 0 ? title : tb("add")}</span>
       </Link>
     </div>
   );

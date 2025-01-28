@@ -6,12 +6,14 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import Image from "next/image";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
 import StatusInput from "@/components/custom/formInputs/StatusInput";
+import { useLocale, useTranslations } from "next-intl";
 
 const DeliveryComp = ({ form, image, title, itemId }) => {
+  const locale = useLocale();
+  const tpl = useTranslations("Placeholder");
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-center w-full">
       <div className="flex items-center justify-around gap-2 flex-wrap">
@@ -34,7 +36,7 @@ const DeliveryComp = ({ form, image, title, itemId }) => {
                 <FormControl>
                   <Input
                     name={`Delivery_${itemId}_Name`}
-                    placeholder="App name"
+                    placeholder={tpl("app")}
                     type="text"
                     className="h-12 dark:bg-mainDark-900"
                     {...field}
@@ -54,7 +56,11 @@ const DeliveryComp = ({ form, image, title, itemId }) => {
             <FormItem>
               <div className="w-full">
                 <div className="relative col-span-3">
-                  <span className="absolute top-1/2 -translate-y-1/2 text-muted-foreground bg-[#eee] dark:bg-mainDark-900 h-full w-12 flex items-center justify-center rounded-l-lg">
+                  <span
+                    className={`absolute top-1/2 -translate-y-1/2 text-muted-foreground bg-[#eee] dark:bg-mainDark-900 h-full w-12 flex items-center justify-center ${
+                      locale == "en" ? "rounded-l-lg" : "rounded-r-lg"
+                    }`}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -69,7 +75,7 @@ const DeliveryComp = ({ form, image, title, itemId }) => {
                   <FormControl>
                     <Input
                       name={`Delivery_${itemId}_Android`}
-                      placeholder="Android link"
+                      placeholder={tpl("android")}
                       type="text"
                       className="h-12 ltr:pl-14 rtl:pr-14 dark:bg-mainDark-900"
                       {...field}
@@ -90,7 +96,11 @@ const DeliveryComp = ({ form, image, title, itemId }) => {
             <FormItem>
               <div className="w-full">
                 <div className="relative col-span-3">
-                  <span className="absolute top-1/2 -translate-y-1/2 text-muted-foreground bg-[#eee] dark:bg-mainDark-900 h-full w-12 flex items-center justify-center rounded-l-lg">
+                  <span
+                    className={`absolute top-1/2 -translate-y-1/2 text-muted-foreground bg-[#eee] dark:bg-mainDark-900 h-full w-12 flex items-center justify-center ${
+                      locale == "en" ? "rounded-l-lg" : "rounded-r-lg"
+                    }`}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -106,7 +116,7 @@ const DeliveryComp = ({ form, image, title, itemId }) => {
                   <FormControl>
                     <Input
                       name={`Delivery_${itemId}_Apple`}
-                      placeholder="Apple link"
+                      placeholder={tpl("ios")}
                       type="text"
                       className="h-12 ltr:pl-14 rtl:pr-14 dark:bg-mainDark-900"
                       {...field}

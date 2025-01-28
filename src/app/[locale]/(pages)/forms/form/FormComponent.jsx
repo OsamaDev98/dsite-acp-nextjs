@@ -1,6 +1,6 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import SubmitButton from "@/components/custom/buttons/SubmitButton";
 import { useFieldArray, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,7 +15,7 @@ import TitleInput from "@/components/custom/formInputs/TitleInput";
 import StatusInput from "@/components/custom/formInputs/StatusInput";
 import { addDefaultValues, editDefaultValues } from "./formData/defaultValues";
 import { addSchema, editSchema } from "./formData/schema";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect } from "react";
 import Sortable from "sortablejs";
 import {
@@ -38,9 +38,14 @@ import {
   SquareCheck,
   Type,
 } from "lucide-react";
+import TabsListComp from "@/components/custom/TabsListComp";
 
 const FormComponent = ({ isEdit }) => {
   const locale = useLocale();
+  const t = useTranslations("TermsPage");
+  const tpl = useTranslations("Placeholder");
+  const tp = useTranslations("Preferences");
+  const tb = useTranslations("Buttons");
 
   const form = useForm({
     resolver: zodResolver(isEdit ? editSchema : addSchema),
@@ -130,24 +135,7 @@ const FormComponent = ({ isEdit }) => {
             defaultValue={locale == "en" ? "english" : "arabic"}
             className="tabs-style w-full"
           >
-            <TabsList
-              className={`absolute -top-12 h-auto bg-transparent gap-2 ${
-                locale == "en" ? "-right-1" : "-left-1"
-              }`}
-            >
-              <TabsTrigger
-                value="english"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                English
-              </TabsTrigger>
-              <TabsTrigger
-                value="arabic"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                Arabic
-              </TabsTrigger>
-            </TabsList>
+            <TabsListComp />
             <TabsContent value="english" className="space-y-4 w-full">
               {/* Title */}
               <TitleInput
@@ -155,8 +143,8 @@ const FormComponent = ({ isEdit }) => {
                 section={sectionName}
                 name={`${sectionName}_Title_en`}
                 lang="en"
-                title="Form title"
-                placeholder="Title"
+                title={t("title")}
+                placeholder={tpl("title")}
                 setYoutubeLink={false}
                 isLink={false}
               />
@@ -168,8 +156,8 @@ const FormComponent = ({ isEdit }) => {
                 section={sectionName}
                 name={`${sectionName}_Title_ar`}
                 lang="ar"
-                title="Main title"
-                placeholder="Title"
+                title={t("title")}
+                placeholder={tpl("title")}
                 setYoutubeLink={false}
                 isLink={false}
               />
@@ -178,7 +166,7 @@ const FormComponent = ({ isEdit }) => {
         </div>
         <div className="card-style items-start rounded-tr-lg">
           <h1 className="text-[22px] text-[#707070] font-bold mb-8">
-            Preferences:
+            {tp("preferences")}
           </h1>
           <div className="space-y-4 w-full">
             {/* Status */}
@@ -186,7 +174,7 @@ const FormComponent = ({ isEdit }) => {
               <StatusInput
                 form={form}
                 section={sectionName}
-                title="Status"
+                title={t("status")}
                 name={`${sectionName}_Status`}
               />
               <div className="mt-2 flex justify-end">

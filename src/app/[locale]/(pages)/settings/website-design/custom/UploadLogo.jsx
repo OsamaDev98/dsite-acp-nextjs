@@ -25,9 +25,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useTranslations } from "next-intl";
 
 const UploadLogo = ({ form, name, title, classTitle, size, logoId }) => {
   const [logoImage, setLogoImage] = useState(defaultImg);
+
+  const tb = useTranslations("Buttons");
 
   const handleImage = (e) => {
     const tmpPath = URL.createObjectURL(e.target.files[0]);
@@ -102,7 +105,7 @@ const UploadLogo = ({ form, name, title, classTitle, size, logoId }) => {
             <FormItem>
               <FormLabel className="flex items-center justify-center gap-2 text-neutral-400 bg-gray-100 p-3 rounded-md duration-300 hover:text-neutral-700 hover:-translate-y-1 hover:shadow-lg cursor-pointer dark:bg-mainDark-900">
                 <SquarePen className="w-4 h-4" />
-                <span>Change</span>
+                <span>{tb("change")}</span>
               </FormLabel>
               <FormControl>
                 <Input
@@ -126,7 +129,7 @@ const UploadLogo = ({ form, name, title, classTitle, size, logoId }) => {
             className="flex items-center justify-center gap-2 text-neutral-400 bg-gray-100 py-2 px-3 rounded-md duration-300 hover:text-neutral-700 hover:-translate-y-1 hover:shadow-lg cursor-pointer dark:bg-mainDark-900"
           >
             <Trash2 className="w-4 h-4" />
-            <span>Delete</span>
+            <span>{tb("delete")}</span>
           </AlertDialogTrigger>
           <AlertDialogContent className="dark:bg-mainDark-900">
             <AlertDialogHeader className="!text-start">

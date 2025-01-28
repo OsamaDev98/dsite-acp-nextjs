@@ -10,8 +10,12 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import { useTranslations } from "next-intl";
 
 const PlanFeature = ({ form, sectionName }) => {
+  const t = useTranslations("PlansPage");
+  const tb = useTranslations("Buttons");
+
   const { control } = useForm({
     defaultValues: { planFeatures: [{ feature_en: "", feature_ar: "" }] },
   });
@@ -28,7 +32,7 @@ const PlanFeature = ({ form, sectionName }) => {
   return (
     <div className="grid lg:grid-cols-6 items-start w-full">
       <label className="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#b5b5b5] text-md lg:pt-2 mb-3 lg:mb-0">
-        Plan features
+        {t("features")}
       </label>
       <div className="col-span-3 space-y-3">
         {planFeatureFields?.map((field, index) => {
@@ -100,7 +104,7 @@ const PlanFeature = ({ form, sectionName }) => {
               planFeatureAppend({ feature_en: "", feature_ar: "" })
             }
           >
-            Add feature
+            {tb("feature")}
           </Button>
         </div>
       </div>

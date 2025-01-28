@@ -1,6 +1,6 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import SubmitButton from "@/components/custom/buttons/SubmitButton";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,11 +12,17 @@ import SelectInput from "@/components/custom/formInputs/SelectInput";
 import RadioInput from "@/components/custom/formInputs/RadioInput";
 import { schema } from "./formData/schema";
 import { defaultValues } from "./formData/defaultValues";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import TagForm from "@/components/custom/formInputs/TagForm";
+import TabsListComp from "@/components/custom/TabsListComp";
 
 const FormComponent = () => {
   const locale = useLocale();
+  const t = useTranslations("WebsiteInfo");
+  const tp = useTranslations("Preferences");
+  const tb = useTranslations("Buttons");
+  const tpl = useTranslations("Placeholder");
+  const ttg = useTranslations("Tags");
 
   const form = useForm({
     resolver: zodResolver(schema),
@@ -256,91 +262,79 @@ const FormComponent = () => {
             defaultValue={locale == "en" ? "english" : "arabic"}
             className="tabs-style w-full"
           >
-            <TabsList
-              className={`absolute -top-12 h-auto bg-transparent gap-2 ${
-                locale == "en" ? "-right-1" : "-left-1"
-              }`}
-            >
-              <TabsTrigger
-                value="english"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                English
-              </TabsTrigger>
-              <TabsTrigger
-                value="arabic"
-                className="text-md rounded-none rounded-t-lg py-3 px-6 bg-white dark:bg-mainDark-800 data-[state=active]:dark:bg-white"
-              >
-                Arabic
-              </TabsTrigger>
-            </TabsList>
+            <TabsListComp />
             <h1 className="text-mainColor-500 text-xl font-bold pb-4 mb-8 border-b">
-              Basic information
+              {t("title")}
             </h1>
             <TabsContent value="english" className="space-y-4 w-full">
               {/* Title */}
               <TitleInput
                 form={form}
                 section="Info"
-                placeholder="Title"
+                placeholder={tpl("title")}
                 name="Info_Website_Title_en"
                 lang="en"
-                title="Website Title"
+                title={t("name")}
               />
               {/* Subtitle */}
               <DescriptionInput
                 form={form}
                 section="Info"
-                placeholder="Description"
+                placeholder={tpl("description")}
                 name="Info_Website_Description_en"
                 lang="en"
-                title="Website Description"
+                title={t("description")}
               />
               {/* Tags */}
-              <TagForm form={form} title="Tags" name="Info_Website_Tags_en" />
+              <TagForm
+                form={form}
+                title={ttg("tags")}
+                name="Info_Website_Tags_en"
+              />
             </TabsContent>
             <TabsContent value="arabic" className="rtl-grid space-y-4 w-full">
               {/* Title */}
               <TitleInput
                 form={form}
                 section="Info"
-                placeholder="Title"
+                placeholder={tpl("title")}
                 name="Info_Website_Title_ar"
                 lang="ar"
-                title="Website Title"
+                title={t("name")}
               />
               {/* Subtitle */}
               <DescriptionInput
                 form={form}
                 section="Info"
-                placeholder="Description"
+                placeholder={t("description")}
                 name="Info_Website_Description_ar"
                 lang="ar"
-                title="Website Description"
+                title={t("description")}
               />
               {/* Tags */}
-              <TagForm form={form} title="Tags" name="Info_Website_Tags_ar" />
+              <TagForm
+                form={form}
+                title={ttg("tags")}
+                name="Info_Website_Tags_ar"
+              />
             </TabsContent>
           </Tabs>
         </div>
         <div className="card-style rounded-tr-lg">
-          <h1 className="text-mainColor-500 text-xl font-bold pb-4 mb-8 border-b w-full">
-            Website information
-          </h1>
           <div value="english" className="space-y-4 w-full">
             {/* Language */}
             <SelectInput
               form={form}
-              title="Language"
-              placeholder="Select a language"
+              title={t("language")}
+              placeholder={tpl("language")}
               name="Info_Website_Language"
               selectData={languageData}
             />
             {/* Country */}
             <SelectInput
               form={form}
-              title="Country"
-              placeholder="Select a country"
+              title={t("country")}
+              placeholder={tpl("language")}
               name="Info_Website_Country"
               selectData={countries}
               isSearch={true}
@@ -348,14 +342,14 @@ const FormComponent = () => {
             {/* Website status */}
             <RadioInput
               form={form}
-              title="Website status"
+              title={t("status")}
               name="Info_Website_Status"
             />
           </div>
         </div>
         <div className="card-style rounded-tr-lg items-start">
           <h1 className="text-mainColor-500 text-xl font-bold pb-4 mb-8 border-b w-full">
-            Social Media Accounts
+            {t("social")}
           </h1>
           <div className="space-y-4 w-full justify-center">
             {socialData?.map((item) => {
@@ -365,10 +359,10 @@ const FormComponent = () => {
                   form={form}
                   section="Info"
                   icon={item.icon}
-                  title={item.title}
+                  title={tpl(item.title.toLowerCase())}
                   label={true}
                   isIcon={true}
-                  placeholder={item.title}
+                  placeholder={tpl(item.title.toLowerCase())}
                   name={`Info_Website_Social_${item.title}`}
                 />
               );
@@ -376,7 +370,7 @@ const FormComponent = () => {
           </div>
         </div>
         <div className="flex items-center justify-end my-8">
-          <SubmitButton title="Update" />
+          <SubmitButton title={tb("update")} />
         </div>
       </form>
     </Form>
