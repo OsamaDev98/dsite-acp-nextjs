@@ -25,9 +25,10 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const EditImage = ({ h, w, profile, name, form, imageLink }) => {
+  const locale = useLocale();
   const tb = useTranslations("Buttons");
   const ta = useTranslations("Alert");
 
@@ -79,7 +80,9 @@ const EditImage = ({ h, w, profile, name, form, imageLink }) => {
             <p className="text-sm text-gray-400">
               {w} W x {h} H
             </p>
-            <p className="text-sm text-gray-400">Suggested Dimensions</p>
+            <p className="text-sm text-gray-400">
+              {locale == "en" ? "Suggested Dimensions" : "الأبعاد المقترحة"}
+            </p>
           </>
         )}
       </div>
