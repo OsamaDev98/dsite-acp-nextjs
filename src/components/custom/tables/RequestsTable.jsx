@@ -6,56 +6,59 @@ import {
   getPaginationRowModel,
   createColumnHelper,
 } from "@tanstack/react-table";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 const RequestsTable = ({ tableData }) => {
+  const t = useTranslations("RequestsTable");
+
   const columnHelper = createColumnHelper();
 
   const columns = [
     columnHelper.accessor("requestDate", {
-      header: "Request date",
+      header: t("request"),
       cell: (info) => {
         return <span>{info.getValue() ? info.getValue() : "-"}</span>;
       },
     }),
     columnHelper.accessor("fullname", {
-      header: "Full name",
+      header: t("name"),
       cell: (info) => {
         return <span>{info.getValue() ? info.getValue() : "-"}</span>;
       },
     }),
     columnHelper.accessor("mobile", {
-      header: "Mobile",
+      header: t("mobile"),
       cell: (info) => {
         return <span>{info.getValue() ? info.getValue() : "-"}</span>;
       },
     }),
     columnHelper.accessor("email", {
-      header: "Email",
+      header: t("email"),
       cell: (info) => {
         return <span>{info.getValue() ? info.getValue() : "-"}</span>;
       },
     }),
     columnHelper.accessor("date", {
-      header: "Date",
+      header: t("date"),
       cell: (info) => {
         return <span>{info.getValue() ? info.getValue() : "-"}</span>;
       },
     }),
     columnHelper.accessor("time", {
-      header: "Time",
+      header: t("time"),
       cell: (info) => {
         return <span>{info.getValue() ? info.getValue() : "-"}</span>;
       },
     }),
     columnHelper.accessor("description", {
-      header: "Description",
+      header: t("description"),
       cell: (info) => {
         return <span>{info.getValue() ? info.getValue() : "-"}</span>;
       },
     }),
     columnHelper.accessor("radio", {
-      header: "Radio",
+      header: t("radio"),
       cell: (info) => {
         return <span>{info.getValue() ? info.getValue() : "-"}</span>;
       },

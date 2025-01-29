@@ -235,7 +235,7 @@ export const tableData = [
           </g>
         </svg>
       ),
-      title: "Project",
+      title: "Projects",
     },
     status: true,
   },
@@ -325,7 +325,7 @@ export const tableData = [
           </g>
         </svg>
       ),
-      title: "Why we are?",
+      title: "Why",
     },
     status: true,
   },
@@ -533,7 +533,7 @@ export const tableData = [
           </g>
         </svg>
       ),
-      title: "Download app",
+      title: "Download",
     },
     status: true,
   },
@@ -872,7 +872,7 @@ export const tableData = [
           </g>
         </svg>
       ),
-      title: "Restaurant delivery",
+      title: "Delivery",
     },
     status: true,
   },
@@ -900,7 +900,7 @@ export const tableData = [
           </g>
         </svg>
       ),
-      title: "Contact us",
+      title: "Contact",
     },
     status: true,
   },

@@ -5,6 +5,7 @@ import {
   getCoreRowModel,
   createColumnHelper,
 } from "@tanstack/react-table";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Sortable from "sortablejs";
@@ -12,6 +13,9 @@ import Sortable from "sortablejs";
 const WebsiteContentTable = ({ tableData }) => {
   const columnHelper = createColumnHelper();
   const [data, setData] = useState(tableData);
+
+  const locale = useLocale();
+  const t = useTranslations("WebsiteContent");
 
   // sortable config
   useEffect(() => {
@@ -54,19 +58,19 @@ const WebsiteContentTable = ({ tableData }) => {
       },
     }),
     columnHelper.accessor("item", {
-      header: "Website content",
+      header: t("title"),
       cell: (info) => {
         const { image, title } = info.getValue();
         return (
           <div className="flex items-center gap-2">
             {image}
-            <span>{title}</span>
+            <span>{t(title.toLowerCase())}</span>
           </div>
         );
       },
     }),
     columnHelper.accessor("status", {
-      header: "Status",
+      header: t("status"),
       cell: (info) => {
         const row = info.row.original;
         return (

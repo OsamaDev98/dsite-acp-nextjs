@@ -1,6 +1,6 @@
 import AddButton from "@/components/custom/buttons/AddButton";
 import ConfigButton from "@/components/custom/buttons/ConfigButton";
-import { columns, tableData } from "./data/galleryData";
+import { tableData } from "./data/galleryData";
 import ItemsTable from "@/components/custom/tables/ItemsTable";
 
 // When building the project, create static pages (we don't have any changes to the page in real time).
@@ -25,7 +25,6 @@ const page = () => {
         <ItemsTable
           sectionName="Gallery"
           editLink="/gallery/gallery_edit"
-          tableColumns={columns}
           tableData={tableData}
           actions={actions}
         />

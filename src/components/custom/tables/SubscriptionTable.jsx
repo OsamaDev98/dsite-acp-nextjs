@@ -6,11 +6,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useTranslations } from "next-intl";
 
 const headTable = [
   {
     id: 1,
-    title: "Plan name",
+    title: "name",
   },
   {
     id: 2,
@@ -22,11 +23,11 @@ const headTable = [
   },
   {
     id: 4,
-    title: "Card type",
+    title: "Card",
   },
   {
     id: 5,
-    title: "Payment Verified",
+    title: "Payment",
   },
   {
     id: 6,
@@ -65,14 +66,19 @@ const orders = [
 ];
 
 export function SubscriptionTable() {
+  const t = useTranslations("Subscriptions");
+
   return (
     <Table className="min-w-[900px] w-full">
       <TableHeader>
         <TableRow>
           {headTable?.map((item) => {
             return (
-              <TableHead key={item.id} className="text-[16px] font-semibold text-start">
-                {item.title}
+              <TableHead
+                key={item.id}
+                className="text-[16px] font-semibold text-start"
+              >
+                {t(item.title.toLowerCase())}
               </TableHead>
             );
           })}

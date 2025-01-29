@@ -9,8 +9,11 @@ import {
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 const AdminsTable = ({ tableData }) => {
+  const t = useTranslations("Admins");
+
   const columnHelper = createColumnHelper();
   const columns = [
     columnHelper.accessor("id", {
@@ -18,7 +21,7 @@ const AdminsTable = ({ tableData }) => {
       cell: (info) => info.getValue(),
     }),
     columnHelper.accessor("item", {
-      header: "Name",
+      header: t("name"),
       cell: (info) => {
         const { image, title } = info.getValue();
         return (
@@ -37,7 +40,7 @@ const AdminsTable = ({ tableData }) => {
       },
     }),
     columnHelper.accessor("email", {
-      header: "Email",
+      header: t("email"),
       cell: (info) => {
         return (
           <Link
@@ -50,13 +53,13 @@ const AdminsTable = ({ tableData }) => {
       },
     }),
     columnHelper.accessor("status", {
-      header: "Status",
+      header: t("status"),
       cell: (info) => {
         return <span>{info.getValue()}</span>;
       },
     }),
     columnHelper.accessor("actions", {
-      header: "Actions",
+      header: t("actions"),
       cell: (info) => {
         return <span>-</span>;
       },

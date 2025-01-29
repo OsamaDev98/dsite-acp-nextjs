@@ -1,6 +1,6 @@
 import AddButton from "@/components/custom/buttons/AddButton";
 import ConfigButton from "@/components/custom/buttons/ConfigButton";
-import { columns, tableData } from "./data/careerData";
+import { tableData } from "./data/careerData";
 import ItemsTable from "@/components/custom/tables/ItemsTable";
 
 // When building the project, create static pages (we don't have any changes to the page in real time).
@@ -18,7 +18,7 @@ const page = () => {
     { key: "delete", title: "Delete" },
     {
       key: "applicants",
-      title: "View applicants",
+      title: "applicants",
       viewLink: "/career/applicants",
     },
   ];
@@ -34,7 +34,6 @@ const page = () => {
           sectionName="career"
           isCareer={true}
           editLink="/career/career_edit"
-          tableColumns={columns}
           tableData={tableData}
           actions={actions}
         />

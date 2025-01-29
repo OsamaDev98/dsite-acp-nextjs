@@ -1,10 +1,3 @@
-export const columns = [
-  { id: "" },
-  { sortable: "" },
-  { item: "Service" },
-  { status: "Status" },
-  { actions: "Actions" },
-];
 export const tableData = [
   {
     id: 1,

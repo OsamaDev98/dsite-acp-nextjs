@@ -1,6 +1,6 @@
 import AddButton from "@/components/custom/buttons/AddButton";
 import ConfigButton from "@/components/custom/buttons/ConfigButton";
-import { columns, tableData } from "./data/restaurantData";
+import { tableData } from "./data/restaurantData";
 import ItemsTable from "@/components/custom/tables/ItemsTable";
 
 // When building the project, create static pages (we don't have any changes to the page in real time).
@@ -31,7 +31,6 @@ const page = () => {
           sectionName="restaurant"
           editLink="/restaurant/restaurant_edit"
           tableData={tableData}
-          tableColumns={columns}
           actions={actions}
         />
       </div>

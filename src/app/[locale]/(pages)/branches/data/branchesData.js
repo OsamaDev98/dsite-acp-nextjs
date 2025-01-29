@@ -1,17 +1,10 @@
-export const columns = [
-  { id: "" },
-  { sortable: "" },
-  { item: "Branch" },
-  { status: "Status" },
-  { actions: "Actions" },
-];
 export const tableData = [
   {
     id: 1,
     item: {
       image:
         "https://dsite.sa/public/contents/slides/OFEweGJKL1hGdDBiVzlMcUdMd2k4UGFhM09sNmNqd096ZEZGbDZmbHBPaz0=.jpg",
-        title: "Detailing services with a personal touch",
+      title: "Detailing services with a personal touch",
     },
     status: true,
   },

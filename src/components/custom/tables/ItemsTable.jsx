@@ -11,6 +11,7 @@ import Sortable from "sortablejs";
 import { useEffect, useState } from "react";
 import ActionsBtn from "../buttons/ActionsButton";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 const ItemsTable = ({
   sectionName,
@@ -21,36 +22,18 @@ const ItemsTable = ({
   isRequests = false,
   requestsLink,
   tableData,
-  tableColumns,
 }) => {
-  const columnHelper = createColumnHelper();
+  const t = useTranslations("ItemsTable");
 
-  const idCol = tableColumns
-    .map((col) => col.id)
-    .filter((col) => col?.length > 0)[0];
-  const sortableCol = tableColumns
-    .map((col) => col.sortable)
-    .filter((col) => col?.length > 0)[0];
-  const itemCol = tableColumns
-    .map((col) => col.item)
-    .filter((col) => col?.length > 0)[0];
-  const requestsCol = tableColumns
-    .map((col) => col.requests)
-    .filter((col) => col?.length > 0)[0];
-  const statusCol = tableColumns
-    .map((col) => col.status)
-    .filter((col) => col?.length > 0)[0];
-  const actionsCol = tableColumns
-    .map((col) => col.actions)
-    .filter((col) => col?.length > 0)[0];
+  const columnHelper = createColumnHelper();
 
   const columns = [
     columnHelper.accessor("id", {
-      header: idCol,
+      header: "",
       cell: (info) => info.getValue(),
     }),
     columnHelper.accessor("sortable", {
-      header: sortableCol,
+      header: "",
       cell: () => {
         return (
           <div className="sortable_icon flex items-center gap-2">
@@ -66,7 +49,7 @@ const ItemsTable = ({
       },
     }),
     columnHelper.accessor("item", {
-      header: itemCol,
+      header: t("item"),
       cell: (info) => {
         const { image, title } = info.getValue();
         return (
@@ -97,7 +80,7 @@ const ItemsTable = ({
       },
     }),
     columnHelper.accessor("status", {
-      header: statusCol,
+      header: t("status"),
       cell: (info) => {
         const row = info.row.original;
         return (
@@ -134,7 +117,7 @@ const ItemsTable = ({
       },
     }),
     columnHelper.accessor("actions", {
-      header: actionsCol,
+      header: t("actions"),
       cell: (info) => {
         const row = info.row.original;
         return (
@@ -155,7 +138,7 @@ const ItemsTable = ({
       3,
       0,
       columnHelper.accessor("requests", {
-        header: requestsCol,
+        header: t("requests"),
         cell: (info) => {
           const requestsValue = info.getValue();
           return (

@@ -1,4 +1,4 @@
-import { columns, tableData } from "./data/sliderData";
+import { tableData } from "./data/sliderData";
 import ConfigButton from "@/components/custom/buttons/ConfigButton";
 import AddButton from "@/components/custom/buttons/AddButton";
 import ItemsTable from "@/components/custom/tables/ItemsTable";
@@ -27,7 +27,6 @@ const page = () => {
           sectionName="slider"
           editLink="/slider/slide_edit"
           tableData={tableData}
-          tableColumns={columns}
           actions={actions}
         />
       </div>

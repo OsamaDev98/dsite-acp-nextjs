@@ -1,4 +1,4 @@
-import { columns, tableData } from "./data/projectsData";
+import { tableData } from "./data/projectsData";
 import AddButton from "@/components/custom/buttons/AddButton";
 import ConfigButton from "@/components/custom/buttons/ConfigButton";
 import ItemsTable from "@/components/custom/tables/ItemsTable";
@@ -29,7 +29,6 @@ const page = () => {
           requestsLink="/projects/project_requests"
           isRequests={true}
           tableData={tableData}
-          tableColumns={columns}
           actions={actions}
         />
       </div>

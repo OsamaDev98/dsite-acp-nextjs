@@ -10,8 +10,12 @@ import Image from "next/image";
 import Sortable from "sortablejs";
 import { useEffect, useState } from "react";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 const ApplicantTable = ({ tableData }) => {
+  const t = useTranslations("ApplicantPage");
+  const tb = useTranslations("Buttons");
+
   const columnHelper = createColumnHelper();
 
   const columns = [
@@ -36,7 +40,7 @@ const ApplicantTable = ({ tableData }) => {
       },
     }),
     columnHelper.accessor("item", {
-      header: "Name",
+      header: t("name"),
       cell: (info) => {
         const { title, email } = info.getValue();
         return (
@@ -50,14 +54,14 @@ const ApplicantTable = ({ tableData }) => {
       },
     }),
     columnHelper.accessor("actions", {
-      header: "Actions",
+      header: t("actions"),
       cell: (info) => {
         return (
           <Link
             href="/career/applicants/applicants_details"
             className="bg-gray-200 border py-2 px-6 rounded-md dark:bg-mainDark-900"
           >
-            Details
+            {tb("details")}
           </Link>
         );
       },

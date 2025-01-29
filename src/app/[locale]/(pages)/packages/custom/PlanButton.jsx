@@ -1,6 +1,10 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 const PlanButton = ({ planType, setPlanType }) => {
+  const t = useTranslations("Packages");
+
   return (
     <>
       <button
@@ -9,7 +13,7 @@ const PlanButton = ({ planType, setPlanType }) => {
         } `}
         onClick={() => setPlanType("annually")}
       >
-        <span>Annually</span>
+        <span>{t("annually")}</span>
       </button>
       <button
         className={`px-8 py-2 font-medium text-gray-800 transition-colors duration-300 transform bg-transparent rounded-lg focus:outline-none dark:text-mainColor-200 dark:hover:bg-gray-600 hover:bg-white ${
@@ -17,7 +21,7 @@ const PlanButton = ({ planType, setPlanType }) => {
         } `}
         onClick={() => setPlanType("monthly")}
       >
-        <span>Monthly</span>
+        <span>{t("monthly")}</span>
       </button>
     </>
   );

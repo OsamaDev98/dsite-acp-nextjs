@@ -6,6 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useTranslations } from "next-intl";
 
 const headTable = [
   {
@@ -54,6 +55,8 @@ const records = [
 ];
 
 export function DnsTable() {
+  const t = useTranslations("DomainSettings");
+
   return (
     <Table className="min-w-[900px] w-full">
       <TableHeader>
@@ -61,7 +64,7 @@ export function DnsTable() {
           {headTable?.map((item) => {
             return (
               <TableHead key={item.id} className="text-[16px] font-semibold">
-                {item.title}
+                {t(item.title.toLowerCase())}
               </TableHead>
             );
           })}

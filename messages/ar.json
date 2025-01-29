@@ -85,7 +85,7 @@
     "title": "محتويات الموقع",
     "status": "الحالة",
     "slider": "الشرئح",
-    "about": "عنا",
+    "about": "التعريف",
     "services": "الخدمات",
     "projects": "المشاريع",
     "products": "المنتجات",
@@ -132,7 +132,7 @@
     "status": "الحالة",
     "actions": "الاجراء"
   },
-  "Domain": {
+  "DomainSettings": {
     "domain": "النطاق",
     "status": "حالة النطاق",
     "disconnect": "غير متصل",
@@ -162,10 +162,10 @@
     "payment": "عملية الدفع",
     "date": "التاريخ"
   },
-  "Plans": {
+  "Packages": {
     "plans": "الخطط",
     "monthly": "شهري",
-    "Annually": "سنوي"
+    "annually": "سنوي"
   },
   "Preferences": {
     "preferences": "التفضيلات"
@@ -178,6 +178,22 @@
     "subtitle": "عنوان فرعي للصفحة",
     "keywords": "الكلمات الدلالية",
     "show": "إظهار في الهيدر"
+  },
+  "ItemsTable": {
+    "item": "العنصر",
+    "requests": "الطلبات",
+    "status": "الحالة",
+    "actions": "الاجراء"
+  },
+  "RequestsTable": {
+    "request": "تاريخ الطلب",
+    "name": "الاسم بالكامل",
+    "mobile": "التليفون",
+    "email": "الايميل",
+    "date": "التاريخ",
+    "time": "الوقت",
+    "description": "الوصف",
+    "radio": "الاختيار"
   },
   "SliderPage": {
     "title": "اسم الشريحة الرئيسي",
@@ -303,7 +319,9 @@
     "status": "الحالة"
   },
   "ApplicantPage": {
-    "title": "المتقدمين"
+    "title": "المتقدمين",
+    "name": "الاسم",
+    "actions": "الاجراء"
   },
   "ApplicantDetailsPage": {
     "title": "تفاصيل المتقدم",
@@ -409,27 +427,25 @@
   "Buttons": {
     "change": "تغيير",
     "delete": "حذف",
+    "edit": "تعديل",
     "changeP": "تغيير الصورة",
     "deleteP": "حذف الصورة",
     "update": "تحديث",
     "add": "اضافة",
     "export": "تصدير",
     "details": "تفاصيل",
+    "multiple": "اضافة العديد",
     "category": "فئات",
     "brand": "العلامات التجارية",
     "feature": "اضافة ميزة",
     "copy": "اضغط للنسخ",
-    "copied": "تم النسخ!"
+    "copied": "تم النسخ!",
+    "applicants": "المتقدمين"
   },
   "Alert": {
     "title": "هل أنت متأكد تماما؟",
     "message": "لا يمكن التراجع عن هذا الإجراء. سيؤدي هذا إلى حذف صورتك بشكل دائم وإزالتها من خوادمنا",
     "continue": "تأكيد",
     "cancel": "الغاء"
-  },
-  "mainTable": {
-    "slide": "الشريحة",
-    "status": "الحالة",
-    "actions": "الاجراء"
   }
 }

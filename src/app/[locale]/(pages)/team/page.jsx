@@ -1,5 +1,5 @@
 import ConfigButton from "@/components/custom/buttons/ConfigButton";
-import { columns, tableData } from "./data/teamData";
+import { tableData } from "./data/teamData";
 import AddButton from "@/components/custom/buttons/AddButton";
 import ItemsTable from "../../../../components/custom/tables/ItemsTable";
 
@@ -26,7 +26,6 @@ const page = () => {
         <ItemsTable
           sectionName="team"
           editLink="/team/team_edit"
-          tableColumns={columns}
           tableData={tableData}
           actions={actions}
         />

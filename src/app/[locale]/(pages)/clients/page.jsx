@@ -1,6 +1,6 @@
 import AddButton from "@/components/custom/buttons/AddButton";
 import ConfigButton from "@/components/custom/buttons/ConfigButton";
-import { columns, tableData } from "./data/clientsData";
+import { tableData } from "./data/clientsData";
 import ItemsTable from "@/components/custom/tables/ItemsTable";
 
 // When building the project, create static pages (we don't have any changes to the page in real time).
@@ -21,13 +21,12 @@ const page = () => {
       <div className="flex items-center justify-end gap-2">
         <ConfigButton target="/clients/client_config" />
         <AddButton target="/clients/client_add" />
-        <AddButton title="Add multiple" target="/clients/client_multiple" />
+        <AddButton title="multiple" target="/clients/client_multiple" />
       </div>
       <div className="grid card-style mt-2 rounded-tr-lg">
         <ItemsTable
           sectionName="clients"
           editLink="/clients/client_edit"
-          tableColumns={columns}
           tableData={tableData}
           actions={actions}
         />

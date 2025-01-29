@@ -132,7 +132,7 @@
     "status": "status",
     "actions": "Actions"
   },
-  "Domain": {
+  "DomainSettings": {
     "domain": "Domain",
     "status": "domain status",
     "disconnect": "Not connected",
@@ -161,10 +161,10 @@
     "payment": "Payment Verified",
     "date": "Date"
   },
-  "Plans": {
+  "Packages": {
     "plans": "Plans",
     "monthly": "Monthly",
-    "Annually": "Annually"
+    "annually": "Annually"
   },
   "Preferences": {
     "preferences": "Preferences"
@@ -177,6 +177,22 @@
     "subtitle": "Page Subtitle",
     "keywords": "Keywords",
     "show": "Show in header"
+  },
+  "ItemsTable": {
+    "item": "Item",
+    "requests": "Requests",
+    "status": "Status",
+    "actions": "Actions"
+  },
+  "RequestsTable": {
+    "request": "Request date",
+    "name": "Full name",
+    "mobile": "Mobile",
+    "email": "Email",
+    "date": "Date",
+    "time": "Time",
+    "description": "Description",
+    "radio": "Radio"
   },
   "SliderPage": {
     "title": "Slide Main Title",
@@ -302,7 +318,9 @@
     "status": "Status"
   },
   "ApplicantPage": {
-    "title": "Applicants"
+    "title": "Applicants",
+    "name": "Name",
+    "actions": "Actions"
   },
   "ApplicantDetailsPage": {
     "title": "Applicant details",
@@ -411,28 +429,26 @@
   "Buttons": {
     "change": "Change",
     "delete": "Delete",
+    "edit": "Edit",
     "changeP": "Change picture",
     "deleteP": "Delete picture",
     "update": "Update",
     "add": "Add",
     "edit": "Edit",
     "export": "Export",
-    "details": "details",
+    "details": "Details",
+    "multiple": "Add multiple",
     "category": "Categories",
     "brand": "Brands",
     "feature": "Add feature",
     "copy": "Click to copy",
-    "copied": "Copied!"
+    "copied": "Copied!",
+    "applicants": "View applicants"
   },
   "Alert": {
     "title": "Are you absolutely sure?",
     "message": "This action cannot be undone. This will permanently delete your image and remove your image from our servers.",
     "continue": "Continue",
     "cancel": "Cancel"
-  },
-  "mainTable": {
-    "slide": "Slide",
-    "status": "Status",
-    "actions": "Actions"
   }
 }

@@ -3,9 +3,12 @@
 import { useState } from "react";
 import PlanButton from "./PlanButton";
 import PlanCard from "./PlanCard";
+import { useTranslations } from "use-intl";
 
 const PlanContent = () => {
   const [planType, setPlanType] = useState("annually");
+
+  const t = useTranslations("Packages");
 
   const plansData = [
     {
@@ -38,7 +41,7 @@ const PlanContent = () => {
     <section className="section-container">
       <div className="card-style mt-2 rounded-tr-lg items-start">
         <h1 className="text-2xl text-mainColor-500 font-bold mb-8 text-start">
-          Plans:
+          {t("plans")}:
         </h1>
         <div className="p-1.5 mx-auto overflow-hidden bg-gray-100 rounded-lg dark:bg-mainDark-900">
           <div className="flex items-center justify-center gap-2 flex-wrap">

@@ -7,29 +7,32 @@ import {
 } from "@tanstack/react-table";
 import { Link } from "@/i18n/routing";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 const PixelTable = ({ tableData }) => {
   const columnHelper = createColumnHelper();
   const [data, setData] = useState(tableData);
+
+  const t = useTranslations("Pixel");
 
   const columns = [
     columnHelper.accessor("id", {
       header: "",
     }),
     columnHelper.accessor("name", {
-      header: "Name",
+      header: t("name"),
       cell: (info) => info.getValue(),
     }),
     columnHelper.accessor("userId", {
-      header: "User id",
+      header: t("user"),
       cell: (info) => info.getValue(),
     }),
     columnHelper.accessor("status", {
-      header: "Status",
+      header: t("status"),
       cell: (info) => info.getValue(),
     }),
     columnHelper.accessor("actions", {
-      header: "Actions",
+      header: t("actions"),
       cell: (info) => {
         return (
           <Link

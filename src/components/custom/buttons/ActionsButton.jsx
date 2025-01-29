@@ -19,8 +19,12 @@ import {
 import { Trash2, ChevronDown, Eye } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 const ActionsBtn = ({ editTarget, itemId, actions, setData }) => {
+  const tb = useTranslations("Buttons");
+  const tal = useTranslations("Alert");
+
   const handleRemove = () => {
     setData((prevData) => prevData.filter((item) => item.id !== itemId));
     toast.success("Item has been deleted successfully!");
@@ -32,7 +36,7 @@ const ActionsBtn = ({ editTarget, itemId, actions, setData }) => {
         href={editTarget}
         className="text-center gap-1 flex-1 px-2 outline-none"
       >
-        Edit
+        {tb("edit")}
       </Link>
       <AlertDialog>
         <DropdownMenu>
@@ -46,13 +50,15 @@ const ActionsBtn = ({ editTarget, itemId, actions, setData }) => {
                   {item.key.toLowerCase() == "delete" && (
                     <AlertDialogTrigger className="text-red-500 flex items-center gap-1">
                       <Trash2 className="w-[18px] h-[18px]" />
-                      <span>{item.title}</span>
+                      <span>{tb(item.title.toLowerCase())}</span>
                     </AlertDialogTrigger>
                   )}
                   {item.key.toLowerCase() == "applicants" && (
                     <>
                       <Eye className="w-5 h-5" />
-                      <Link href={item.viewLink}>{item.title}</Link>
+                      <Link href={item.viewLink}>
+                        {tb(item.title.toLowerCase())}
+                      </Link>
                     </>
                   )}
                 </DropdownMenuItem>
@@ -62,16 +68,13 @@ const ActionsBtn = ({ editTarget, itemId, actions, setData }) => {
         </DropdownMenu>
         <AlertDialogContent>
           <AlertDialogHeader className="!text-start">
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete your
-              item and remove your data from our servers.
-            </AlertDialogDescription>
+            <AlertDialogTitle>{tal("title")}</AlertDialogTitle>
+            <AlertDialogDescription>{tal("message")}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter className="flex justify-end items-center gap-2">
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>{tal("cancel")}</AlertDialogCancel>
             <AlertDialogAction className="!mx-0" onClick={() => handleRemove()}>
-              Confirm
+              {tal("continue")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

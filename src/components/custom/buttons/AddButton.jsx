@@ -13,7 +13,7 @@ const AddButton = ({ title, target }) => {
         title="Add page"
       >
         <Plus className="w-6 h-6" />
-        <span>{title?.length > 0 ? title : tb("add")}</span>
+        <span>{title?.length > 0 ? tb(title.toLowerCase()) : tb("add")}</span>
       </Link>
     </div>
   );

@@ -15,7 +15,7 @@ export const metadata = {
 };
 
 const page = () => {
-  const t = useTranslations("Domain");
+  const t = useTranslations("DomainSettings");
 
   return (
     <div className="section-container mt-8">

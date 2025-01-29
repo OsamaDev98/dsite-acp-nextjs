@@ -9,6 +9,7 @@ import {
 import Sortable from "sortablejs";
 import { useEffect, useState } from "react";
 import ActionsBtn from "../buttons/ActionsButton";
+import Image from "next/image";
 
 const FormsTable = ({ tableData, editLink, actions }) => {
   const columnHelper = createColumnHelper();
@@ -17,6 +18,22 @@ const FormsTable = ({ tableData, editLink, actions }) => {
     columnHelper.accessor("id", {
       header: "",
       cell: (info) => info.getValue(),
+    }),
+    columnHelper.accessor("sortable", {
+      header: "",
+      cell: () => {
+        return (
+          <div className="sortable_icon flex items-center gap-2">
+            <Image
+              src="https://dsite.sa/public/assets/acp/img/sort.svg"
+              alt="Sortable icon"
+              width={14}
+              height={19}
+              className="cursor-pointer"
+            />
+          </div>
+        );
+      },
     }),
     columnHelper.accessor("title", {
       header: "Title",
