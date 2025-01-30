@@ -339,7 +339,7 @@ const FormComponent = ({ isEdit }) => {
           </div>
         </div>
         <div className="flex items-center justify-end my-8">
-          <SubmitButton title="Update" />
+          <SubmitButton title={tb("update")} />
         </div>
       </form>
     </Form>

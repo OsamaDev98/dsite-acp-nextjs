@@ -11,6 +11,7 @@ import { toast } from "sonner";
 const ChangeColor = ({ form, name, title, color }) => {
   const handlePickColor = async (e) => {
     e.stopPropagation();
+    e.persist();
     if (typeof window !== "undefined") {
       if (!window.EyeDropper) {
         toast.error("EyeDropper is not supported in your browser.");
@@ -47,10 +48,12 @@ const ChangeColor = ({ form, name, title, color }) => {
         name={name}
         render={({ field }) => (
           <FormItem className="relative">
-            <Pencil
-              className="w-4 h-4 text-[#b2b2b2] z-20 cursor-pointer absolute top-5 ltr:right-2 rtl:left-2"
-              onClick={(e) => handlePickColor(e)}
-            />
+            <span
+              className="cursor-pointer absolute top-3.5 ltr:right-1 rtl:left-1 z-20 bg-slate-50 border w-7 h-7 flex items-center justify-center rounded-full"
+              onClick={handlePickColor}
+            >
+              <Pencil className="w-3.5 h-3.5 text-[#b2b2b2] pointer-events-none" />
+            </span>
             <FormLabel
               className="flex w-32 h-10 relative rounded-md border cursor-pointer z-10"
               style={{ backgroundColor: color }}

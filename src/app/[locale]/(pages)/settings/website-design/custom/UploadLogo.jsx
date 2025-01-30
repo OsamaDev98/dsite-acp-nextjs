@@ -31,6 +31,7 @@ const UploadLogo = ({ form, name, title, classTitle, size, logoId }) => {
   const [logoImage, setLogoImage] = useState(defaultImg);
 
   const tb = useTranslations("Buttons");
+  const tal = useTranslations("Alert");
 
   const handleImage = (e) => {
     const tmpPath = URL.createObjectURL(e.target.files[0]);
@@ -133,18 +134,15 @@ const UploadLogo = ({ form, name, title, classTitle, size, logoId }) => {
           </AlertDialogTrigger>
           <AlertDialogContent className="dark:bg-mainDark-900">
             <AlertDialogHeader className="!text-start">
-              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-              <AlertDialogDescription>
-                This action cannot be undone. This will permanently delete your
-                image and remove your image from our servers.
-              </AlertDialogDescription>
+              <AlertDialogTitle>{tal("title")}</AlertDialogTitle>
+              <AlertDialogDescription>{tal("message")}</AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter className="flex items-center gap-2 flex-wrap">
               <AlertDialogCancel className="dark:bg-mainDark-800">
-                Cancel
+                {tal("cancel")}
               </AlertDialogCancel>
               <AlertDialogAction onClick={() => handleRemoveImage()}>
-                Continue
+                {tal("continue")}
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

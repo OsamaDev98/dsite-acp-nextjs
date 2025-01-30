@@ -79,6 +79,7 @@ const colorsData = [
 
 const LogoAndColors = () => {
   const t = useTranslations("WebsiteDesign");
+  const tb = useTranslations("Buttons");
 
   const form = useForm({
     resolver: zodResolver(schema),
@@ -133,7 +134,7 @@ const LogoAndColors = () => {
           </div>
         </div>
         <div className="flex justify-end my-8">
-          <SubmitButton title="Update" />
+          <SubmitButton title={tb("update")} />
         </div>
       </form>
     </Form>

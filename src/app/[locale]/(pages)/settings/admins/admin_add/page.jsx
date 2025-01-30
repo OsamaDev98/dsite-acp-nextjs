@@ -11,6 +11,7 @@ export const metadata = {
 };
 
 const page = () => {
+  
   return (
     <div className="section-container mt-8">
       <FormComponent />
